@@ -3,7 +3,7 @@
   "assetVersion": "44d1f2d96383b976",
   "node": "24.19.0",
   "unit": {
-    "passed": 72,
+    "passed": 73,
     "failed": 0,
     "skipped": 0
   },
@@ -54,5 +54,12 @@
   "networkDraftAppliedToCurrentRuntime": false,
   "liveUploadVerified": false,
   "liveTelegramVerified": false,
-  "archiveCleanBuildVerified": true
+  "archiveCleanBuildVerified": true,
+  "hostingWindowsPathRegression": {
+    "passed": true,
+    "actualSuperstaticEngine": true,
+    "windowsURLNormalizationSimulated": true,
+    "nativeWindowsRunVerified": false,
+    "assertionsDisabled": false
+  }
 }

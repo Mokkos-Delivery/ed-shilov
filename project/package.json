@@ -8,7 +8,7 @@
     "test": "node --test tests/*.test.mjs",
     "check": "node tools/check.mjs",
     "test:rules": "firebase emulators:exec --only firestore --project demo-eduard-shilov --config firebase.emulators.json \"node --test tests/firestore.rules-test.mjs\"",
-    "test:hosting": "firebase emulators:exec --only hosting --project demo-eduard-shilov --config firebase.hosting-test.json \"node --test tests/hosting.rules-test.mjs\"",
+    "test:hosting": "node tools/hosting-emulator.cjs emulators:exec --only hosting --project demo-eduard-shilov --config firebase.hosting-test.json \"node --test tests/hosting.rules-test.mjs\"",
     "configure": "node tools/rollout.mjs configure",
     "doctor": "node tools/rollout.mjs doctor",
     "bundle:worker": "node tools/rollout.mjs bundle",

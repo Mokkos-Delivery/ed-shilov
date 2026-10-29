@@ -29,6 +29,15 @@ Test-Path .\worker\wrangler.jsonc
 5. Node должен быть версии 24.12.0 или новее:
 node --version
 
+Для аудиотеста также требуется ffprobe из комплекта FFmpeg:
+ffprobe -version
+
+Если команда не найдена:
+winget install --id Gyan.FFmpeg --exact --source winget --accept-package-agreements --accept-source-agreements
+
+После установки полностью закройте терминал и откройте PowerShell заново,
+затем снова перейдите в C:\eduard-site\project и проверьте ffprobe -version.
+
 6. Установите закреплённые зависимости:
 npm.cmd ci --no-audit --no-fund
 
@@ -59,6 +68,9 @@ npm.cmd run bundle:worker
 npm.cmd run test:runtime
 
 14. Проверка Hosting:
+Команда использует tools/hosting-emulator.cjs: исправление обработки URL-путей
+Windows в локальном Firebase emulator. Оно не меняет node_modules и рабочий
+firebase.json. Проверки редиректа и nosniff остаются обязательными.
 npm.cmd run test:hosting
 
 Ни одна из команд 1–14 не публикует сайт, песни или посты.

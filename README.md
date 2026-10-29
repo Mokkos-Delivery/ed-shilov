@@ -10,7 +10,7 @@
 - Браузерные скриншоты и протокол: `review/` в архиве обновления.
 - `PROMPT_NEXT_CHAT.md`, старые `SETUP.md`, `DEPLOY.md` и JSON-отчёты из исходного архива — исторические материалы. Для этого обновления используйте новые команды и отчёт.
 
-Требуется Node.js >= 24.12.0. Локально: `cd project`, `npm ci`, `npm test`, `npm run build -- --draft`, `npm run check`.
+Требуются Node.js >= 24.12.0 и ffprobe (FFmpeg) для аудиотеста. Hosting emulator запускается через проектный tools/hosting-emulator.cjs с исправлением URL-путей Windows. Локально: `cd project`, `npm ci`, `npm test`, `npm run build -- --draft`, `npm run check`.
 `--draft` подходит для разработки и проверки; публикация выполняет полноценную сборку с существующим `settings.json`.
 
 Архив обновления не содержит локальные настройки, credentials, серверные секреты,
