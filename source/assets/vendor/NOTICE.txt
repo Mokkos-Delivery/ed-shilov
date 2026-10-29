@@ -1,0 +1,8 @@
+lamejs 1.2.0
+Author: Alexander S. Zhukov and contributors
+License: LGPL-3.0
+Project: https://github.com/zhuker/lamejs
+Distribution source: https://registry.npmjs.org/lamejs/-/lamejs-1.2.0.tgz
+Unmodified corresponding package source: lamejs-1.2.0-source.tgz
+Minified build downloaded from: https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.0/lame.min.js
+No modifications were made to the encoder.

@@ -1,0 +1,72 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owner() {
+      return request.auth != null && request.auth.uid == '__ADMIN_UID__'
+        && request.auth.token.email_verified == true;
+    }
+    function publicItem() { return resource.data.published == true; }
+    function mediaItem() {
+      return publicItem() && (
+        (!('ownerKind' in resource.data) && !('ownerId' in resource.data)) ||
+        (resource.data.ownerKind in ['tracks','videos','photos','news']
+          && resource.data.ownerId is string
+          && resource.data.ownerId.matches('^[A-Za-z0-9_-]{1,160}$')
+          && get(/databases/$(database)/documents/$(resource.data.ownerKind)/$(resource.data.ownerId)).data.published == true)
+      );
+    }
+    function validPublicationLink() {
+      return (!('ownerKind' in request.resource.data) && !('ownerId' in request.resource.data)) ||
+        (request.resource.data.ownerKind in ['tracks','videos','photos','news']
+          && request.resource.data.ownerId is string
+          && request.resource.data.ownerId.matches('^[A-Za-z0-9_-]{1,160}$'));
+    }
+    match /tracks/{id} {
+      allow read: if owner() || publicItem();
+      allow create, update: if owner() && request.resource.data.id == id
+        && request.resource.data.title is string && request.resource.data.title.size() <= 300
+        && request.resource.data.published is bool;
+      allow delete: if owner();
+    }
+    match /videos/{id} {
+      allow read: if owner() || publicItem();
+      allow create, update: if owner() && request.resource.data.id == id
+        && request.resource.data.title is string && request.resource.data.title.size() <= 300
+        && request.resource.data.published is bool;
+      allow delete: if owner();
+    }
+    match /news/{id} {
+      allow read: if owner() || publicItem();
+      allow create, update: if owner() && request.resource.data.id == id
+        && request.resource.data.title is string && request.resource.data.title.size() <= 300
+        && request.resource.data.published is bool;
+      allow delete: if owner();
+    }
+    match /photos/{id} {
+      allow read: if owner() || publicItem();
+      allow create, update: if owner() && request.resource.data.id == id
+        && request.resource.data.title is string && request.resource.data.title.size() <= 300
+        && request.resource.data.published is bool;
+      allow delete: if owner();
+    }
+    match /media/{id} {
+      allow get: if owner() || mediaItem();
+      allow list: if owner();
+      allow create, update: if owner() && request.resource.data.driveId == id
+        && request.resource.data.name is string && request.resource.data.mime is string
+        && request.resource.data.size is number && request.resource.data.size > 0
+        && request.resource.data.published is bool && validPublicationLink();
+      allow delete: if owner();
+    }
+    match /socialPosts/{id} {
+      allow read: if owner();
+      allow create, update: if owner() && request.resource.data.requestId == id
+        && request.resource.data.text is string && request.resource.data.text.size() <= 4096
+        && request.resource.data.url is string && request.resource.data.url.size() <= 2048
+        && request.resource.data.channels is list && request.resource.data.channels.size() <= 4
+        && request.resource.data.createdAt is string && request.resource.data.results is map;
+    }
+    match /settings/public { allow read: if true; allow write: if owner(); }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

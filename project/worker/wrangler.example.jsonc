@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "eduard-shilov-media",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-10-13",
+  "workers_dev": true,
+  "observability": {
+    "enabled": false
+  },
+  "vars": {
+    "PROJECT_ID": "eduard-shilov-site",
+    "ADMIN_UID": "owner_36405b57fb7c4ae58d8e2e817ec67ead",
+    "ALLOWED_ORIGINS": "https://eduardshilov.com,https://www.eduardshilov.com,https://eduard-shilov-site.web.app,https://eduard-shilov-site.firebaseapp.com",
+    "UPLOAD_FOLDER_ID": "12XvWmddZKZveffm-mc39DpXJLDeVZ2zH",
+    "TELEGRAM_1_CHANNEL_ID": "-1003968794089",
+    "TELEGRAM_1_LABEL": "Telegram · Эдуард Шилов",
+    "TELEGRAM_2_CHANNEL_ID": "-1004363648477",
+    "TELEGRAM_2_LABEL": "Telegram · ТРОiКА",
+    "VK_TROIKA_GROUP_ID": "",
+    "VK_EDUARD_GROUP_ID": "",
+    "POLICY_VERSION": "2026-10-migration-draft",
+    "MAIL_RELAY_URL": "https://script.google.com/macros/s/AKfycbyaaVJ-rExBO1Urru9AAAMst5wwkUR-YB9oo3MQPzGlwGNwzxxxGmvF4g_nSm-6FfPf/exec",
+    "SOCIAL_TARGETS": "telegram_1,telegram_2"
+  },
+  "account_id": "5f3da00f578389cacffa5a8945ad4384"
+}

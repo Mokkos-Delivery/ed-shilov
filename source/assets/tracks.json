@@ -1,0 +1,462 @@
+[
+  {
+    "id": "t_1760982119_1",
+    "slug": "дорогой_длинною",
+    "title": "Дорогой длинною",
+    "cover": "/assets/img/videos/Gemini_Generated_Image_oieckjoieckjoiec.webp",
+    "audio_wav": "/assets/audio/tracks/Дорогой длинною.wav",
+    "audio_mp3": "/assets/audio/tracks/Дорогой длинною.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:41:59.662930Z"
+  },
+  {
+    "id": "t_1760861594",
+    "slug": "одесса",
+    "title": "Одесса",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_q3z56vq3z56vq3z5.webp",
+    "audio_wav": "/assets/audio/tracks/Когда я жил в Одессе..wav",
+    "audio_mp3": "/assets/audio/tracks/Когда я жил в Одессе..mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-19T13:13:14.772867Z"
+  },
+  {
+    "id": "t_1760864967",
+    "slug": "гуляка",
+    "title": "Гуляка",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_h247iwh247iwh247.webp",
+    "audio_wav": "/assets/audio/tracks/Гуляка..wav",
+    "audio_mp3": "/assets/audio/tracks/Гуляка..mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-19T14:09:27.394057Z"
+  },
+  {
+    "id": "t_1760979232_0",
+    "slug": "ах,_какая",
+    "title": "Ах, какая",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_cfexyucfexyucfex.webp",
+    "audio_wav": "/assets/audio/tracks/Ах какая женщина.wav",
+    "audio_mp3": "/assets/audio/tracks/Ах какая женщина.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:52.723729Z"
+  },
+  {
+    "id": "t_1760979232_1",
+    "slug": "вжик",
+    "title": "Вжик",
+    "cover": "/assets/img/tracks/20251017_2036_Крест мечей_remix_01k7sks4vweqqb8y34a5axht.webp",
+    "audio_wav": "/assets/audio/tracks/Вжик.wav",
+    "audio_mp3": "/assets/audio/tracks/Вжик.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:52.770394Z"
+  },
+  {
+    "id": "t_1760979232_2",
+    "slug": "годы",
+    "title": "Годы",
+    "cover": "/assets/img/tracks/20251019_2242_Крутое изображение человека_remix_01k7yztrtzfh7vmcfvxa91jts7.webp",
+    "audio_wav": "/assets/audio/tracks/Годы.wav",
+    "audio_mp3": "/assets/audio/tracks/Годы.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:52.840926Z"
+  },
+  {
+    "id": "t_1760979233_4",
+    "slug": "куплю_дом",
+    "title": "куплю дом",
+    "cover": "/assets/img/tracks/Шилов у прудa на закате.webp",
+    "audio_wav": "/assets/audio/tracks/Куплю дом..wav",
+    "audio_mp3": "/assets/audio/tracks/Куплю дом..mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:53.103081Z"
+  },
+  {
+    "id": "t_1760979233_6",
+    "slug": "моя_любовь",
+    "title": "Моя любовь",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_izr5c7izr5c7izr5.webp",
+    "audio_wav": "/assets/audio/tracks/Моя любовь..wav",
+    "audio_mp3": "/assets/audio/tracks/Моя любовь..mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:53.221758Z"
+  },
+  {
+    "id": "t_1760979233_8",
+    "slug": "осень,_прозрачное",
+    "title": "Осень, прозрачное",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_lotju4lotju4lotj.webp",
+    "audio_wav": "/assets/audio/tracks/Осень, прозрачное утро..wav",
+    "audio_mp3": "/assets/audio/tracks/Осень, прозрачное утро..mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:53.505011Z"
+  },
+  {
+    "id": "t_1760979233_9",
+    "slug": "привокзальная",
+    "title": "Привокзальная",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_dwniiddwniiddwni.webp",
+    "audio_wav": "/assets/audio/tracks/Привокзальная.wav",
+    "audio_mp3": "/assets/audio/tracks/Привокзальная.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:53.591777Z"
+  },
+  {
+    "id": "t_1760979233_10",
+    "slug": "признание",
+    "title": "Признание",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_w1fs81w1fs81w1fs.webp",
+    "audio_wav": "/assets/audio/tracks/Очарована..wav",
+    "audio_mp3": "/assets/audio/tracks/Очарована..mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:53.655554Z"
+  },
+  {
+    "id": "t_1760979233_11",
+    "slug": "птичий_рынок",
+    "title": "Птичий рынок",
+    "cover": "/assets/img/tracks/Птицы на рынке при закате.webp",
+    "audio_wav": "/assets/audio/tracks/Птичий рынок..wav",
+    "audio_mp3": "/assets/audio/tracks/Птичий рынок..mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:53.733016Z"
+  },
+  {
+    "id": "t_1760979233_12",
+    "slug": "снежочки",
+    "title": "Снежочки",
+    "cover": "/assets/img/tracks/Солдаты у костра в зимнем лесу.webp",
+    "audio_wav": "/assets/audio/tracks/Снежочки.wav",
+    "audio_mp3": "/assets/audio/tracks/Снежочки.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:53.779362Z"
+  },
+  {
+    "id": "t_1760979233_13",
+    "slug": "снилось_мне",
+    "title": "Снилось мне",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_csv3aucsv3aucsv3.webp",
+    "audio_wav": "/assets/audio/tracks/Снилось мне..wav",
+    "audio_mp3": "/assets/audio/tracks/Снилось мне..mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:53.853801Z"
+  },
+  {
+    "id": "t_1760979233_14",
+    "slug": "у_самовара",
+    "title": "У самовара",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_yumvamyumvamyumv.webp",
+    "audio_wav": "/assets/audio/tracks/У самовара..wav",
+    "audio_mp3": "/assets/audio/tracks/У самовара..mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T21:53:53.920625Z"
+  },
+  {
+    "id": "t_1760980625_0",
+    "slug": "мой_номер_245",
+    "title": "Мой номер 245",
+    "cover": "/assets/img/tracks/Мужчина и паровоз на закате.webp",
+    "audio_wav": "/assets/audio/tracks/Мой № 245.wav",
+    "audio_mp3": "/assets/audio/tracks/Мой № 245.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:17:05.598521Z"
+  },
+  {
+    "id": "t_1760980625_1",
+    "slug": "молодая",
+    "title": "Молодая",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_g5kbdrg5kbdrg5kb.webp",
+    "audio_wav": "/assets/audio/tracks/Молодая.wav",
+    "audio_mp3": "/assets/audio/tracks/Молодая.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:17:05.661585Z"
+  },
+  {
+    "id": "t_1760981430_0",
+    "slug": "кирпичики",
+    "title": "Кирпичики",
+    "cover": "/assets/img/tracks/Киричики_ярче.webp",
+    "audio_wav": "/assets/audio/tracks/Кирпичика.wav",
+    "audio_mp3": "/assets/audio/tracks/Кирпичика.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:30:30.398811Z"
+  },
+  {
+    "id": "t_1760981430_1",
+    "slug": "лавандовый_блюз",
+    "title": "Лавандовый блюз",
+    "cover": "/assets/img/tracks/20251019_2339_Очень крутая картинка_remix_01k7z32rvafc6v66eqdmvyz1rt.webp",
+    "audio_wav": "/assets/audio/tracks/Лавандовый блюз.wav",
+    "audio_mp3": "/assets/audio/tracks/Лавандовый блюз.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:30:30.459131Z"
+  },
+  {
+    "id": "t_1760981430_2",
+    "slug": "сингарелла",
+    "title": "Сингарелла",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_p5dflqp5dflqp5df.webp",
+    "audio_wav": "/assets/audio/tracks/Сингарела..wav",
+    "audio_mp3": "/assets/audio/tracks/Сингарела..mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:30:30.517299Z"
+  },
+  {
+    "id": "t_1760982119_0",
+    "slug": "ах,_эти_чёрные_глаза",
+    "title": "Ах, эти чёрные глаза",
+    "cover": "/assets/img/tracks/BlackGold_plus_3100.webp",
+    "audio_wav": "/assets/audio/tracks/Ах, эти чёрные глаза.wav",
+    "audio_mp3": "/assets/audio/tracks/Ах, эти чёрные глаза.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:41:59.592122Z"
+  },
+  {
+    "id": "t_1760982119_2",
+    "slug": "дуня_из_одессы",
+    "title": "Дуня из Одессы",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_e4e716e4e716e4e7.webp",
+    "audio_wav": "/assets/audio/tracks/Дуня из Одесы.wav",
+    "audio_mp3": "/assets/audio/tracks/Дуня из Одесы.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:41:59.708805Z"
+  },
+  {
+    "id": "t_1760982119_3",
+    "slug": "есенин",
+    "title": "Есенин",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_ttfbz4ttfbz4ttfb.webp",
+    "audio_wav": "/assets/audio/tracks/Есенин.wav",
+    "audio_mp3": "/assets/audio/tracks/Есенин.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:41:59.748114Z"
+  },
+  {
+    "id": "t_1760982119_4",
+    "slug": "журавли",
+    "title": "Журавли",
+    "cover": "/assets/img/tracks/1bbed940-8864-4224-b08c-39f3eedfa6e5.webp",
+    "audio_wav": "/assets/audio/tracks/Журавли.wav",
+    "audio_mp3": "/assets/audio/tracks/Журавли.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:41:59.799722Z"
+  },
+  {
+    "id": "t_1760982119_5",
+    "slug": "колдовское_озеро",
+    "title": "Колдовское озеро",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_ksm5ynksm5ynksm5.webp",
+    "audio_wav": "/assets/audio/tracks/Колдовское озеро .wav",
+    "audio_mp3": "/assets/audio/tracks/Колдовское озеро .mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:41:59.845711Z"
+  },
+  {
+    "id": "t_1760982119_6",
+    "slug": "конфетки-_бараночки",
+    "title": "Конфетки- бараночки",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_g3prnig3prnig3pr.webp",
+    "audio_wav": "/assets/audio/tracks/Конфетки - бараночки.wav",
+    "audio_mp3": "/assets/audio/tracks/Конфетки - бараночки.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:41:59.892390Z"
+  },
+  {
+    "id": "t_1760982119_7",
+    "slug": "купите_папиросы",
+    "title": "Купите папиросы",
+    "cover": "/assets/img/tracks/Продажа папирос на ночной улице.webp",
+    "audio_wav": "/assets/audio/tracks/Купите папиросы.wav",
+    "audio_mp3": "/assets/audio/tracks/Купите папиросы.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:41:59.956979Z"
+  },
+  {
+    "id": "t_1760982119_8",
+    "slug": "мурка",
+    "title": "Мурка",
+    "cover": "/assets/img/tracks/Мурка в переулке ночью.webp",
+    "audio_wav": "/assets/audio/tracks/Мурка.wav",
+    "audio_mp3": "/assets/audio/tracks/Мурка.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:41:59.993226Z"
+  },
+  {
+    "id": "t_1760982120_9",
+    "slug": "на_побывку_едет",
+    "title": "На побывку едет",
+    "cover": "/assets/img/tracks/e9e8bbab-2da3-470c-b8b1-2d336029dd03.webp",
+    "audio_wav": "/assets/audio/tracks/На побывку едет.wav",
+    "audio_mp3": "/assets/audio/tracks/На побывку едет.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:42:00.039389Z"
+  },
+  {
+    "id": "t_1760982120_10",
+    "slug": "раскинулось_море_широко",
+    "title": "Раскинулось море широко",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_jlgf5ijlgf5ijlgf.webp",
+    "audio_wav": "/assets/audio/tracks/Раскинулось море широко.wav",
+    "audio_mp3": "/assets/audio/tracks/Раскинулось море широко.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:42:00.089710Z"
+  },
+  {
+    "id": "t_1760982120_11",
+    "slug": "чубчик",
+    "title": "Чубчик",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_opc80copc80copc8.webp",
+    "audio_wav": "/assets/audio/tracks/Чубчик.wav",
+    "audio_mp3": "/assets/audio/tracks/Чубчик.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-20T22:42:00.232000Z"
+  },
+  {
+    "id": "t_1761050450_0",
+    "slug": "ты_мне_не_снишься",
+    "title": "Ты мне не снишься",
+    "cover": "/assets/img/tracks/Ты мне не снишься_ Космическая гармония.webp",
+    "audio_wav": "/assets/audio/tracks/Ты мне не снишься.wav",
+    "audio_mp3": "/assets/audio/tracks/Ты мне не снишься.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-21T17:43:00.203464Z"
+  },
+  {
+    "id": "t_1761560261",
+    "slug": "скакал_казак",
+    "title": "Скакал казак",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_itm0sjitm0sjitm0.webp",
+    "audio_wav": "",
+    "audio_mp3": "/assets/audio/tracks/Скакал казак микс.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-27T15:17:41.914803Z"
+  },
+  {
+    "id": "t_1761561641_0",
+    "slug": "чёрный_ворон",
+    "title": "Чёрный ворон",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_cypvwocypvwocypv.webp",
+    "audio_wav": "/assets/audio/tracks/Черный ворон.wav",
+    "audio_mp3": "/assets/audio/tracks/Черный ворон.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-27T15:40:41.882397Z"
+  },
+  {
+    "id": "t_1761562504_0",
+    "slug": "травы",
+    "title": "Травы",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_hczbhehczbhehczb (1).webp",
+    "audio_wav": "/assets/audio/tracks/Травы, травы.wav",
+    "audio_mp3": "/assets/audio/tracks/Травы, травы.mp3",
+    "lyrics": "",
+    "createdAt": "2025-10-27T15:55:04.053887Z"
+  },
+  {
+    "id": "t_1762161161",
+    "slug": "ангел_плачет",
+    "title": "Ангел плачет",
+    "cover": "/assets/img/tracks/Ангел в слезах на фоне города.webp",
+    "audio_wav": "/assets/audio/tracks/Ангел плачет.wav",
+    "audio_mp3": "/assets/audio/tracks/ангел  плачет.mp3",
+    "lyrics": "",
+    "createdAt": "2025-11-03T14:12:41.044005Z"
+  },
+  {
+    "id": "t_1763481035",
+    "slug": "город_шленда",
+    "title": "Город шленда",
+    "cover": "/assets/img/tracks/ГородШленда.webp",
+    "audio_wav": "/assets/audio/tracks/Город Шлёнда.wav",
+    "audio_mp3": "",
+    "lyrics": "",
+    "createdAt": "2025-11-18T20:50:55.723025Z"
+  },
+  {
+    "id": "t_1763481085",
+    "slug": "так_вот_какая_ты",
+    "title": "Так вот какая ты",
+    "cover": "/assets/img/tracks/Так вот какая ты.webp",
+    "audio_wav": "/assets/audio/tracks/Так вот какая ты..wav",
+    "audio_mp3": "",
+    "lyrics": "",
+    "createdAt": "2025-11-18T20:51:25.340287Z"
+  },
+  {
+    "id": "t_1763481099",
+    "slug": "чайка",
+    "title": "Чайка",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_emzy2uemzy2uemzy.webp",
+    "audio_wav": "/assets/audio/tracks/Чайка.wav",
+    "audio_mp3": "",
+    "lyrics": "",
+    "createdAt": "2025-11-18T20:51:39.427969Z"
+  },
+  {
+    "id": "t_1763481246_0",
+    "slug": "гуляй_душа",
+    "title": "Гуляй душа",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_7zrggb7zrggb7zrg.webp",
+    "audio_wav": "/assets/audio/tracks/Гуляй душа..wav",
+    "audio_mp3": "/assets/audio/tracks/Гуляй душа..mp3",
+    "lyrics": "",
+    "createdAt": "2025-11-18T20:54:06.380626Z"
+  },
+  {
+    "id": "t_1763481246_1",
+    "slug": "мясоедовская",
+    "title": "Мясоедовская",
+    "cover": "/assets/img/tracks/Мелодия старого города.webp",
+    "audio_wav": "/assets/audio/tracks/Мясоедовская.wav",
+    "audio_mp3": "/assets/audio/tracks/Мясоедовская.mp3",
+    "lyrics": "",
+    "createdAt": "2025-11-18T20:54:06.415228Z"
+  },
+  {
+    "id": "t_1764319109",
+    "slug": "все,_что_было",
+    "title": "Все, что было",
+    "cover": "/assets/img/tracks/Gemini_Generated_Image_26hg4826hg4826hg (1).webp",
+    "audio_wav": "/assets/audio/tracks/Все, что было (2).wav",
+    "audio_mp3": "/assets/audio/tracks/Все, что было (1).mp3",
+    "lyrics": "",
+    "createdAt": "2025-11-28T13:38:29.556735Z"
+  },
+  {
+    "id": "t_1768035353",
+    "slug": "родная_улица",
+    "title": "Родная улица",
+    "cover": "/assets/img/tracks/родная улица.webp",
+    "audio_wav": "",
+    "audio_mp3": "/assets/audio/tracks/Родная улица.mp3",
+    "lyrics": "",
+    "createdAt": "2026-01-10T13:55:53.832821Z"
+  },
+  {
+    "id": "t_1768035400",
+    "slug": "когда_мы_были_на_войне",
+    "title": "Когда мы были на войне",
+    "cover": "/assets/img/tracks/Когда мы были на войне микс.webp",
+    "audio_wav": "/assets/audio/tracks/Когда мы были на войне микс 02.wav",
+    "audio_mp3": "/assets/audio/tracks/Когда мы были на войне микс 02.mp3",
+    "lyrics": "",
+    "createdAt": "2026-01-10T13:56:40.400034Z"
+  },
+  {
+    "id": "t_1770485903",
+    "slug": "о_любви_говори",
+    "title": "О любви говори",
+    "cover": "/assets/img/tracks/ChatGPT Image 17 янв. 2026 г., 20_56_35.webp",
+    "audio_wav": "/assets/audio/tracks/о любви говори 03.wav",
+    "audio_mp3": "/assets/audio/tracks/о любви говори.mp3",
+    "lyrics": "",
+    "createdAt": "2026-02-07T22:38:23.178224Z"
+  },
+  {
+    "id": "t_1772875762_0",
+    "slug": "дорога_в_жизни_одна",
+    "title": "Дорога в жизни одна",
+    "cover": "/assets/img/tracks/ChatGPT Image 5 мар. 2026 г., 22_15_19.webp",
+    "audio_wav": "/assets/audio/tracks/Дорога одна.wav",
+    "audio_mp3": "/assets/audio/tracks/Дорога одна.mp3",
+    "lyrics": "",
+    "createdAt": "2026-03-07T14:29:22.769619Z"
+  }
+]

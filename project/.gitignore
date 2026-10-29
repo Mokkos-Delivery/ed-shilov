@@ -1,0 +1,15 @@
+node_modules/
+settings.json
+worker/wrangler.jsonc
+worker/.dev.vars*
+worker/.wrangler/
+.env*
+*.log
+*.pem
+*.key
+service-account*.json
+*-service-account.json
+*firebase-adminsdk*.json
+credentials/
+
+build/

@@ -1,0 +1,16 @@
+{
+  "firebase": {
+    "apiKey": "AIzaSyCB6jxNFhCNCdsUFaYTTO2iQFCJ2x81Gc4",
+    "authDomain": "eduard-shilov-site.firebaseapp.com",
+    "projectId": "eduard-shilov-site",
+    "appId": "1:563388255415:web:46a23e261f71a850bb9132"
+  },
+  "adminUid": "owner_36405b57fb7c4ae58d8e2e817ec67ead",
+  "adminEmail": "lvolyl76@gmail.com",
+  "googleProjectNumber": "563388255415",
+  "pickerApiKey": "",
+  "workerOrigin": "",
+  "uploadFolderId": "12XvWmddZKZveffm-mc39DpXJLDeVZ2zH",
+  "turnstileSiteKey": "",
+  "policyVersion": "2026-10-migration-draft"
+}

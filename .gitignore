@@ -1,0 +1,12 @@
+build/
+project/public/
+project/preview/
+**/node_modules/
+**/__pycache__/
+**/.wrangler/
+**/.env*
+**/.dev.vars*
+**/credentials/
+project/settings.json
+project/worker/wrangler.jsonc
+*.log

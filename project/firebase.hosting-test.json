@@ -1,0 +1,1 @@
+{"hosting":{"public":"public","cleanUrls":false,"trailingSlash":false,"redirects":[{"source":"/media/:id/:name","destination":"https://media.example/media/:id/:name","type":302}],"headers":[{"source":"**","headers":[{"key":"X-Content-Type-Options","value":"nosniff"}]}]},"emulators":{"hosting":{"port":5088},"ui":{"enabled":false},"singleProjectMode":true}}

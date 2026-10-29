@@ -1,0 +1,3304 @@
+{
+  "generatedAt": "2026-10-13T19:13:52.318Z",
+  "sourceFolder": "https://drive.google.com/drive/folders/1C_cXy9_4GpYrBEhkm0nD2kwhTWbSPCe6",
+  "rootFolder": "https://drive.google.com/drive/folders/1d_TRJOTrskJsLcr0SlgmywKCUtJR6pxe",
+  "hostingPlan": "Firebase Spark; no billing upgrade authorized",
+  "googleSignInVerified": true,
+  "googleProjectCreated": false,
+  "cloudflareDeployed": false,
+  "dnsChanged": false,
+  "adminImplemented": true,
+  "adminLiveVerified": false,
+  "sourcePages": [
+    "404.html",
+    "bio.html",
+    "contacts.html",
+    "cookies.html",
+    "data-consent.html",
+    "index.html",
+    "music.html",
+    "news.html",
+    "offline.html",
+    "press-kit.html",
+    "privacy.html",
+    "video.html"
+  ],
+  "audioFiles": 87,
+  "audioBytes": 2015943228,
+  "videoFiles": 29,
+  "videoBytes": 4843966970,
+  "inspectedMediaEntries": 811,
+  "inventoryScope": "Complete audio and video folders and inspected image subfolders; only first 200 root images are included, root listing has further pages.",
+  "tracks": [
+    {
+      "id": "t_1760982119_1",
+      "title": "Дорогой длинною",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Дорогой длинною.mp3",
+          "driveId": "1bB7GVRx4lSfTAtJIyofpOJvAPV9-UKXg",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Дорогой длинною.wav",
+          "driveId": "10fPhWuQdwjHnOxwjM2Q6YQ81mBn1zHBX",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760861594",
+      "title": "Одесса",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Когда я жил в Одессе..mp3",
+          "driveId": "12nUjWB1EDW3N1UWruPANWwhx7t7qoL8o",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Когда я жил в Одессе..wav",
+          "driveId": "1sjwJAKsZPrNkCVW54o1T4JTLhUkvfmVi",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760864967",
+      "title": "Гуляка",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Гуляка..mp3",
+          "driveId": "1pL0DZRxjBeIz12qAe3GgAvt3lvv6sI4B",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Гуляка..wav",
+          "driveId": "1iaIfUcipJ8e3lEm7N5-fFuolS_QQ5gUh",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979232_0",
+      "title": "Ах, какая",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Ах какая женщина.mp3",
+          "driveId": "17MY98y7GoDJBa81lkgek_M5UHuVULZUa",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Ах какая женщина.wav",
+          "driveId": "1e0z0RGjhUzcasy15MeVv_uLbIX8jIpWQ",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979232_1",
+      "title": "Вжик",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Вжик.mp3",
+          "driveId": "186La29_fcvHUCqEtpdCH-p9i4IQK537X",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Вжик.wav",
+          "driveId": "10ly_Fy0vSWQ6EzaOJZFWCi0wZEsWyonE",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979232_2",
+      "title": "Годы",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Годы.mp3",
+          "driveId": "1QH2zzlGhKn9qC3O0f33vWt4tZbYsh_w6",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Годы.wav",
+          "driveId": "1gl3ZpGPVCSrlS2sPMGCnB7e2n_IO1RC0",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979233_4",
+      "title": "куплю дом",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Куплю дом..mp3",
+          "driveId": "1wEZGlmzz7B9b07GqmSj05cy4EO-IQRMs",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Куплю дом..wav",
+          "driveId": "1806N3oOazDhgS9Wy6qpxwd2v7CDypIC7",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979233_6",
+      "title": "Моя любовь",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Моя любовь..mp3",
+          "driveId": "1YMtYFDw0oOXOaeIrRJhJc3SJwsXB1fa3",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Моя любовь..wav",
+          "driveId": "1E7XPKWq6RaaCaXkhaVAcux49x0cstMCq",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979233_8",
+      "title": "Осень, прозрачное",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Осень, прозрачное утро..mp3",
+          "driveId": "19hSd7tv-EKCRafIXD8drSBIfutlR5NxM",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Осень, прозрачное утро..wav",
+          "driveId": "1LE4vZTuJ6A2gx40McYmA8F2TW3YzWaXp",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979233_9",
+      "title": "Привокзальная",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Привокзальная.mp3",
+          "driveId": "11zaH5doROorHngKQk_gLhVoxLr2jOfPU",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Привокзальная.wav",
+          "driveId": "1WN8GpxmSaDFwEDOvm0GLpAqfpVq1pFri",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979233_10",
+      "title": "Признание",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Очарована..mp3",
+          "driveId": "1qi6dUj_5Yw80yD7kA4YT9rcPlSbtSUYl",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Очарована..wav",
+          "driveId": "1qcyulaY5wFTQOQsPFcL9JnSsLSba-VGO",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979233_11",
+      "title": "Птичий рынок",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Птичий рынок..mp3",
+          "driveId": "1tfD8Hvr_DW1ZVIDkjSeqGIOO0viL-_bQ",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Птичий рынок..wav",
+          "driveId": "18hWJirkL1dssNiw-YL1_OgcwygjVIuvd",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979233_12",
+      "title": "Снежочки",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Снежочки.mp3",
+          "driveId": "1BQIR3h-6TrAsIkKCfuEz8QGCuriDhoIz",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Снежочки.wav",
+          "driveId": "1lSSr3XgggpfdFHcD_sIGmvGuo3Fq3ZDr",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979233_13",
+      "title": "Снилось мне",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Снилось мне..mp3",
+          "driveId": "1aks_pxvjdhNoGKLmmxjo6L1Dmeq7bOOd",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Снилось мне..wav",
+          "driveId": "1ynC5YDQjBB1_520KURdDN46h0B-iFLjK",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760979233_14",
+      "title": "У самовара",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/У самовара..mp3",
+          "driveId": "1J631JO-IM_icaTsIFTcFBaRzBd0wLPdh",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/У самовара..wav",
+          "driveId": "1vv0pSrMMNTM3OOv8V2ikPL3juq1HMXnb",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760980625_0",
+      "title": "Мой номер 245",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Мой № 245.mp3",
+          "driveId": "1NOUbte0K-0zprzBnQTQB55SB3QLH4xyZ",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Мой № 245.wav",
+          "driveId": "1aLasCMQXqfoQKTAiD_rtq0yhk63TSvYI",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760980625_1",
+      "title": "Молодая",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Молодая.mp3",
+          "driveId": "1CJTNvQmeqjXwuU2ZD1vus50ZZ1e2O0n1",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Молодая.wav",
+          "driveId": "1AZF_tZvOKPnZ-H3FN177WnOlboQPjvAn",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760981430_0",
+      "title": "Кирпичики",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Кирпичика.mp3",
+          "driveId": "1buvyD0gi1_ePyIMTpvPxT9ciTYp-AaAn",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Кирпичика.wav",
+          "driveId": "1TKF6oYPNqA0iVc8yyaoPRA4ePqa5nhq3",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760981430_1",
+      "title": "Лавандовый блюз",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Лавандовый блюз.mp3",
+          "driveId": "1r0IxUI_g-P82lu5F93PM6PPilR4CPzaZ",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Лавандовый блюз.wav",
+          "driveId": "19_a8gVbMGwRkd_1oif1OqRluMYO6DIpT",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760981430_2",
+      "title": "Сингарелла",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Сингарела..mp3",
+          "driveId": "10yyJdYfr7hIXT4-FYqfKFPN3FyejptlN",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Сингарела..wav",
+          "driveId": "1MEEGA_etov1mVgwKYcAh_mLKtYceHzrx",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982119_0",
+      "title": "Ах, эти чёрные глаза",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Ах, эти чёрные глаза.mp3",
+          "driveId": "16cEr24ao1e3S7LfE92Qtr6sTlDW8i2rU",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Ах, эти чёрные глаза.wav",
+          "driveId": "125XFOlopx7UT5O9tRVihwalUsqp690vA",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982119_2",
+      "title": "Дуня из Одессы",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Дуня из Одесы.mp3",
+          "driveId": "1-I8YM7PbbWDR9PNFlS2U8I82sVTniMLc",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Дуня из Одесы.wav",
+          "driveId": "1jZYyy7TH3aYURnA6NPFtErAskIGVGePR",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982119_3",
+      "title": "Есенин",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Есенин.mp3",
+          "driveId": "1ByveMvdExWBH-EYZrF7XLlFth5psBjL4",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Есенин.wav",
+          "driveId": "1Uh6nUoiRHTBqaYRyp7M4yonSNFpLDWEc",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982119_4",
+      "title": "Журавли",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Журавли.mp3",
+          "driveId": "1MOPz433hZrvKxZhVpQ_mjsgbTtJuxeJY",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Журавли.wav",
+          "driveId": "1tM5uxYL9uHW4JCZpVn2a4pgPWnRLcAjr",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982119_5",
+      "title": "Колдовское озеро",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Колдовское озеро .mp3",
+          "driveId": "1ZacdiI5z-Tk2d4uYVySik5PQYApGDacA",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Колдовское озеро .wav",
+          "driveId": "1JaaAJbvMvxBZyzvVuBj860BF2DaxYKko",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982119_6",
+      "title": "Конфетки- бараночки",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Конфетки - бараночки.mp3",
+          "driveId": "15WunSsV3MDR4h9sP2SaY0EAqhId2ik4B",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Конфетки - бараночки.wav",
+          "driveId": "1z-4LSe46JarXJEhAkZ4wTwIltPCxpuJi",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982119_7",
+      "title": "Купите папиросы",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Купите папиросы.mp3",
+          "driveId": "1Ny8YtOfROL6FC5wj8dfhfNuobz5oVkzK",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Купите папиросы.wav",
+          "driveId": "1iAeYsENmRdxUzMwQowa_Nx7e2GZ15Evz",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982119_8",
+      "title": "Мурка",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Мурка.mp3",
+          "driveId": "1pjbemLS5_ffqNf4pYYj_WoMUsRtM_f3k",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Мурка.wav",
+          "driveId": "1M0yLCMwQHbwAVUbwDsY_V8WW67BCIB0u",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982120_9",
+      "title": "На побывку едет",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/На побывку едет.mp3",
+          "driveId": "1FAgZXsE-rNQtm4ErIpZMZRi99U9f5H4T",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/На побывку едет.wav",
+          "driveId": "186FLDX_JPtwwBDj-mtkGDCMzOBs4uwNQ",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982120_10",
+      "title": "Раскинулось море широко",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Раскинулось море широко.mp3",
+          "driveId": "1On0QaR00cJMQyn9tscfB7kfVfHG9qePX",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Раскинулось море широко.wav",
+          "driveId": "1QvD_revuGbxReNm-zKOk8plQ8LbhP6Qw",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1760982120_11",
+      "title": "Чубчик",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Чубчик.mp3",
+          "driveId": "1-x3eABEeabR5m7yno_ezRHdA-VELnedB",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Чубчик.wav",
+          "driveId": "1X-3tH63o7zuTOX2K6s_X_jiDXIyLKEN6",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1761050450_0",
+      "title": "Ты мне не снишься",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Ты мне не снишься.mp3",
+          "driveId": "1g9YWH67544XD0jQs3M0nRC8-K23ZEXZH",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Ты мне не снишься.wav",
+          "driveId": "14KdfxoOXT5Tn2dyrAZpi3olavy9iqoXp",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1761560261",
+      "title": "Скакал казак",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Скакал казак микс.mp3",
+          "driveId": "1q6CQeFqSXlF66cz4jwRgBVcLfwdV8KtG",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1761561641_0",
+      "title": "Чёрный ворон",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Черный ворон.mp3",
+          "driveId": "1u28nBI7ieLchp7fr6XO3d_-R1P902Mwq",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Черный ворон.wav",
+          "driveId": "1lnXXFT2ve2iPig2YRlpbOcEVufMofl9G",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1761562504_0",
+      "title": "Травы",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Травы, травы.mp3",
+          "driveId": "1UcmOxZXksL7VJTZxyNcaa6PD5lN19qzT",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Травы, травы.wav",
+          "driveId": "1MulTNLiCdt33ixIQKPfWfbkCTkV4uo2V",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1762161161",
+      "title": "Ангел плачет",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/ангел  плачет.mp3",
+          "driveId": "1BdljHDI_KMFpW6gbdSuslJPJqNj8wAMM",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Ангел плачет.wav",
+          "driveId": "189KRMpGcN8vdOHLuUWZEbeEd5AqXsp3o",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1763481035",
+      "title": "Город шленда",
+      "sources": [
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Город Шлёнда.wav",
+          "driveId": "1k7HWv84TGuxV6JK9qto2QHVGKAN0lBlY",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1763481085",
+      "title": "Так вот какая ты",
+      "sources": [
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Так вот какая ты..wav",
+          "driveId": "1wTUlPckfVKkv4g21vVAYxtblRkRuHHTU",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1763481099",
+      "title": "Чайка",
+      "sources": [
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Чайка.wav",
+          "driveId": "1XbmLWoGluXQ7iUZK2wEn_Y486bGDa905",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1763481246_0",
+      "title": "Гуляй душа",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Гуляй душа..mp3",
+          "driveId": "1YvX8TDEqad8OG8XhJEnFRRu_Y5PgoRWV",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Гуляй душа..wav",
+          "driveId": "1Ogiyva1p_ukCudzBsR9yOIgzkxyyaFqh",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1763481246_1",
+      "title": "Мясоедовская",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Мясоедовская.mp3",
+          "driveId": "1FoywX4vJvsUsQqS-xLXqFIKFN6IEBKqc",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Мясоедовская.wav",
+          "driveId": "19jZu75pzqpYIkGf2CJ10QXY57xxlTHOO",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1764319109",
+      "title": "Все, что было",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Все, что было (1).mp3",
+          "driveId": "11yIT-y718e6YJ8cwtlaHK5qL66-8Sxib",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Все, что было (2).wav",
+          "driveId": "1L-MjhdHEvY1gL_mN32s84QmlwNyHzgqt",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1768035353",
+      "title": "Родная улица",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Родная улица.mp3",
+          "driveId": "1573RLoaJ9pKeiOD8bLPAFtySozmqQVVZ",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1768035400",
+      "title": "Когда мы были на войне",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Когда мы были на войне микс 02.mp3",
+          "driveId": "1hBMQAROWvTGgy2yQy-olgWI-XdUSuVXx",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Когда мы были на войне микс 02.wav",
+          "driveId": "1tO6Ahs-XqmZRMWmZGSWbgOUiqkM0n3TO",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1770485903",
+      "title": "О любви говори",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/о любви говори.mp3",
+          "driveId": "1IS-uTTpvaT2e0_b7WU2FvvP5UcAtE991",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/о любви говори 03.wav",
+          "driveId": "1EhZ6MEv6H76FKenqc0zlPxQe-RgWJrKE",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "t_1772875762_0",
+      "title": "Дорога в жизни одна",
+      "sources": [
+        {
+          "field": "audio_mp3",
+          "path": "/assets/audio/tracks/Дорога одна.mp3",
+          "driveId": "1RXx2x6AllmT3UccehQ_uhj8LrhM37dk2",
+          "match": "exact"
+        },
+        {
+          "field": "audio_wav",
+          "path": "/assets/audio/tracks/Дорога одна.wav",
+          "driveId": "1VJOD_dzoR7EWEL1eE_fQfrovumG_E7ZL",
+          "match": "exact"
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "v_1763389462",
+      "title": "Рок на фестивале Сергия Радонежского: Испытание или благословение?",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/ТРОiКА_Преподобному_Сергию_Радонежскому_.mp4",
+          "driveId": "1N4Tla371LgYH5MNe2_Ut6IO4IMYx3uo7",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1763389251",
+      "title": "ТРОiKА: Фундамент. Миссия. Путь.",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/ТРОiКА (Визитная карточка) (1).mp4",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1762173119",
+      "title": "ОШ",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/ОШ.mp4",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1762173096",
+      "title": "Чубчик",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Чубчик.mp4",
+          "driveId": "1s4DRSa5FqGjlPb2yVuGE9_Gh0PVK8CCe",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1762173075",
+      "title": "На побывку едет",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/На побывку едет.mp4",
+          "driveId": "1gGvsrMiqo4mNIGY9DBseMaV0W6A_BnHW",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1762173038",
+      "title": "Раскинулось море широко",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Раскинулось море широко.mp4",
+          "driveId": "18CTDV8vgl5-iNHgvwGCeuAXZlHsqMDTE",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1762172996",
+      "title": "Купите папиросы",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/купите папиросы.mov",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1762172963",
+      "title": "Колдовское озеро",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Колдовское озеро.mp4",
+          "driveId": "1DgxfJL0LzgM_ACv8evaXXr4Gi3ThIYJ_",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1762172922",
+      "title": "Песня Дуни",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Песня Дуни.mp4",
+          "driveId": "17-wJ6d6Grj3HmLlrHWFmo2GxmfCu_cyg",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1762172893",
+      "title": "Сингарелла",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Сингарелла .mp4",
+          "driveId": "1IryYcNjIS0muksRZ1-JNtt0d3Y3zrOx7",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1762172877",
+      "title": "Лавандовый блюз",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Лавандовый блюз.mp4",
+          "driveId": "1gxnfEwDlxqAhD284BUlauP1QscnBl_NR",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1762172824",
+      "title": "Снилось мне",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Снилось мне.mp4",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1762172745",
+      "title": "Птичий рынок",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Птичий рынок.mp4",
+          "driveId": "11AnPseKF6-dEWTj2oFFCoGJ1J-pNrgPO",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1762172692",
+      "title": "У самовара",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/У самовара .mp4",
+          "driveId": "19ZgWR6urz_DoK3U-GPbOnUzBa2NNbcX8",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1762172639",
+      "title": "Одесса",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Когда я жил в Одессе.mp4",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1762172358",
+      "title": "Вжик-вжик-вжик",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/вжик-вжик-вжик.mp4",
+          "driveId": "1A05AW4iNFb0ha4ETfgABOxzHVycDFF2H",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1762172267",
+      "title": "Я куплю тебе дом",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Я куплю теье дом.mp4",
+          "driveId": "1bJLZB6gSbPpSPBOJHXjNUApKgsS68iwo",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761231776",
+      "title": "Гимн душа народа",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Гимн Душа народа 2021-2022.mp4",
+          "driveId": "1QNrzSFPEB-1hawzNMiNd1dM428zvO_tp",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761561411",
+      "title": "Черный ворон",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Черный ворон .avi",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1761560251",
+      "title": "Скакал казак",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Скакал казак .mp4",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1761556348",
+      "title": "Дорогой длинною",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Эдуард Шилов Дорогой длинною.mp4",
+          "driveId": "1_rYkEjRqThBMVEz7Du7Q0alDGqbjdVeR",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761556263",
+      "title": "Гуляка",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Гуляка.mp4",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1761556233",
+      "title": "Ангел плачет",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Ангел плачет.mp4",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1761555594",
+      "title": "Промо душа народа",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Промо Душа Народа.mp4",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1761554936",
+      "title": "Богатырская русь 2",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Богатырская Русь 2.mp4",
+          "driveId": "1-NhLyjIyffkAdsxhJcgQD1SkK60lSA45",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761232040",
+      "title": "Травы травы",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/травы травы.mov",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1761232029",
+      "title": "Мурка",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Мурка.mp4",
+          "driveId": "1DVHN-Hox7M0JOIdDGrDkeDFunWEgT-6f",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761232020",
+      "title": "Молодая",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/молодая.mp4",
+          "driveId": "1VePBsdn2mcwE8VG9hXuZXC8YqpWZT0uQ",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761232011",
+      "title": "Мой номер 245",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Мой № 245.mp4",
+          "driveId": "1Ih9yD1UI2bYaj_c_cy0VklHybgl9NEsJ",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761231995",
+      "title": "Конфетки-бараночки",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Конфетки-бараночки.mp4",
+          "driveId": "1wd-yN7858y2XQYQZlE2LrTBTX9vzaY6E",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761231971",
+      "title": "Кирпичики",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Кирпичики.mp4",
+          "driveId": "12ZqYXyw2M_d2k12QtYen0grI-fhaUzj-",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761231961",
+      "title": "Журавли",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Журавли.mp4",
+          "driveId": "1-42_jk9mFreRc3W3VnJwHMyMRJR_lyvj",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761231952",
+      "title": "Есенин",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Есенин.mp4",
+          "driveId": "1st2lwKnv4V8j-prNqr0mJpnysaB4_Ou8",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761231942",
+      "title": "Годы",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Годы.mp4",
+          "driveId": "1axQoatKbN3l387cxaKZmiFJzM5w2kCYa",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761231922",
+      "title": "Ах, эти черные глаза",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Ах, эти чёрные глаза.mp4",
+          "driveId": "1UxLlXmYz2yEt8gm6yjFqKEzGYPCRzxQ8",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761231876",
+      "title": " Ты мне не снишься",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/15. Ты мне не снишься.mp4",
+          "driveId": "1hNS2fbZ0BekyDB1uTQUeJ3-rarymfJPL",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761230814",
+      "title": "Интервью",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Интервью.mp4",
+          "driveId": "1izN9o3HD-2QX0BF6oVTpwd-VSovo31Xp",
+          "match": "exact"
+        },
+        {
+          "field": "video720pUrl",
+          "path": "/assets/video/videos/Интервью.mp4",
+          "driveId": "1izN9o3HD-2QX0BF6oVTpwd-VSovo31Xp",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761059336",
+      "title": "Ах, какая женщина",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Ах, какая женщина.mp4",
+          "driveId": "1aCyqfTaIm6-mTxdubdR18NaPJ0oDFpmt",
+          "match": "exact"
+        }
+      ]
+    },
+    {
+      "id": "v_1761232071",
+      "title": "Ухарь купец",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/УХАРЬ КУПЕЦ_1080.mp4",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1761563646",
+      "title": "ТРОiКА",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/ВИЗИТКА ГРУППЫ.mp4",
+          "driveId": null,
+          "match": null
+        }
+      ]
+    },
+    {
+      "id": "v_1770486072",
+      "title": "Звездный альянс",
+      "sources": [
+        {
+          "field": "video1080pUrl",
+          "path": "/assets/video/videos/Звёзды - Эдуард Шилов.mp4",
+          "driveId": "1PkRiuyCgXWgW3PAjXkdhExTAI99AqnOx",
+          "match": "exact"
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "original": "/assets/img/branding/RUS.webp",
+      "mapped": null,
+      "driveId": "1KhBz6aJe5e1trpkTLhXs6Sbmll70pVMo",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/645743f0947fe23e9f5f.webp",
+      "mapped": null,
+      "driveId": "1uTzzbuTWekYX7hIAg8EeRJKzbU7HQC7K",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/childhood.webp",
+      "mapped": null,
+      "driveId": "1-uz7depXqP5A_h7R8FlIt-VfjeT9SUh-",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/army1.webp",
+      "mapped": null,
+      "driveId": "1qlbzifeONcQ8DPgh-jqVBDKiN2PfXUqs",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/army2.webp",
+      "mapped": null,
+      "driveId": "15sU46Hf1kn7Kqv_g_Xj59EJL1M8xzT4M",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/army3.webp",
+      "mapped": null,
+      "driveId": "1DmNlAK_C94rwH2N2he4I_vO9DMM2Avdr",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/mgimo-years.webp",
+      "mapped": null,
+      "driveId": "1X8vLP3PRjXAnz4-bk6vqYoGmAEXv2dCe",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/business-career.webp",
+      "mapped": null,
+      "driveId": "16FXZ0EDbgkUpsmVNsku5swKvq3fRicre",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/social1.webp",
+      "mapped": null,
+      "driveId": "1d4SF47y64eFh-qsfvD6Nk_MdGeiroaD3",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/social2.webp",
+      "mapped": null,
+      "driveId": "1CNuVLLrQFOC6HdZ0Vwj50pLH4mHoECti",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/main_project.webp",
+      "mapped": null,
+      "driveId": "1-RGBeD5jkHRnpwAAs4qbxBLH01ofXmsr",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/philosophy.webp",
+      "mapped": null,
+      "driveId": "1fdUMfImcKgzjr53A8gSn3g0AhTitW0BM",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/today1.webp",
+      "mapped": null,
+      "driveId": "14RBmKdZRTNkuR7v7hU5szi9p41uASPhp",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/today2.webp",
+      "mapped": null,
+      "driveId": "1MXKWIy-Pscg7TPTmLvJyabxqBnbayAdZ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/bio/ancestors.webp",
+      "mapped": null,
+      "driveId": "1Ymq_PPozWULNqKt8lavk2htWnvjv4d-8",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/hero/portrait.webp",
+      "mapped": null,
+      "driveId": "1z5u_OjQmOPJ61p3VhHoK7wBrsjVfsG7N",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/BlackGold_plus_3100.webp",
+      "mapped": null,
+      "driveId": "1B9UPRtUuPYRSpog8NoFYjpykpbJq55iA",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_oieckjoieckjoiec.webp",
+      "mapped": null,
+      "driveId": "1MyCvq8gd58YEMlbWuPjuxaCcsKu7M-bj",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_q3z56vq3z56vq3z5.webp",
+      "mapped": null,
+      "driveId": "14HJtnDLBNGBNI1HOe1FSdErHfS58Ec7B",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_opc80copc80copc8.webp",
+      "mapped": null,
+      "driveId": "1tg4Fux6--5Yp7akPwk_WhVZzlrOseLM7",
+      "match": "exact"
+    },
+    {
+      "original": "/channels4_banner.webp",
+      "mapped": null,
+      "driveId": "1H92dba0kOIalgCMcpiPhH7w3vvRBrKon",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/banners/korolev-dusha-naroda.webp",
+      "mapped": null,
+      "driveId": "1tIe8j6ErtoaZt2UNyWgKujrRhPRu3vXs",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/c17014dab6e47d6d563e.webp",
+      "mapped": null,
+      "driveId": "1BtoTHh14T0yBt1ZBOpT0uI9A8Tzm7Zth",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/4c0c229ac683a62dc1a6.webp",
+      "mapped": null,
+      "driveId": "17AUz3s-WStMZgllXoKvvsXeLuDHaPBS3",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/hero/intro-poster.webp",
+      "mapped": null,
+      "driveId": "1eIfONpmHz5Jj-oCRMJl4o-2dwbf0y0pd",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/b9971b656f2027-320.webp",
+      "mapped": null,
+      "driveId": "1Gcd5uvDDORP7NrDiJEhZJxkfaX-dSd89",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/b9971b656f2027-640.webp",
+      "mapped": null,
+      "driveId": "1uCW4aEARHwMntLfQpy4Ugz6cY9p-EP23",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c1215d299a6b8e-320.webp",
+      "mapped": null,
+      "driveId": "1hd3QMcDKTfTSMXITB09BgHBNGwvRtMeS",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c1215d299a6b8e-640.webp",
+      "mapped": null,
+      "driveId": "1nAX-uA0m_0YqYLMOUi4Q2BTojIsozIdw",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/8754a848cb29c8-320.webp",
+      "mapped": null,
+      "driveId": "1p5-j_vXPJ0CzLjjqIFmQR5P3S-tF_-hK",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/8754a848cb29c8-640.webp",
+      "mapped": null,
+      "driveId": "1xg2PE31Vq9s9KfqFWJ1k-TaE9HF9BXaD",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/e16cbe83ed742e-320.webp",
+      "mapped": null,
+      "driveId": "18cUiQy77anuyqhiW3-8L-_VklhuUmpd0",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/e16cbe83ed742e-640.webp",
+      "mapped": null,
+      "driveId": "1o53SIBJ_4BJ17g9NCKIxSUYU_6zC32uu",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/f9fd54682913a5-320.webp",
+      "mapped": null,
+      "driveId": "1cFJNbf6pMUd33nJTXpd1wiAkK8ErsOhK",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/f9fd54682913a5-640.webp",
+      "mapped": null,
+      "driveId": "17by0dI5AkO7v2vynwT2wGAfDXnWHYcAs",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/6c261e171a551f-320.webp",
+      "mapped": null,
+      "driveId": "1iJyvxIbfkfnF1cBFIQmH0WMqeeQsWIEW",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/6c261e171a551f-640.webp",
+      "mapped": null,
+      "driveId": "1uq1qZxnpuOYv1Ej-DNL1o3gO7bXHYcCc",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_h247iwh247iwh247.webp",
+      "mapped": null,
+      "driveId": "1Oaza6I3iUJgum1I2LlBytX_zqhJYTjzQ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_cfexyucfexyucfex.webp",
+      "mapped": null,
+      "driveId": "1IeGdbMTRfzbVhMXqiWtxOVIeh2I5yDF_",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/9340fca52e689673a788.webp",
+      "mapped": null,
+      "driveId": "1415klgJ6162y09vnsCBu5B4fnA6QiBuz",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/b3a549f13b2ee1dddb6a.webp",
+      "mapped": null,
+      "driveId": "1rNgDPkJ29vNKIXDUSBRvBCPApsVjDuyf",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/c46f6dac832546b5a64f.webp",
+      "mapped": null,
+      "driveId": "1HuT4Q1QhDnu0cnAfpS7yzfmEFi8oED_-",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_izr5c7izr5c7izr5.webp",
+      "mapped": null,
+      "driveId": "1yXhu4rvdVWtW80CJ-54gDhrwPZiBYIbw",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_lotju4lotju4lotj.webp",
+      "mapped": null,
+      "driveId": "1h8TnNcT6mufcBFkteaTZEID_BQr8wd2T",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_dwniiddwniiddwni.webp",
+      "mapped": null,
+      "driveId": "1cskWQWxY2nKvgZWUzDDlmJmP00JK4NXd",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_w1fs81w1fs81w1fs.webp",
+      "mapped": null,
+      "driveId": "1fBtNQKwHKg8l01JpGuW5_b8JE4503Vin",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/3417587ba63817702762.webp",
+      "mapped": null,
+      "driveId": "143-WlIa28_XmwsnmS80qy_e6bGbpkkNz",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/3f9a198fb9ddb0003123.webp",
+      "mapped": null,
+      "driveId": "1aNcFYzeWgNsfn1q_tH1X6dt6jD5_-Rwd",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_csv3aucsv3aucsv3.webp",
+      "mapped": null,
+      "driveId": "1OfX75_0RH9crEQGiX2ZSNKq9xGKIdGKu",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_yumvamyumvamyumv.webp",
+      "mapped": null,
+      "driveId": "1VlZWXjZbUgw7a4fsx4oHjGSe9W_FhcS2",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/d2913fb83ee0f66f9f9c.webp",
+      "mapped": null,
+      "driveId": "1C15bjl-457-25GKWxSXbXVP1fP7tlbU0",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_g5kbdrg5kbdrg5kb.webp",
+      "mapped": null,
+      "driveId": "1JHfG7HD1wFPpfeGkhaRmQBSx0TfJ7bbh",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/8b0359a535602c605654.webp",
+      "mapped": null,
+      "driveId": "1CxYMMV0oRgGgbglKci2iEo1ouX7AGfUn",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/3d1dcf75065f9d0bf91d.webp",
+      "mapped": null,
+      "driveId": "1kFwQM_yf_eRpV505g24O8FCPWk3b2Lmx",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_p5dflqp5dflqp5df.webp",
+      "mapped": null,
+      "driveId": "1gMVytQDXAgsiPJj_thKC6wADWskotz3i",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_e4e716e4e716e4e7.webp",
+      "mapped": null,
+      "driveId": "1PIWzmMdvG63kEdipmgs8l01ZYtP14anx",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_ttfbz4ttfbz4ttfb.webp",
+      "mapped": null,
+      "driveId": "1lHAm8UGkLIFDVcjQRZJ6h7LOn1G4AaMh",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/1bbed940-8864-4224-b08c-39f3eedfa6e5.webp",
+      "mapped": null,
+      "driveId": "1e7CE4nWaDgVVvkwP2YIqfXILohu7jAzC",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_ksm5ynksm5ynksm5.webp",
+      "mapped": null,
+      "driveId": "1_ZV5NLbnFS-4w1di0vL02PskvhjKjexz",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_g3prnig3prnig3pr.webp",
+      "mapped": null,
+      "driveId": "1UPCABqhFLElvxMfORKvrITkDkjuDlFPa",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/4a735eefc658ea714bd1.webp",
+      "mapped": null,
+      "driveId": "1HoJ70XwEVaCdPjzg2yDtiyK-eOmJdKGF",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/df3da3b60a5b2b1c97c5.webp",
+      "mapped": null,
+      "driveId": "1lHWebOGvRIrpjGm6xhBpAyt2LDWU1cI6",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/e9e8bbab-2da3-470c-b8b1-2d336029dd03.webp",
+      "mapped": null,
+      "driveId": "1KLrf4Mzojn4Yw2n540o9pP5qO0vDe0HO",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_jlgf5ijlgf5ijlgf.webp",
+      "mapped": null,
+      "driveId": "10yCwtuX0qc85GtTdVHcxZzodGj1l1Zvh",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_opc80copc80copc8.webp",
+      "mapped": null,
+      "driveId": "1gDfv9JBjutQHJLXefLbUagG0LdGrRa9C",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/626cafcb9583e3d56bb6.webp",
+      "mapped": null,
+      "driveId": "1aTYUW74iyGTs34AF0ME8SCWkY5JUd014",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_itm0sjitm0sjitm0.webp",
+      "mapped": null,
+      "driveId": "19sBDnTd5v1ACVhnukNPAzp9UE_kYgv3W",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_cypvwocypvwocypv.webp",
+      "mapped": null,
+      "driveId": "1WV2-hwCEjFhwL8exRoADRf7Mjt6tGG1w",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/9c802d8adefb8c5244ee.webp",
+      "mapped": null,
+      "driveId": "1xNN126CzJRtrO4no9pUjREnK7cgFDC1g",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/9d8ebf6ae237e87ba2ca.webp",
+      "mapped": null,
+      "driveId": "1m8UG7sT5UE1--A1IoQYBd9SmP6jtd9Zw",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/bc60bb9bb07cf7199f9e.webp",
+      "mapped": null,
+      "driveId": "1qtynPoRb7UqcuZ2Hnyyngu9xfDIWNofF",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/ac98384c0d9f876028c5.webp",
+      "mapped": null,
+      "driveId": "1HnjxC8pfX2K25qYY0BKxF9F2eoKc-FJx",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_emzy2uemzy2uemzy.webp",
+      "mapped": null,
+      "driveId": "15EuyrdBd4jsiCX6BU1PkF4byW2yW0C9-",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_7zrggb7zrggb7zrg.webp",
+      "mapped": null,
+      "driveId": "1hy8QQtWUqrm1VAy2fGL7HaAuKqN-OOEy",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/752ce2c4ddd72c832c3b.webp",
+      "mapped": null,
+      "driveId": "1rWON8FA-p2Ke_C2R3x5MG0xNHSNms8OZ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/4b3e63d07d524dd8f7f3.webp",
+      "mapped": null,
+      "driveId": "1Hds_bWbMVBjQJZ9HkmLKop_BlL15ClHT",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/dc96f852c64c9263cdfb.webp",
+      "mapped": null,
+      "driveId": "1VetAzjE0TJQu4xhtXPeilcfAN5UUR4uM",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/43837c334f20033b27be.webp",
+      "mapped": null,
+      "driveId": "1rq5KN2062VJGLvCIA3B1pW0nWXdRDexw",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/a633500fe26b160042c8.webp",
+      "mapped": null,
+      "driveId": "1iBwZyBqzMmltvOcZjFvMttf42tCFmNQE",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/135a6fd71acfed55d1e3.webp",
+      "mapped": null,
+      "driveId": "1_R5hEP4eV4BaiqhbNLFwKAKJOP_wK-44",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/162e03428ce6fb-320.webp",
+      "mapped": null,
+      "driveId": "14yhDxEvw27dl0N5pL9rfxqZhdjEBij_3",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/162e03428ce6fb-640.webp",
+      "mapped": null,
+      "driveId": "1PDPPcV0HjTy3s9WwGIrnomau6BwXHZvc",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/d888b17d0cf630-320.webp",
+      "mapped": null,
+      "driveId": "1i6AwR2vkQjkLa0IIZObsVvRXGeqZ6TyZ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/d888b17d0cf630-640.webp",
+      "mapped": null,
+      "driveId": "1CsLIbVSP26zaq0StyiVaU0KKkNEMDfyW",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c15f0362e1942f-320.webp",
+      "mapped": null,
+      "driveId": "19z94MGKghLOaAQxCRZcaKgoFtHTMQZEt",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c15f0362e1942f-640.webp",
+      "mapped": null,
+      "driveId": "1o8StiRuBquu5RAEvkLkirm8y0WfAhinq",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c149b3a693ccd9-320.webp",
+      "mapped": null,
+      "driveId": "16QuXYGfSMZ5HUkF5isi2n_9Slhk4z84g",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c149b3a693ccd9-640.webp",
+      "mapped": null,
+      "driveId": "1SjXjJdNq-Y7C7JbV4TLDiQo7N3m9UaNE",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/e0a34b09752746-320.webp",
+      "mapped": null,
+      "driveId": "1iJtKL-oFNFqVhpapqaRddQm2c0alrVDI",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/e0a34b09752746-640.webp",
+      "mapped": null,
+      "driveId": "1xzBMFFjpxB5q0zsZ-g7XwRcl7j-tBIsr",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/f08a534a66dec0-320.webp",
+      "mapped": null,
+      "driveId": "1lJm8J__TtsWTEccfYiDCZJIdhfxzKdST",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/f08a534a66dec0-640.webp",
+      "mapped": null,
+      "driveId": "12Sue80uRk9S9D6AUPsa91uUhMUKGGckG",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/5f494b807ff571-320.webp",
+      "mapped": null,
+      "driveId": "1Dx0VuOjbAb053HP2r8umBTIt5zuYVMja",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/5f494b807ff571-640.webp",
+      "mapped": null,
+      "driveId": "1hfuQuuIO-guEIBF-gUxKGFOItPsgOCQO",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/4287a3c1a966a8-320.webp",
+      "mapped": null,
+      "driveId": "1DtQl-OE8ZNo-9PAYTiE1jFXa2qjTVhMy",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/4287a3c1a966a8-640.webp",
+      "mapped": null,
+      "driveId": "1Mhqh6-HSaHw4EYxzX0TmZb5hlBHsXKmC",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/d59ee5f35aeb1e-320.webp",
+      "mapped": null,
+      "driveId": "1bDZQiiAxeGyh5Q91s4A6je4_7t683QEA",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/d59ee5f35aeb1e-640.webp",
+      "mapped": null,
+      "driveId": "1VC3mlrgsuBfuEA3AWO9PhzaPvuwwvDC9",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/d6281516e3efd8-320.webp",
+      "mapped": null,
+      "driveId": "1TWjHhJd_CLIreiLqay_63XbUe7vsqsEb",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/d6281516e3efd8-640.webp",
+      "mapped": null,
+      "driveId": "1fs7dke9zStC2wsUQH7ML6G7FFJ8MQhAm",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c18c329f1cedd2-320.webp",
+      "mapped": null,
+      "driveId": "1k8daF3awbr4FsX8jjBGa0POm2__bmo9M",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c18c329f1cedd2-640.webp",
+      "mapped": null,
+      "driveId": "1mRB94xE6jA0gM99AJPtE6QzuqBrhByS5",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/2f5e8ee76106ba-320.webp",
+      "mapped": null,
+      "driveId": "1aZzst3A-jcletAc7lOThTAyowbm3jPoU",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/2f5e8ee76106ba-640.webp",
+      "mapped": null,
+      "driveId": "1XRZIZUsR6-jmdR62aw8_SNmisbKrK7Bv",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/05b66c0aaa8278-320.webp",
+      "mapped": null,
+      "driveId": "1tgL_l4iA69UhfOyetziRyF6WmvDY1D33",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/05b66c0aaa8278-640.webp",
+      "mapped": null,
+      "driveId": "1UCZtmU3SQQQ8ZcXkjSjDSxsXZnMd4Xs4",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/f58cfe2c496a95-320.webp",
+      "mapped": null,
+      "driveId": "1nUG-uw_9LnpGL2AZ_uufPfFarDNHxw17",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/f58cfe2c496a95-640.webp",
+      "mapped": null,
+      "driveId": "1EuhuntdLOe_EArt0w4zNaBsKaro5lGci",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/4acc6de1793f8a-320.webp",
+      "mapped": null,
+      "driveId": "1xpb7YzABeXUzgrGkM4NE1rGZCZYrPNcg",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/4acc6de1793f8a-640.webp",
+      "mapped": null,
+      "driveId": "1MzyTu0mWHeoBa__iTS013SAuu7fG98og",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/9a85fa755f5c8e-320.webp",
+      "mapped": null,
+      "driveId": "1wAzcGHmDxrNnrZEt-OlUv9_ma5L_UgOE",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/9a85fa755f5c8e-640.webp",
+      "mapped": null,
+      "driveId": "15XVJqyCx6y5iIKJmKvOXa75px3W9kof7",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/853e695f7d076e-320.webp",
+      "mapped": null,
+      "driveId": "19BOAgkKakyN5hyK6ZrNam7XUAsv0xRC3",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/853e695f7d076e-640.webp",
+      "mapped": null,
+      "driveId": "1RTXNkTh7x-cyfZbZc6E-vTkjkxGxtdmT",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/0a1bd024ba6f6e-320.webp",
+      "mapped": null,
+      "driveId": "1cVcMPSSYzVYIxSrdUVtrHztZBotymWDU",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/0a1bd024ba6f6e-640.webp",
+      "mapped": null,
+      "driveId": "1i9TyqQwuD8Hm1G0ajtMfjVoXt8fHeW53",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/00cd854600ffc6-320.webp",
+      "mapped": null,
+      "driveId": "12nS6typ_5HgQQAlAty3A8jKYAD8pAGlg",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/00cd854600ffc6-640.webp",
+      "mapped": null,
+      "driveId": "1OtKIyTg_XU1WaaBbWk1Djkj4-nAjpKy7",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/e1d2b4786de31a-320.webp",
+      "mapped": null,
+      "driveId": "1TQlw-0sEI6zKWiNOxpFH07LuwUD1k9ID",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/e1d2b4786de31a-640.webp",
+      "mapped": null,
+      "driveId": "1-r2xa0phzuR7xY8XZ6wR3srqEWCq8qFj",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/71d1631b7a2bd2-320.webp",
+      "mapped": null,
+      "driveId": "18zvpC8PF8XqTcjKPZ7muU4z1SW4hGV6d",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/71d1631b7a2bd2-640.webp",
+      "mapped": null,
+      "driveId": "1nIqHs1eV1jv4zjHPolfFsvKqpoN1p-P1",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/86f8be9aafd51c-320.webp",
+      "mapped": null,
+      "driveId": "1rRaDK5vQ2G3NC9qSeNelrVmvQ07i5kxP",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/86f8be9aafd51c-640.webp",
+      "mapped": null,
+      "driveId": "1euyF6XECsUwdiQ3au1ItSou8eGa1Wm67",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/310be6caedaf85-320.webp",
+      "mapped": null,
+      "driveId": "1drORBEZXV8pPKXZ4V0j9YHMjCVuzkyLA",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/310be6caedaf85-640.webp",
+      "mapped": null,
+      "driveId": "1DxSJd9miI2Par1qSW7xqIBX_O1T5MffB",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/be6ae9220821e5-320.webp",
+      "mapped": null,
+      "driveId": "1iKMdpJeKaFUJEiPEq-9pGf5MY4yQ8wqd",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/be6ae9220821e5-640.webp",
+      "mapped": null,
+      "driveId": "1b9D9HjM6_xR3ANwWtsX-sg0T0F1a3maj",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/850078cdb51c40-320.webp",
+      "mapped": null,
+      "driveId": "1mQMrT6R2kGT4-jUY1sx4DKn4crLjNmKN",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/850078cdb51c40-640.webp",
+      "mapped": null,
+      "driveId": "1-pCGne34GU4k_zyDWW5Z8vb5nOFHaxv5",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/8b0707191fa0b4-320.webp",
+      "mapped": null,
+      "driveId": "1bResivKzT3KuhqDlnCd2ki65wUpgUFoD",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/8b0707191fa0b4-640.webp",
+      "mapped": null,
+      "driveId": "1Vo39CQPvrqQ7fkZnGnwt5G-eAb6LzwaR",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/b4d79cc5d6a117-320.webp",
+      "mapped": null,
+      "driveId": "1EujcIGzBIUN5_-ZxvToCt6gfWgzTdun8",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/b4d79cc5d6a117-640.webp",
+      "mapped": null,
+      "driveId": "1lpxNOvGuzpw087w1xLVbtmp8gl0kaiLv",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/d9b5f94fbe525c-320.webp",
+      "mapped": null,
+      "driveId": "1_Rm8NF6A7Lbsrhb14Gti7o4XsFMgLTQB",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/d9b5f94fbe525c-640.webp",
+      "mapped": null,
+      "driveId": "17610ZJ0EdbcTmX94Y95wCt-YAHHVeVqF",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/fdbc2ba58da574-320.webp",
+      "mapped": null,
+      "driveId": "1Hidf2SX9UzxOsT9n1EOIXgMKGJd6OuEO",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/fdbc2ba58da574-640.webp",
+      "mapped": null,
+      "driveId": "1rOZA56Y1SEK8KQ8owUjJH-JtiHg97Vj1",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/fc52d2b3dd3033-320.webp",
+      "mapped": null,
+      "driveId": "1tE9AfoufQLu4KnIr6YXTyO1ruzHGU0Po",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/fc52d2b3dd3033-640.webp",
+      "mapped": null,
+      "driveId": "1KJrPngoYBKEY6uX9vTQaQ0VEKD38dSw0",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/69b1fa7d9ee2a7-320.webp",
+      "mapped": null,
+      "driveId": "1iLhdu3esYN9ax16MruD-r9sCvYbsuEv2",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/69b1fa7d9ee2a7-640.webp",
+      "mapped": null,
+      "driveId": "19Pid9uG45yQ3g1_94BUfDolUCkPF3DaR",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/35abad367953bf-320.webp",
+      "mapped": null,
+      "driveId": "1yFgq18cGnysZQsLsbQzXSDG8UduRdaED",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/35abad367953bf-640.webp",
+      "mapped": null,
+      "driveId": "1az0GAEHkw9BDijtOeP3KtIUbd-r5D3W3",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/7a2b3271a832ad-320.webp",
+      "mapped": null,
+      "driveId": "1pwwKce_YkHNLPSchOB9hZZHmrlMLSufg",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/7a2b3271a832ad-640.webp",
+      "mapped": null,
+      "driveId": "1p5ZUDGqjZ48js2TzFL1qgSSNalAuQNfP",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/66d1dcb32db095-320.webp",
+      "mapped": null,
+      "driveId": "1L-NYhtuZjFfq2sgN03rmGqIWHgVtNrPS",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/66d1dcb32db095-640.webp",
+      "mapped": null,
+      "driveId": "103ywKQnmYvznHsj2tozFHiVoUmWY-p79",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/3fb61b61858437-320.webp",
+      "mapped": null,
+      "driveId": "1WQo4DX2eclze9HOWJiDrLjvmWcwyE6Ez",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/3fb61b61858437-640.webp",
+      "mapped": null,
+      "driveId": "1-Mfd0SAqvv02uKMb2eH458lfTLa3zPAB",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/cdcfc6664ce890-320.webp",
+      "mapped": null,
+      "driveId": "1UUxOkklaVHY-_NDJrOKgbmu3Moy6KAip",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/cdcfc6664ce890-640.webp",
+      "mapped": null,
+      "driveId": "1cxLiWbIeOSCoIpxILO23J3oGes_d7102",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c7f661552fbe87-320.webp",
+      "mapped": null,
+      "driveId": "10NsOjWZ5cifa_Hh8rUYASkSf41E7C9j2",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c7f661552fbe87-640.webp",
+      "mapped": null,
+      "driveId": "1xz_Nhz3pXi1Vkv3CcWFvMaBcpmJ7Apg9",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/95a5af2418903a-320.webp",
+      "mapped": null,
+      "driveId": "14lsZH10f2XZhNTDQUlrpS5fHZlY_t04x",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/95a5af2418903a-640.webp",
+      "mapped": null,
+      "driveId": "1peVt20ovGYDamMFPwYsYtgqn3ZRTAQFz",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/60340c1cd1eb62-320.webp",
+      "mapped": null,
+      "driveId": "1WGuhWiEM3Uz4RBK9IQrPtQtr560ERG7y",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/60340c1cd1eb62-640.webp",
+      "mapped": null,
+      "driveId": "1SRIQLtV-aL_7Iwql1V3YfpuVvu-h1Iri",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/3366c09992e59c-320.webp",
+      "mapped": null,
+      "driveId": "1JCMH6ubc2Vtljks5_pUfvCKpzvBsLW8h",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/3366c09992e59c-640.webp",
+      "mapped": null,
+      "driveId": "15G4EXyRHMmfeC9Vy2Q0NIQ4nwGWNzQZn",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c0bb71dc85ef43-320.webp",
+      "mapped": null,
+      "driveId": "1oHdA1qA5pEd3qTrQE3eocLh1lnSDu23Q",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c0bb71dc85ef43-640.webp",
+      "mapped": null,
+      "driveId": "12sjrFoFgkxOgj0__iGJUbVN28xDBX3HL",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/BlackGold_plus_3100.webp",
+      "mapped": null,
+      "driveId": "1fitSCLCauGnIk8CaxNzReyF3jZSXDY4a",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_g5kbdrg5kbdrg5kb.webp",
+      "mapped": null,
+      "driveId": "1bulfJboRksYG2q0UNQKKOKa4f-xtyHA2",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/188aecb7fc7fac9e55cc.webp",
+      "mapped": null,
+      "driveId": "1HulV19PSEAgjVdtsPk6rXSauAysIjWyt",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/470cd4767fceaab72627.webp",
+      "mapped": null,
+      "driveId": "18WxzRXbpywNmMfeabrq6f_tWCIsfenZ8",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/0f0e23d3271770063447.webp",
+      "mapped": null,
+      "driveId": "1e0l1H_Et1bfBLzLV9AtTPVsudt5kROFq",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/184a91e6fcdfcc4e9bf0.webp",
+      "mapped": null,
+      "driveId": "1cSrfJvfFtvLg8Aqn3_P5YAW-SL8p1xej",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/540f0d42ac160b34d6fa.webp",
+      "mapped": null,
+      "driveId": "1Vgy28GyIWz9jrquePc-r3LPJ8eI9gIlC",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/d4ba4d06827de4d8efd9.webp",
+      "mapped": null,
+      "driveId": "1_bHRJXWspS9_QHM2zav0B6yNj9tEbpSm",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/035a74a7ccb0f1da6fad.webp",
+      "mapped": null,
+      "driveId": "1aCnFaCuWb67i62H_xn3Z_AwOm_CRJ6-S",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/3398de27d7699deba54e.webp",
+      "mapped": null,
+      "driveId": "18r9FRILZsAnZ96vwE0hB7ep2wV_fJbzf",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_wk7jlcwk7jlcwk7j.webp",
+      "mapped": null,
+      "driveId": "1QCuxHnM9zp8O7QoPKX3qy-6-mYr5LuBD",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_g3prnig3prnig3pr.webp",
+      "mapped": null,
+      "driveId": "1bGROzb3dEROTmlewHW5QidE95tO_glOs",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/1bbed940-8864-4224-b08c-39f3eedfa6e5.webp",
+      "mapped": null,
+      "driveId": "1Hw-oXObLc02GIOkNR6Zpt1W1ttbJW56h",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_ttfbz4ttfbz4ttfb.webp",
+      "mapped": null,
+      "driveId": "11CBg7Ka4ZVXRQuyExFGRH3TZUpqoOM5J",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/2d1b53524c4195a18620.webp",
+      "mapped": null,
+      "driveId": "1b062a1RocakzICowkkBeQ96hAmIKg5fQ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_cfexyucfexyucfex.webp",
+      "mapped": null,
+      "driveId": "1k3JgHhw7u16_-CMRbjHZJud5kmHSuTWb",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/a8ea3432ccc8f9a6ce28.webp",
+      "mapped": null,
+      "driveId": "1TQWrFrpdCLu4r2B-A81762bthLwkTTn4",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/cc569cb6-2fce-49f7-99ae-a6b3b8cf78a2.webp",
+      "mapped": null,
+      "driveId": "1lhz7lR2dVUyeY5URMOnCh1CkfFpzNjac",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/137dd01bc0f67d06a988.webp",
+      "mapped": null,
+      "driveId": "1rNu7bfubnr5ttv-0-exZ_1Hjq7iy4YrJ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/fec8fec848952a976c52.webp",
+      "mapped": null,
+      "driveId": "10ZxKAr2WykyenLpdOs1Ic10deA8zPYVj",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_cypvwocypvwocypv.webp",
+      "mapped": null,
+      "driveId": "1e3rbH-_S8Aht3AgqPY06YrlS9l_6VyNQ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_itm0sjitm0sjitm0.webp",
+      "mapped": null,
+      "driveId": "16cE5XoqWCI6CFbeFlVWHjjbGnkpwzE8p",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_h247iwh247iwh247.webp",
+      "mapped": null,
+      "driveId": "1STovfLsmzbFZbaQrOVr5q2IxOHai7tLj",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/images/e46512bad293d74aee45.webp",
+      "mapped": null,
+      "driveId": "1855AR186DuIxOmmnjgL1WgFsIJP4SYB0",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_2ldelw2ldelw2lde.webp",
+      "mapped": null,
+      "driveId": "1xGs5zvCvlGC0y0t5l_sY1wrdolR1JLBn",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/8014e718d94615-320.webp",
+      "mapped": null,
+      "driveId": "1taM7Jzi3vLSAG7R1BhBd0md23GZAJfH3",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/8014e718d94615-640.webp",
+      "mapped": null,
+      "driveId": "1v4RB2Tz19zjQg5zBhrVQOGERUO4RjcpD",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/4590ce18051a91-320.webp",
+      "mapped": null,
+      "driveId": "1mSymL1lzmL5HIRwM4UN18WQy8qD6zIJ9",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/4590ce18051a91-640.webp",
+      "mapped": null,
+      "driveId": "1NqfnKI7iUg-PXH7olr_SaSwOE9hU6L4V",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/b61585daeec625-320.webp",
+      "mapped": null,
+      "driveId": "1JIhkP32HxK__51nK9wPVJr1wM_48rlsy",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/b61585daeec625-640.webp",
+      "mapped": null,
+      "driveId": "1T1DxNhwnphxfP3ZtRE0ik6LJ-gtLcFyT",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/a6a16ba5e6e8d0-320.webp",
+      "mapped": null,
+      "driveId": "1J1fltDbquRkqlG7uyNYz4a7xUG42mEI5",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/a6a16ba5e6e8d0-640.webp",
+      "mapped": null,
+      "driveId": "1v4S6exZHunNbRwlqw_T07sUnW41dj-jA",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/bc795a97814691-320.webp",
+      "mapped": null,
+      "driveId": "1LB1kfT32GXzmo-2nkcd1xj3Qk83OMtZ0",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/bc795a97814691-640.webp",
+      "mapped": null,
+      "driveId": "1r9ttWvZUth402XehF_kYXNRhFMfadw1F",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/de2886092e9861-320.webp",
+      "mapped": null,
+      "driveId": "1c25u0JeD3MyGm6Wx1hCB3QOT-FAsj41h",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/de2886092e9861-640.webp",
+      "mapped": null,
+      "driveId": "1wWnhFjlaDZsi156oOsieuPNPNCRojZaR",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/cb39e6cce773fa-320.webp",
+      "mapped": null,
+      "driveId": "1LDnz-oZz-ILxD9jtyeb0MJ4bXOEeiRLj",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/cb39e6cce773fa-640.webp",
+      "mapped": null,
+      "driveId": "1CKvIjGhIDcRfgOVdnbz6KyyugI5WT8nt",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/b85be8fe82229c-320.webp",
+      "mapped": null,
+      "driveId": "1GiKjGfJuPw1ygTLGUEeN2Y8PlIvgoyAa",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/b85be8fe82229c-640.webp",
+      "mapped": null,
+      "driveId": "17h_sLvL3TWL8hEKWtQxN02vGGD8eO9ss",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/5d36ff6a62a0d5-320.webp",
+      "mapped": null,
+      "driveId": "1BmcybwGGYLx95OooVfSZ9-JSTnPKoaPB",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/5d36ff6a62a0d5-640.webp",
+      "mapped": null,
+      "driveId": "14uWdnx1MhQVefhTbBQJNxYQDABMiaV22",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/6f7db22163c6dd-320.webp",
+      "mapped": null,
+      "driveId": "1MZjJIcembsbCHJSuIdcs6pQQRTNAIvjZ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/6f7db22163c6dd-640.webp",
+      "mapped": null,
+      "driveId": "1PIQpFZa5kDi9S80QMv2LXfAsqOYrhuXN",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/ab20f867f9b085-320.webp",
+      "mapped": null,
+      "driveId": "1APl9x04iip6HFtlFDpd8kBdEdcA1H4Ay",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/ab20f867f9b085-640.webp",
+      "mapped": null,
+      "driveId": "1IZaoWtcOkRPHFqoKucSZhhXbC2H_Ll5a",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/1024f9b6872dbe-320.webp",
+      "mapped": null,
+      "driveId": "1YGqQt8zeNWCFyz5AkRIIlekY92IyXd-g",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/1024f9b6872dbe-640.webp",
+      "mapped": null,
+      "driveId": "1wxnsJZlWxquv7DxhMmmKzSflkncDiMKk",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/237a5b9ca47e4e-320.webp",
+      "mapped": null,
+      "driveId": "1VGEgBmtmFwYRrcvu8TLFpf4n-FjKDh3O",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/237a5b9ca47e4e-640.webp",
+      "mapped": null,
+      "driveId": "1-F9eJuN3j-15aoELh1BarcasNGxvwDa7",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/ae5489c112128e-320.webp",
+      "mapped": null,
+      "driveId": "1oNlRhsacY8F02J0ei5J_cBaa8x6RdxoO",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/ae5489c112128e-640.webp",
+      "mapped": null,
+      "driveId": "1MbZZRKDC2QmDZHfh0tJL7qCNa8wWHh6N",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/a82d0180510db6-320.webp",
+      "mapped": null,
+      "driveId": "156lyNOnSxmMqTK4O2zIG7fgPYwAKnUnn",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/a82d0180510db6-640.webp",
+      "mapped": null,
+      "driveId": "1w0klbUMGRimnWTAHXi2C16P5cNSRGNlk",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/d7f575798d3d3a-320.webp",
+      "mapped": null,
+      "driveId": "1iQFmSoEzyEWns_kFmJeHmo2dcdAbCkih",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/d7f575798d3d3a-640.webp",
+      "mapped": null,
+      "driveId": "19gP2NRh4uRLK3_etA0pdgQW_DPpCLl3Y",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/ca15987193d51f-320.webp",
+      "mapped": null,
+      "driveId": "14IHJ_YFuO8j3UWbkWYymnKvLzikckCea",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/ca15987193d51f-640.webp",
+      "mapped": null,
+      "driveId": "1Haro_KRJ02S7LZpU3dUf8ZEysLK2T4U7",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/92d7b7d8b8a167-320.webp",
+      "mapped": null,
+      "driveId": "10dMmulmuZX_EUMm07qgS7bG03Se-0qNk",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/92d7b7d8b8a167-640.webp",
+      "mapped": null,
+      "driveId": "16FtnbiMWT8jVr1LThsIyf6ZPETXrbYnh",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/54a1f2ff6f2acd-320.webp",
+      "mapped": null,
+      "driveId": "1_XhsS3dpVsGiWF3LSW-JgEQh_7EDpsgQ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/54a1f2ff6f2acd-640.webp",
+      "mapped": null,
+      "driveId": "12IdnERM4c-dK1WmdICSA3wzdnrjYEcIi",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/80c419d99fb1ae-320.webp",
+      "mapped": null,
+      "driveId": "1BgwQLvvZ0L4j4jmad9HMlEUujPU6IH3g",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/80c419d99fb1ae-640.webp",
+      "mapped": null,
+      "driveId": "1m1WFyzTIgt6s7Otn2och9xjlGW4cBhRi",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/58f351249ddbb8-320.webp",
+      "mapped": null,
+      "driveId": "1zINdRCSM4xZUa_mPEXZEshoMEvgC-_XS",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/58f351249ddbb8-640.webp",
+      "mapped": null,
+      "driveId": "1wpQy4-6GfJyjDyKr6SdhlIRVsnbRNTcU",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/3736eae98c2f6c-320.webp",
+      "mapped": null,
+      "driveId": "190YrxCP9KCuQ_EXtJjBx388N0mq_Gfa2",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/3736eae98c2f6c-640.webp",
+      "mapped": null,
+      "driveId": "1SDYnv5nR2LYkhTZPj1rUREQTiO38lLB8",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/3893492a7d0082-320.webp",
+      "mapped": null,
+      "driveId": "1c3hkJwIW_FLmA0YiSjKejtLdgTQ_nC-9",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/3893492a7d0082-640.webp",
+      "mapped": null,
+      "driveId": "1AxaucXiaIE9_DHLjWhG02_YDo3KdsqoD",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/9a54ad6b2b437a-320.webp",
+      "mapped": null,
+      "driveId": "1hihs3gXuMIUk0bRkWilV_jI_5oh7jjaW",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/9a54ad6b2b437a-640.webp",
+      "mapped": null,
+      "driveId": "1ikQKc2RDjf2fUlv6rTTFO-qlPlIw6yIj",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c62917604f5393-320.webp",
+      "mapped": null,
+      "driveId": "1AFKdItSsQ0fU3AavQ4VHyY5R7wBYt2Vd",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c62917604f5393-640.webp",
+      "mapped": null,
+      "driveId": "1m1SSDQ0hrFoh2JHOKbJjAYoE45fGYb9W",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/46e4c38723ab92-320.webp",
+      "mapped": null,
+      "driveId": "1DAtMXt3Uwpd1OAZivIjJ0C_PuwS6knUI",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/7a19432413a89d-320.webp",
+      "mapped": null,
+      "driveId": "1mxPghFdgf7mHYUvx-ri3t479DgewGkx3",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/7a19432413a89d-640.webp",
+      "mapped": null,
+      "driveId": "1qr85V-ZVsiAv69KakWE9ZoJugRFHFGWt",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/92c096668d4aef-320.webp",
+      "mapped": null,
+      "driveId": "1MKx9WnY6Ji6tjFyWDSOgHzWvdxs8_wE8",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/92c096668d4aef-640.webp",
+      "mapped": null,
+      "driveId": "1CeEN6D89ksSJuXai5jf96Ck-SILfja0O",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/e974a666149721-320.webp",
+      "mapped": null,
+      "driveId": "1nIKasH3njbZeLHYTqvQZ-1qX6gLwvf2B",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/e974a666149721-640.webp",
+      "mapped": null,
+      "driveId": "1lksa9xeVkLsMPI0N3hJGky4PFh4_F_kf",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c208eee9c5c199-320.webp",
+      "mapped": null,
+      "driveId": "1c6cW2eidRk04Tq76xo3YgvOESkGLt5y0",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/c208eee9c5c199-640.webp",
+      "mapped": null,
+      "driveId": "1owSHUPeh2Q2qrsi_N2AU5pj-H3qnErM9",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/38c72e32810f3b-320.webp",
+      "mapped": null,
+      "driveId": "1mobGwHSCrJ2H4g2IVot7fRZg_a7mtzmH",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/38c72e32810f3b-640.webp",
+      "mapped": null,
+      "driveId": "1-uuOJAkX4Mv6EOZDXAzATqdUBSHsTryq",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/a17ec308ac91ef-320.webp",
+      "mapped": null,
+      "driveId": "1Qdr81A6K3JUTFG08NUp4TSHsjZvYB4ee",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/a17ec308ac91ef-640.webp",
+      "mapped": null,
+      "driveId": "10gk5-tvV1Esqnda8Bx7uM-O5Ph_SJDGA",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/9ec8104f40f19e-320.webp",
+      "mapped": null,
+      "driveId": "1kutfQfgF95auHiICusqdPIOBN_ZyblSc",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/9ec8104f40f19e-640.webp",
+      "mapped": null,
+      "driveId": "18tl1HYrjJe6R_Um71Gibd_9yXQCVTEfJ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/2f7fdd741fd42c-320.webp",
+      "mapped": null,
+      "driveId": "1vYnR-9qxMaBLCiu8-88Xx9BCoP6UdwCI",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/2f7fdd741fd42c-640.webp",
+      "mapped": null,
+      "driveId": "1bkPzvS0URp-7llZUqD6zANKLWI12dp5W",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/5f5b437d9181d8-320.webp",
+      "mapped": null,
+      "driveId": "1cVar-IO9u7XCVv97wI0DqGCxwwiFNWGr",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/responsive/5f5b437d9181d8-640.webp",
+      "mapped": null,
+      "driveId": "1_e5OwDe1Egrza31GGscKSpO1_fdhiw_I",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/20251017_2036_Крест мечей_remix_01k7sks4vweqqb8y34a5axht.webp",
+      "mapped": "/assets/images/9340fca52e689673a788.webp",
+      "driveId": "1415klgJ6162y09vnsCBu5B4fnA6QiBuz",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/20251019_2242_Крутое изображение человека_remix_01k7yztrtzfh7vmcfvxa91jts7.webp",
+      "mapped": "/assets/images/b3a549f13b2ee1dddb6a.webp",
+      "driveId": "1rNgDPkJ29vNKIXDUSBRvBCPApsVjDuyf",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Шилов у прудa на закате.webp",
+      "mapped": "/assets/images/c46f6dac832546b5a64f.webp",
+      "driveId": "1HuT4Q1QhDnu0cnAfpS7yzfmEFi8oED_-",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Птицы на рынке при закате.webp",
+      "mapped": "/assets/images/3417587ba63817702762.webp",
+      "driveId": "143-WlIa28_XmwsnmS80qy_e6bGbpkkNz",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Солдаты у костра в зимнем лесу.webp",
+      "mapped": "/assets/images/3f9a198fb9ddb0003123.webp",
+      "driveId": "1aNcFYzeWgNsfn1q_tH1X6dt6jD5_-Rwd",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Мужчина и паровоз на закате.webp",
+      "mapped": "/assets/images/d2913fb83ee0f66f9f9c.webp",
+      "driveId": "1C15bjl-457-25GKWxSXbXVP1fP7tlbU0",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Киричики_ярче.webp",
+      "mapped": "/assets/images/8b0359a535602c605654.webp",
+      "driveId": "1CxYMMV0oRgGgbglKci2iEo1ouX7AGfUn",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/20251019_2339_Очень крутая картинка_remix_01k7z32rvafc6v66eqdmvyz1rt.webp",
+      "mapped": "/assets/images/3d1dcf75065f9d0bf91d.webp",
+      "driveId": "1kFwQM_yf_eRpV505g24O8FCPWk3b2Lmx",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Продажа папирос на ночной улице.webp",
+      "mapped": "/assets/images/4a735eefc658ea714bd1.webp",
+      "driveId": "1HoJ70XwEVaCdPjzg2yDtiyK-eOmJdKGF",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Мурка в переулке ночью.webp",
+      "mapped": "/assets/images/df3da3b60a5b2b1c97c5.webp",
+      "driveId": "1lHWebOGvRIrpjGm6xhBpAyt2LDWU1cI6",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Ты мне не снишься_ Космическая гармония.webp",
+      "mapped": "/assets/images/626cafcb9583e3d56bb6.webp",
+      "driveId": "1aTYUW74iyGTs34AF0ME8SCWkY5JUd014",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_hczbhehczbhehczb (1).webp",
+      "mapped": "/assets/images/9c802d8adefb8c5244ee.webp",
+      "driveId": "1xNN126CzJRtrO4no9pUjREnK7cgFDC1g",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Ангел в слезах на фоне города.webp",
+      "mapped": "/assets/images/9d8ebf6ae237e87ba2ca.webp",
+      "driveId": "1m8UG7sT5UE1--A1IoQYBd9SmP6jtd9Zw",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/ГородШленда.webp",
+      "mapped": "/assets/images/bc60bb9bb07cf7199f9e.webp",
+      "driveId": "1qtynPoRb7UqcuZ2Hnyyngu9xfDIWNofF",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Так вот какая ты.webp",
+      "mapped": "/assets/images/ac98384c0d9f876028c5.webp",
+      "driveId": "1HnjxC8pfX2K25qYY0BKxF9F2eoKc-FJx",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Мелодия старого города.webp",
+      "mapped": "/assets/images/752ce2c4ddd72c832c3b.webp",
+      "driveId": "1rWON8FA-p2Ke_C2R3x5MG0xNHSNms8OZ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Gemini_Generated_Image_26hg4826hg4826hg (1).webp",
+      "mapped": "/assets/images/4b3e63d07d524dd8f7f3.webp",
+      "driveId": "1Hds_bWbMVBjQJZ9HkmLKop_BlL15ClHT",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/родная улица.webp",
+      "mapped": "/assets/images/dc96f852c64c9263cdfb.webp",
+      "driveId": "1VetAzjE0TJQu4xhtXPeilcfAN5UUR4uM",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/Когда мы были на войне микс.webp",
+      "mapped": "/assets/images/43837c334f20033b27be.webp",
+      "driveId": "1rq5KN2062VJGLvCIA3B1pW0nWXdRDexw",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/ChatGPT Image 17 янв. 2026 г., 20_56_35.webp",
+      "mapped": "/assets/images/a633500fe26b160042c8.webp",
+      "driveId": "1iBwZyBqzMmltvOcZjFvMttf42tCFmNQE",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/tracks/ChatGPT Image 5 мар. 2026 г., 22_15_19.webp",
+      "mapped": "/assets/images/135a6fd71acfed55d1e3.webp",
+      "driveId": "1_R5hEP4eV4BaiqhbNLFwKAKJOP_wK-44",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/C_metallic_gold_3100 (1).png",
+      "mapped": null,
+      "driveId": "1trZfAkBFPsLAYsiGwebtrbQQUQr421XK",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/cc569cb6-2fce-49f7-99ae-a6b3b8cf78a2.png",
+      "mapped": null,
+      "driveId": "1mpjmkQqrqpdUIuBJXNRg34uSdoBXtZIX",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_opc80copc80copc8.png",
+      "mapped": null,
+      "driveId": "1Qr8T4Ix9cPjuiymF6WaW20ZYIUUOnzwR",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/на побывку.png",
+      "mapped": null,
+      "driveId": "1fRXZ5mVfeBKMjhldusLsglmSCFdNBE8H",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/море.png",
+      "mapped": null,
+      "driveId": "1NX0fSND-jbr6b3-e8-UcxQePjhrdABcK",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Продажа папирос на ночной улице.png",
+      "mapped": null,
+      "driveId": "1eC4VligUluVblGUEfoRVGvjW_MkCDN95",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/колдовское озеро.png",
+      "mapped": null,
+      "driveId": "1bSoiIQy2z7FcS11BGHXS6bB6JSC2uuya",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Дуня из одессы.png",
+      "mapped": null,
+      "driveId": "1Q3ri8pUm6yMevgvNGi2jjbwuYeHJCkWL",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Сингарелла.png",
+      "mapped": null,
+      "driveId": "1tSZEt75PODcTHCWgLMhgB7cFtLf-Cv0j",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Лаандовый блюз.png",
+      "mapped": null,
+      "driveId": "1cTrTK0dRxpPUyOPxHaAl1yjWjhK9ZZMA",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Снилось мне.png",
+      "mapped": null,
+      "driveId": "1nFBwd_oAC0hYoOeZ7ybCUh43XCl7HOzm",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/птичный рынок.png",
+      "mapped": null,
+      "driveId": "1J-rK4r7oVA89qZ1MyIaZNGXeVVx_1jAH",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/у самовара.png",
+      "mapped": null,
+      "driveId": "11qRa38mLGhq0F1VoAlhAEcmKjK1_ETSr",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Одесса.png",
+      "mapped": null,
+      "driveId": "1V-dHyW3iBjIWFwnI28SZNVonZiMrS7RO",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/20251017_2036_Крест мечей_remix_01k7sks4vweqqb8y34a5axht.png",
+      "mapped": null,
+      "driveId": "1fhfzimSlqBOv8eyaNiTXA6ggGfImXlWG",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Я куплю тебе дом.png",
+      "mapped": null,
+      "driveId": "1bMGZrgWSf5KPljIFUYbmmr3urSIETEJO",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/20251028_0029_Стильный_Логотип_remix_01k8ks5857f9zab4xzgj0mgczy.png",
+      "mapped": null,
+      "driveId": "1R3jRSjiVQbE4OH1rdlXqsWeZpQJ7i0Lh",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_cypvwocypvwocypv.png",
+      "mapped": null,
+      "driveId": "1BqwjK2mnS1fXsbhbqIdYliznAXj4BSBd",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_itm0sjitm0sjitm0.png",
+      "mapped": null,
+      "driveId": "1K8aSwz3nWh9Ib2n2PzsMRKxLxE4l72wG",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_oieckjoieckjoiec.png",
+      "mapped": null,
+      "driveId": "1YNaykHkR6JPDM9Y_akhvAfqnDKbeodXc",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_h247iwh247iwh247.png",
+      "mapped": null,
+      "driveId": "1Wb2tIXgdxsz32c5aJapudpYJS6hRk1YR",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Ангел в слезах на фоне города.png",
+      "mapped": null,
+      "driveId": "1std4L0SprdOuf65NDZSA-k-1d3TQwR24",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_wk7jlcwk7jlcwk7j.png",
+      "mapped": null,
+      "driveId": "1wTB_VwXr3wPuXOvZmO_OqFnmwfaQXEC9",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_hczbhehczbhehczb (1).png",
+      "mapped": null,
+      "driveId": "1ut98hUwzS-Cq0xa0GmzZA-G3HX6MAZHY",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Мурка в переулке ночью.png",
+      "mapped": null,
+      "driveId": "1DkRywqEVICt4Z5ktvDIyoMmEjPw7yH9n",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_g5kbdrg5kbdrg5kb.png",
+      "mapped": null,
+      "driveId": "1pAz_-X3HG34wYDDXpBrizPQ89P0hcohb",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Мужчина и паровоз на закате.png",
+      "mapped": null,
+      "driveId": "1p0Ekp3eCznmBH-JYUTjTgUkSNoNhAQ1R",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_g3prnig3prnig3pr.png",
+      "mapped": null,
+      "driveId": "15cgl2bm4RewVQFUyVO5mHFB3B5xKadO-",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Киричики_ярче.png",
+      "mapped": null,
+      "driveId": "1YaTUISsQZca0Iu00KjpB0HXPGFbla2Cz",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/1bbed940-8864-4224-b08c-39f3eedfa6e5.png",
+      "mapped": null,
+      "driveId": "1aAaW60UGQ0ahWELXhMZ0K7cwxf20xjIu",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_ttfbz4ttfbz4ttfb.png",
+      "mapped": null,
+      "driveId": "1qpCeCrT9GUhIjlwHF0pIbE5qaRlMYSon",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/20251019_2242_Крутое изображение человека_remix_01k7yztrtzfh7vmcfvxa91jts7.png",
+      "mapped": null,
+      "driveId": "1vIvf1D-VREV-cCBBTgky3ateknAfeqU-",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/BlackGold_plus_3100.png",
+      "mapped": null,
+      "driveId": "1_5a47ztmgBzz21ZigZJKZEQeiYNQEUm6",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Ты мне не снишься_ Космическая гармония.png",
+      "mapped": null,
+      "driveId": "1Eb1mR8Gmmm2ZzIKJgaiRZdAJTP1Xde7Q",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/WhatsApp Image 2025-10-24 at 01.48.43 (1).jpeg",
+      "mapped": null,
+      "driveId": "1kYdX3f8RhSOBZdpb4bULB27Zr8UjKG9E",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_cfexyucfexyucfex.png",
+      "mapped": null,
+      "driveId": "1Kv1JHgWSCgoG1hBzVweHin26skbvgVw5",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Изображение WhatsApp 2025-11-18 в 00.16.42_e5a0e4db.jpg",
+      "mapped": null,
+      "driveId": "1sD-6JlUsVr433_CVw2gIP5GibEJkjeqS",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/Gemini_Generated_Image_2ldelw2ldelw2lde.png",
+      "mapped": null,
+      "driveId": "1v-hQvLpoysueHwEtQEevbwqVVENSGZjJ",
+      "match": "exact"
+    },
+    {
+      "original": "/assets/img/videos/ChatGPT Image 18 янв. 2026 г., 14_47_45.png",
+      "mapped": null,
+      "driveId": "1T7vccHHXrYswsFzxjkIfTXDDhyNS8MzD",
+      "match": "exact"
+    }
+  ],
+  "tracksWithAtLeastOneSource": 46,
+  "videosWithAtLeastOneSource": 28,
+  "missingImages": [],
+  "files": [
+    {
+      "name": "404.html",
+      "sha256": "374931ed6b4cbc8780567ee45c37b6115fc1bfafdc77dcc88c238cee74e262ca"
+    },
+    {
+      "name": "bio.html",
+      "sha256": "2aa71838ad67e46f9466ef4bf61c6c271e26d456eac0e1f0d8212c2c4e3b6dfd"
+    },
+    {
+      "name": "contacts.html",
+      "sha256": "90e770cb8b6492f8cf7d278d6aad58d3d93f26b13ae27f53f3536f3b93376a32"
+    },
+    {
+      "name": "cookies.html",
+      "sha256": "543d38e874338dffd0572c868c8934ef1b9cfdc6a565f46564a9ab4a1db245f8"
+    },
+    {
+      "name": "data-consent.html",
+      "sha256": "784cf2f5a401da908c7e1b49130ab8f55b5ea069a7145ad23970a189a972f810"
+    },
+    {
+      "name": "index.html",
+      "sha256": "65dd5140f84a3db91712c634c1460ed52b73180ce232a34bb05ca567e658042c"
+    },
+    {
+      "name": "music.html",
+      "sha256": "e9aefe2b4dfcdf01c13faacf56316e440ed3721aa38b7d4009ecf6915b4d86c0"
+    },
+    {
+      "name": "news.html",
+      "sha256": "94a11134e3d0c4e978130daa0999ffdab0ab9e10bad8b36614ba316db83ad95f"
+    },
+    {
+      "name": "news.json",
+      "sha256": "622f9f93ac2c6044fd0b0a1df50360cd036638492187011f623ed8fbc7bfc107"
+    },
+    {
+      "name": "offline.html",
+      "sha256": "789790e148c98c416d240ca1dfd43abca94a141a9e9c49c902164d4dbd1c5f57"
+    },
+    {
+      "name": "press-kit.html",
+      "sha256": "bf95eacd211957f2f1bfc939a8a4fa4f70a9592e846feab1cfcad317cc076291"
+    },
+    {
+      "name": "privacy.html",
+      "sha256": "dbdea217da56883898912ac6f528a869abf2b7ac4184d0e05899722cdcf06bef"
+    },
+    {
+      "name": "video.html",
+      "sha256": "a520ac5bc7c0edb5a056025570cafd71efd0ed70dc39329907e87630a48abe70"
+    },
+    {
+      "name": "videos.json",
+      "sha256": "79f13a9d36a816105139d975bebd6eea2603b70e70e2d4f1917f1ef8b81ec09c"
+    }
+  ],
+  "publicationFolder": "https://drive.google.com/drive/folders/12XvWmddZKZveffm-mc39DpXJLDeVZ2zH",
+  "dnsNameservers": [
+    "ns1.hosting.reg.ru.",
+    "ns2.hosting.reg.ru."
+  ],
+  "dnsSnapshot": "project/dns-before-migration.json",
+  "blockers": [
+    "Firebase console shows the account project limit; no new project can currently be created.",
+    "Cloudflare signup remains blocked by a bot verification page in this cloud browser.",
+    "No deployment project, owner UID, Drive reader credential or mail relay is configured.",
+    "DNS control panel access is not configured; current NS point to REG.RU hosting."
+  ],
+  "playbackVerified": false
+}

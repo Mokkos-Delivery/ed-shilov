@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-28T19:13:28.928Z",
+  "project": "eduard-shilov-site",
+  "releaseName": "projects/eduard-shilov-site/releases/cloud.firestore",
+  "rulesetName": "projects/eduard-shilov-site/rulesets/a4c3c8ec-d78d-4476-bdb7-8d509f03ff6b",
+  "previousRulesetName": "projects/eduard-shilov-site/rulesets/7adbf54c-b3af-4dc5-8244-93718d362ba8",
+  "sha256": "ebf189bef3a8868b005187f6740413c2139ced26697ce43d34f0d2547bfc6a43",
+  "ownerUid": "owner_36405b57fb7c4ae58d8e2e817ec67ead",
+  "sourceAcceptedByRulesAPI": true,
+  "deployedSourceMatches": true,
+  "evidence": "User terminal output from successful guarded apply; copied without credentials."
+}
