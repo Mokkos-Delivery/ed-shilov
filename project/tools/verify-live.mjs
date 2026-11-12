@@ -12,7 +12,7 @@ export async function verifyLive({settings,manifest,net=fetch,workerOnly=false})
   const r=await net(url,{redirect:'error',cache:'no-store',signal:AbortSignal.timeout(20000)});
   if(!r.ok){await r.body?.cancel();throw Error('Read-only live check: HTTP '+r.status+' at '+new URL(url).pathname);}
   const reader=r.body.getReader(),parts=[];let size=0;
-  try{while(true){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>1024*1024){await reader.cancel();throw Error('Unexpectedly large live asset.');}parts.push(Buffer.from(value));}}finally{reader.releaseLock();}
+  try{while(true){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>2*1024*1024){await reader.cancel();throw Error('Unexpectedly large live asset.');}parts.push(Buffer.from(value));}}finally{reader.releaseLock();}
   return Buffer.concat(parts);
  }
  const health=JSON.parse(await get(worker.origin+'/health'));

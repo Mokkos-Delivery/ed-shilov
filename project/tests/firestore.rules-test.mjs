@@ -70,3 +70,15 @@ test('Social history is private to the verified owner, including stored post tex
   }
   await assertFails(setDoc(doc(owner,'socialPosts','different-id'),value));
 });
+
+test('Invited verified Google administrator can publish while unverified or non-Google identities cannot',async()=>{
+  const claims={email:'huyencehdofen8632@gmail.com',email_verified:true,firebase:{sign_in_provider:'google.com'}};
+  const db=environment.authenticatedContext('second-admin',claims).firestore();
+  await assertSucceeds(getDocs(collection(db,'tracks')));
+  await assertSucceeds(setDoc(doc(db,'tracks','second-admin-track'),{id:'second-admin-track',title:'Второй администратор',published:true}));
+  for(const extra of [{email_verified:false},{email:'not-invited@gmail.com'},{firebase:{sign_in_provider:'password'}}]){
+    const forbidden=environment.authenticatedContext('untrusted-admin',{...claims,...extra}).firestore();
+    await assertFails(getDoc(doc(forbidden,'tracks','hidden-track')));
+    await assertFails(setDoc(doc(forbidden,'tracks','forged-admin-track'),{id:'forged-admin-track',title:'No',published:true}));
+  }
+});

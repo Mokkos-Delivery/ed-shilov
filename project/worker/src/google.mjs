@@ -1,3 +1,4 @@
+import {isAdministrator} from '../../web/admin-access.mjs';
 import {base64url,unbase64url,jsonBytes} from './core.mjs';
 import {fetchHeaders,readJSON} from './http.mjs';
 
@@ -32,7 +33,7 @@ export async function verifyFirebaseIdToken(token,env,net=fetch) {
   const payload=JSON.parse(new TextDecoder().decode(unbase64url(parts[1])));
   const now=Math.floor(Date.now()/1000);
   if(header.alg!=='RS256'||!header.kid||payload.aud!==env.PROJECT_ID
-    ||payload.iss!=='https://securetoken.google.com/'+env.PROJECT_ID||payload.sub!==env.ADMIN_UID
+    ||payload.iss!=='https://securetoken.google.com/'+env.PROJECT_ID||!isAdministrator({uid:payload.sub,email:payload.email,verified:payload.email_verified,google:payload.firebase?.sign_in_provider==='google.com'},env.ADMIN_UID)
     ||payload.email_verified!==true||!Number.isFinite(payload.exp)||payload.exp<=now
     ||!Number.isFinite(payload.iat)||payload.iat>now+30
     ||!Number.isFinite(payload.auth_time)||payload.auth_time>now+30) throw Error('Unauthorized');

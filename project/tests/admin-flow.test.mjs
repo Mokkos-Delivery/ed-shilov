@@ -1,3 +1,4 @@
+import {isAdministrator} from '../web/admin-access.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -52,9 +53,9 @@ function fixture({storage=null,restore=false,encoderFails=false}={}){
     onAuthStateChanged:(a,callback)=>{observer=callback;callback(auth.currentUser);},
     GoogleAuthProvider:class {addScope(scope){providerScopes.push(scope);}setCustomParameters(){}static credentialFromResult(){return {accessToken:'fixture-drive-token'};}},
     signInWithPopup:async()=>{auth.currentUser=user;observer(user);return {};},reauthenticateWithPopup:async()=>{observer(user);return {};},signOut:async()=>{auth.currentUser=null;observer(null);},
-    collection:(db,kind)=>kind,doc:(db,kind,id)=>({kind,id}),onSnapshot:(ref,callback)=>{callback({docs:[]});return ()=>{};},
+    collection:(db,kind)=>kind,doc:(db,kind,id)=>({kind,id}),onSnapshot:(ref,options,callback)=>{callback({docs:[],metadata:{fromCache:false}});return ()=>{};},
     writeBatch:()=>({set:(ref,value)=>operations.push({ref,value}),commit:async()=>{commits++;}}),updateDoc:async()=>{},setDoc:async()=>{},getDoc:async()=>({exists:()=>false}),
-    DriveSession,titleFromFile,formatSize,mediaURL,localDate,bindPublication,UploadJournal,fileIdentity,RELEASE,
+    isAdministrator,DriveSession,titleFromFile,formatSize,mediaURL,localDate,bindPublication,UploadJournal,fileIdentity,RELEASE,
     setTimeout:(fn,ms)=>{const t=setTimeout(fn,ms);t.unref();return t;},clearTimeout,
     DriveUpload:class extends DriveUpload{constructor(file,folder,token,options){super(file,folder,token,{...options,net});}},
     qualityFiles:async()=>{if(encoderFails)throw Error('Fixture encoder failed');return [];},initSocialComposer:()=>({connect(){},disconnect(){}}),initAdminAnalytics:()=>({connect(){},disconnect(){},open(){}})

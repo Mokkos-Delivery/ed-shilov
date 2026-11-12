@@ -1,3 +1,4 @@
+import {build as bundleJS} from 'esbuild';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -66,7 +67,7 @@ for(const name of fs.readdirSync(publicDir).filter(n=>n.endsWith('.html'))) {
   });
   html=html.replace(/srcset="([^"]+)"/g,(_,value)=>'srcset="'+[...value.matchAll(/([\s\S]+?)\s+(\d+(?:\.\d+)?)(w|x)\s*(?:,\s*|$)/g)].map(x=>resolve(x[1].trim())+' '+x[2]+x[3]).join(', ')+'"');
   const cloud='<script defer src="/js/cloud-config.js?v=migration1"></script><script defer src="/js/cloud-image-map.js?v=migration1"></script><script defer src="/js/cloud-bridge.js?v=migration1"></script>';
-  if(html.includes('<script defer src="/js/site-v10.js?v=10"></script>'))html=html.replace('<script defer src="/js/site-v10.js?v=10"></script>',cloud+'<script defer src="/js/site-v10.js?v=migration1"></script>'+(['index.html','music.html','video.html','bio.html','news.html'].includes(name)?'<script type="module" src="/js/live-catalog.mjs?v=migration1"></script>':''));
+  if(html.includes('<script defer src="/js/site-v10.js?v=10"></script>'))html=html.replace('<script defer src="/js/site-v10.js?v=10"></script>',cloud+'<script defer src="/js/site-v10.js?v=migration1"></script>'+(['index.html','music.html','video.html','bio.html','news.html'].includes(name)?'<script defer src="/js/catalogue-loader.js?v=studio-4"></script>':''));
   if(name==='cookies.html') {
     html=html.replace(/<tr><td>es_form[\s\S]*?<\/tr>/,'<tr><td>Защита формы</td><td>Подписанный токен хранится в памяти вкладки; проверка Cloudflare Turnstile используется только для отправки заявки.</td><td>Токен формы — до 30 минут; результат проверки Turnstile кратковременный.</td></tr>');
     html=html.replace('Она не удаляет уже отправленные письма и сессионный HttpOnly-cookie формы. Сессия истекает отдельно.','Она не удаляет уже отправленные письма. Токен формы пропадает при закрытии вкладки или истекает через 30 минут.');
@@ -107,13 +108,14 @@ const insertion=script.lastIndexOf('})();');if(insertion<0)throw Error('Main scr
 script=script.slice(0,insertion)+fs.readFileSync(root+'/web/catalogue-ui.js','utf8')+'\n'+script.slice(insertion);
 fs.writeFileSync(publicDir+'/js/site-v10.js',script);
 fs.writeFileSync(publicDir+'/js/site-options-v7.js',fs.readFileSync(source+'/js/site-options-v7.js','utf8').replace("'2026-09-v7'",JSON.stringify(settings.policyVersion)));
-const adminFiles=['admin.mjs','admin-media.mjs','admin-analytics.mjs','social-composer.mjs','drive-upload.mjs','quality-worker.js','quality.mjs','publication-media.mjs','upload-journal.mjs','release.mjs'];
-const sharedFiles=['cloud-bridge.js','live-catalog.mjs','analytics-core.mjs','site-analytics.mjs','rock-site.js'];
+const adminFiles=['admin.mjs','admin-access.mjs','admin-media.mjs','admin-analytics.mjs','social-composer.mjs','drive-upload.mjs','quality-worker.js','quality.mjs','publication-media.mjs','upload-journal.mjs','release.mjs'];
+const sharedFiles=['catalogue-loader.js','cloud-bridge.js','live-catalog.mjs','analytics-core.mjs','site-analytics.mjs','rock-site.js'];
 function sourceBytes(dir){return fs.readdirSync(dir).sort().flatMap(name=>{const file=path.join(dir,name);return fs.statSync(file).isDirectory()?sourceBytes(file):[Buffer.from(path.relative(source,file)),fs.readFileSync(file)];});}
 const versionHash=createHash('sha256');
-for(const bytes of [...sourceBytes(source),...fs.readdirSync(root+'/web').sort().map(name=>fs.readFileSync(root+'/web/'+name)),fs.readFileSync(root+'/tools/rock-pages.mjs'),fs.readFileSync(root+'/tools/build.mjs'),Buffer.from(JSON.stringify(publicConfiguration(settings))),Buffer.from(JSON.stringify(mediaMap))])versionHash.update(bytes);
+for(const bytes of [...sourceBytes(source),...fs.readdirSync(root+'/web').sort().map(name=>fs.readFileSync(root+'/web/'+name)),fs.readFileSync(root+'/tools/rock-pages.mjs'),fs.readFileSync(root+'/tools/build.mjs'),fs.readFileSync(root+'/package-lock.json'),Buffer.from(JSON.stringify(publicConfiguration(settings))),Buffer.from(JSON.stringify(mediaMap))])versionHash.update(bytes);
 const assetVersion=versionHash.digest('hex').slice(0,16);
-for(const name of [...sharedFiles,...adminFiles])fs.writeFileSync(publicDir+'/js/'+name,fs.readFileSync(root+'/web/'+name,'utf8').replaceAll('v=studio-4','v='+assetVersion));
+for(const name of [...sharedFiles,...adminFiles])fs.writeFileSync(publicDir+'/js/'+name,fs.readFileSync(root+'/web/'+name,'utf8').replaceAll('v=studio-4','v='+assetVersion).replace(/https:\/\/www\.gstatic\.com\/firebasejs\/13\.0\.0\/firebase-[a-z]+\.js/g,'./firebase-sdk.mjs?v='+assetVersion));
+await bundleJS({stdin:{contents:"export {initializeApp} from 'firebase/app';export {getAuth,setPersistence,browserLocalPersistence,GoogleAuthProvider,signInWithPopup,reauthenticateWithPopup,signOut,onAuthStateChanged} from 'firebase/auth';export {getFirestore,collection,doc,getDoc,onSnapshot,writeBatch,updateDoc,setDoc,getDocs,query,where} from 'firebase/firestore';",resolveDir:root},bundle:true,minify:true,format:'esm',platform:'browser',target:'es2022',outfile:publicDir+'/js/firebase-sdk.mjs',legalComments:'eof'});
 const publicSettings=publicConfiguration(settings);
 fs.writeFileSync(publicDir+'/js/cloud-config.js','window.ED_CLOUD_CONFIG = Object.freeze('+JSON.stringify(publicSettings)+');\n');
 fs.writeFileSync(publicDir+'/js/cloud-image-map.js','window.SITE_IMAGE_MAP = '+JSON.stringify(mediaMap)+';\n');
@@ -123,7 +125,7 @@ fs.writeFileSync(publicDir+'/admin.html',fs.readFileSync(root+'/web/admin.html',
 fs.copyFileSync(root+'/web/rock-site.css',publicDir+'/assets/css/rock-site.css');
 const htmlFiles=fs.readdirSync(publicDir).filter(name=>name.endsWith('.html'));
 for(const name of htmlFiles)fs.writeFileSync(publicDir+'/'+name,fs.readFileSync(publicDir+'/'+name,'utf8').replaceAll('v=studio-4','v='+assetVersion).replaceAll('v=migration1','v='+assetVersion));
-const verifiedFiles=[...htmlFiles,'assets/css/admin.css','assets/css/site-v10.css','assets/css/rock-site.css','js/site-v10.js','js/cloud-config.js','js/cloud-image-map.js',...sharedFiles.map(n=>'js/'+n),...adminFiles.map(n=>'js/'+n),'assets/fonts/oswald-cyrillic-700.woff2','assets/fonts/oswald-latin-700.woff2'];
+const verifiedFiles=[...htmlFiles,'assets/css/admin.css','assets/css/site-v10.css','assets/css/rock-site.css','js/site-v10.js','js/firebase-sdk.mjs','js/cloud-config.js','js/cloud-image-map.js',...sharedFiles.map(n=>'js/'+n),...adminFiles.map(n=>'js/'+n),'assets/fonts/oswald-cyrillic-700.woff2','assets/fonts/oswald-latin-700.woff2'];
 fs.writeFileSync(publicDir+'/build-manifest.json',JSON.stringify({release:RELEASE,assetVersion,draft,deployable:!draft,files:Object.fromEntries(verifiedFiles.map(n=>[n,createHash('sha256').update(fs.readFileSync(publicDir+'/'+n)).digest('hex')]))},null,2)+'\n');
 fs.copyFileSync(publicDir+'/assets/vendor/lamejs-1.2.0-source.tgz.gz',publicDir+'/assets/vendor/lamejs-1.2.0-source.tgz');fs.unlinkSync(publicDir+'/assets/vendor/lamejs-1.2.0-source.tgz.gz');
 const rules=fs.readFileSync(root+'/firestore.rules','utf8').replace('__ADMIN_UID__',settings.adminUid||'__UNCONFIGURED_DENY_ALL__');fs.writeFileSync(root+'/firestore.generated.rules',rules);

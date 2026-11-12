@@ -38,6 +38,9 @@ test('Rules preflight refuses unknown rules; apply preserves old source and veri
     const options={root,client,print:()=>{}};
     await deploy.main({...options,args:['--firebase-cli']});assert.equal(mutations,0);
     source='unknown changed rules';await assert.rejects(deploy.main({...options,args:['--firebase-cli','--apply']}),/custom rules require review/);assert.equal(mutations,0);
+    fs.unlinkSync(path.join(root,'firestore-deployment.json'));
+    fs.mkdirSync(path.join(root,'rules-history'));fs.writeFileSync(path.join(root,'rules-history/rock-1.rules'),oldSource);
+    await assert.rejects(deploy.main({...options,args:['--firebase-cli','--apply']}),/custom rules require review/);
     source=oldSource;await deploy.main({...options,args:['--firebase-cli','--apply']});assert.equal(mutations,2);
     assert.equal(fs.readFileSync(path.join(root,'firestore.previous.rules'),'utf8'),oldSource);
     const proof=JSON.parse(fs.readFileSync(path.join(root,'firestore-deployment.json'),'utf8'));

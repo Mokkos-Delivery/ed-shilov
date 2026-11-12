@@ -137,7 +137,7 @@ test('Upload readiness is owner-only, reports release, and checks the configured
  const path='https://media.example/api/admin/readiness';
  assert.equal((await worker.fetch(new Request(path),env)).status,401);assert.equal(folderReads,0);
  const r=await worker.fetch(new Request(path,{headers:{Authorization:'Bearer '+await jwt()}}),{...env,DRIVE_SERVICE_ACCOUNT_JSON:serviceAccount});
- const value=await r.json();assert.equal(r.status,200);assert.equal(value.readerReady,true);assert.equal(value.release,'2026-11-10-rock-1');assert.equal(folderReads,1);
+ const value=await r.json();assert.equal(r.status,200);assert.equal(value.readerReady,true);assert.equal(value.release,'2026-11-12-rock-2');assert.equal(folderReads,1);
 });
 test('Reader denial, missing files and upstream outages have distinct diagnostics rather than false pending',async()=>{
  for(const [status,code,expected] of [[403,'DRIVE_READER_FORBIDDEN',403],[404,'DRIVE_FILE_PENDING',409],[500,'DRIVE_READER_UNAVAILABLE',503]]){
@@ -162,4 +162,12 @@ test('Owner preview of a hidden song requires authentication and is never public
  assert.equal((await worker.fetch(new Request(path),settings)).status,401);assert.equal(reads,0);
  const r=await worker.fetch(new Request(path,{headers:{Authorization:'Bearer '+await jwt()}}),settings);
  assert.equal(r.status,200);assert.equal(r.headers.get('Cache-Control'),'private, no-store');assert.equal(await r.text(),'song');
+});
+
+test('Invited administrator requires a signed verified Google identity; email alone never grants access',async()=>{
+  const net=async()=>Response.json({keys:[jwk]});
+  const invited={sub:'second_admin_uid',email:'huyencehdofen8632@gmail.com',email_verified:true,firebase:{sign_in_provider:'google.com'}};
+  assert.equal((await verifyFirebaseIdToken(await jwt(invited),env,net)).sub,invited.sub);
+  for(const changes of [{email_verified:false},{email:'other@gmail.com'},{firebase:{sign_in_provider:'password'}},{firebase:undefined}])await assert.rejects(verifyFirebaseIdToken(await jwt({...invited,...changes}),env,net));
+  const pieces=(await jwt(invited)).split('.');pieces[2]=base64url(new Uint8Array(256));await assert.rejects(verifyFirebaseIdToken(pieces.join('.'),env,net));
 });

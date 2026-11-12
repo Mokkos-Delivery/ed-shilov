@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node tools/build.mjs",
     "prepare": "node tools/build.mjs --draft",
-    "test": "node --test tests/*.test.mjs",
+    "test": "node tools/test-current.mjs",
     "check": "node tools/check.mjs",
     "test:rules": "firebase emulators:exec --only firestore --project demo-eduard-shilov --config firebase.emulators.json \"node --test tests/firestore.rules-test.mjs\"",
     "test:hosting": "node tools/hosting-emulator.cjs emulators:exec --only hosting --project demo-eduard-shilov --config firebase.hosting-test.json \"node --test tests/hosting.rules-test.mjs\"",
@@ -29,7 +29,8 @@
     "google-auth-library": "9.15.1",
     "https-proxy-agent": "7.0.6",
     "jsonc-parser": "3.3.1",
-    "wrangler": "4.154.0"
+    "wrangler": "4.154.0",
+    "esbuild": "0.28.2"
   },
   "engines": {
     "node": ">=24.12.0"

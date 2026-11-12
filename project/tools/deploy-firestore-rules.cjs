@@ -44,7 +44,9 @@ async function main(options = {}) {
   const knownPrevious = oldFiles.length === 1 && knownReport?.project === project
     && knownReport?.ownerUid === settings.adminUid && knownReport?.rulesetName === previousName
     && knownReport?.sha256 === hash(oldFiles[0].content);
-  if (!alreadyDeployed && !knownPrevious && (oldFiles.length !== 1 || normalize(oldFiles[0].content) !== normalize(defaultRules))) throw Error('Existing custom rules require review.');
+  const historyDir=path.join(root,'rules-history');
+  const reviewedPrevious=oldFiles.length===1&&fs.existsSync(historyDir)&&fs.readdirSync(historyDir).filter(name=>name.endsWith('.rules')).some(name=>normalize(fs.readFileSync(path.join(historyDir,name),'utf8'))===normalize(oldFiles[0].content));
+  if (!alreadyDeployed && !knownPrevious && !reviewedPrevious && (oldFiles.length !== 1 || normalize(oldFiles[0].content) !== normalize(defaultRules))) throw Error('Existing custom rules require review.');
   if (!args.includes('--apply')) {
     print({project, sourceSha256: hash(content), alreadyDeployed, changesMade: false});
     return;

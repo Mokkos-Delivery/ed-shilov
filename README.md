@@ -1,12 +1,12 @@
-# Эдуард Шилов — ROCK 1
+# Эдуард Шилов — ROCK 2
 
-Рок-дизайн публичного сайта, предложения концертов и выступлений, статистика посещений и всех треков в сохранённой студии Studio 4.
+Ускорение начальной загрузки, второй администратор и упрощённая студия. Рок-дизайн публичного сайта, предложения концертов и выступлений, статистика посещений и всех треков в сохранённой студии Studio 4.
 
-[Скачать ZIP обновления](https://github.com/Mokkos-Delivery/ed-shilov/raw/refs/heads/codex/rock-site-analytics/downloads/EDUARD_ROCK_UPDATE_2026-11-12.zip)
+[Скачать ZIP обновления](https://github.com/Mokkos-Delivery/ed-shilov/raw/refs/heads/codex/rock-site-analytics/downloads/EDUARD_ROCK2_UPDATE_2026-11-12.zip)
 
 - [Установка в Windows](project/UPDATE-ROCK-WINDOWS.md)
 - [Статистика: подключение и значения показателей](project/ANALYTICS.md)
-- [Изменения и проверка](project/REPORT-ROCK-1.md)
+- [Изменения и проверка](project/REPORT-ROCK-2.md)
 
 Архив содержит `project/`, `source/`, `audit.json` и `media-inventory.json` прямо в корне. Все четыре нужны для сборки. Распакуйте поверх существующего `C:\eduard-site`; рабочие настройки, подтверждение правил Firestore, секреты и медиа не заменяются. GitHub Code → Download ZIP создаёт дополнительную папку-обёртку; инструкция рассчитана на ZIP по ссылке выше.
 
@@ -16,4 +16,4 @@
 
 Дизайн этой версии построен на публичных страницах текущего репозитория. Архив «эд.zip» не был прочитан: он превысил лимит передачи 32 МБ. Для точного переноса его страниц нужен архив с HTML/CSS/JS и изображениями до 32 МБ, без node_modules и больших медиа.
 
-Старые `PROMPT_NEXT_CHAT.md`, `SETUP.md`, `DEPLOY.md`, `UPDATE-WINDOWS.txt` и `REPORT-2026-10-29.md` сохраняют историю Studio 4. Для ROCK 1 используйте инструкцию выше.
+Старые `PROMPT_NEXT_CHAT.md`, `SETUP.md`, `DEPLOY.md`, `REPORT-2026-10-29.md` сохраняют историю Studio 4. Для ROCK 2 используйте инструкцию выше.

@@ -1,0 +1,22 @@
+[
+  "admin-flow.test.mjs",
+  "admin-media.test.mjs",
+  "analytics-frontend.test.mjs",
+  "analytics.test.mjs",
+  "core.test.mjs",
+  "domain-status.test.mjs",
+  "hosting-paths.test.mjs",
+  "http.test.mjs",
+  "live-version.test.mjs",
+  "mail-relay.test.mjs",
+  "publication-media.test.mjs",
+  "quality.test.mjs",
+  "release.test.mjs",
+  "rules-deploy.test.mjs",
+  "setup-analytics.test.mjs",
+  "social-composer.test.mjs",
+  "social-media.test.mjs",
+  "social.test.mjs",
+  "upload.test.mjs",
+  "worker.test.mjs"
+]

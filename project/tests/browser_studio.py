@@ -36,7 +36,7 @@ headers={'Access-Control-Allow-Origin':base,'Access-Control-Expose-Headers':'Loc
 def route_handler(route):
  request=route.request;u=request.url
  def reply(value,status=200,extra=None): route.fulfill(status=status,content_type='application/json',body=json.dumps(value),headers={**headers,**(extra or {})})
- if 'www.gstatic.com/firebasejs/' in u:
+ if 'www.gstatic.com/firebasejs/' in u or '/js/firebase-sdk.mjs' in u:
   route.fulfill(content_type='text/javascript',body=(ROOT/'tests/fixtures/browser-firebase.mjs').read_text(),headers=headers);return
  if '/js/cloud-config.js' in u: route.fulfill(content_type='text/javascript',body='window.ED_CLOUD_CONFIG='+json.dumps(config));return
  if '/js/cloud-image-map.js' in u:route.fulfill(content_type='text/javascript',body='window.SITE_IMAGE_MAP={};');return
@@ -59,7 +59,7 @@ def route_handler(route):
   if state['failPut']:state['failPut']=False;reply({},401);return
   value={**metadata,'size':str(len(request.post_data_buffer))};state['files'][id]=value;reply(value);return
  if u.startswith('https://media.fixture.test'):
-  if '/api/admin/readiness' in u:reply({'ok':True,'readerReady':True,'release':'2026-11-10-rock-1'});return
+  if '/api/admin/readiness' in u:reply({'ok':True,'readerReady':True,'release':'2026-11-12-rock-2'});return
   if '/api/admin/verify' in u:
    id=json.loads(request.post_data)['id'];f=state['files'][id]
    reply({'ok':True,'media':{'driveId':id,'name':f['name'],'mime':f['mimeType'],'size':int(f['size']),'published':True}});return
@@ -84,6 +84,10 @@ def wait_ready(page):expect(page.locator('#studio')).to_be_visible();expect(page
 report={'browser':'Chromium','liveServices':False,'checks':[]}
 with sync_playwright() as p:
  browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
+ smoke=browser.new_page();smoke.goto(base+'/admin.html')
+ exports=smoke.evaluate("async()=>Object.keys(await import('/js/firebase-sdk.mjs'))")
+ assert all(name in exports for name in ['initializeApp','getAuth','getFirestore','getDocs','onSnapshot','GoogleAuthProvider'])
+ smoke.close();report['checks']+=['real locally bundled Firebase SDK loads in Chromium']
  context=browser.new_context(viewport={'width':1440,'height':1120},device_scale_factor=1,locale='ru-RU')
  context.route('**/*',route_handler)
  page=context.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
@@ -146,6 +150,13 @@ with sync_playwright() as p:
  page.locator('#open-social').click();page.screenshot(path=str(OUT/'mobile-telegram.png'),full_page=True)
  report['checks']+=['desktop 1440px + mobile/tablet 320, 390, 768px without horizontal overflow']
  assert not errors,errors
+ invited=browser.new_context();invited.route('**/*',route_handler)
+ invited.add_init_script("window.__testAdminIdentity={uid:'invited-admin',email:'huyencehdofen8632@gmail.com',emailVerified:true,providerData:[{providerId:'google.com'}]};")
+ guest=invited.new_page();guest.goto(base+'/admin.html');guest.locator('#login').click();wait_ready(guest)
+ expect(guest.locator('#account')).to_have_text('huyencehdofen8632@gmail.com')
+ expect(guest.locator('#drive-heading')).to_have_text('База данных подключена')
+ expect(guest.locator('#folder-link')).to_have_count(0)
+ invited.close();report['checks']+=['invited verified Google administrator enters studio; database status and removed folder link']
  report['pageErrors']=errors;report['fileCreates']=state['creates'];report['fixtureTelegramDeliveries']=state['sendCount'];report['passed']=True
  context.close();browser.close()
 server.shutdown();(OUT/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report,ensure_ascii=False,indent=2))

@@ -1,3 +1,4 @@
+import {isAdministrator} from './admin-access.mjs?v=studio-4';
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js';
 import {getAuth,setPersistence,browserLocalPersistence,GoogleAuthProvider,signInWithPopup,reauthenticateWithPopup,signOut,onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js';
 import {getFirestore,collection,doc,getDoc,onSnapshot,writeBatch,updateDoc,setDoc} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js';
@@ -20,13 +21,13 @@ const uploadStatus=message=>{$('#upload-status').textContent=message;if(message)
 let libraryFilter='all',autoTitle='',activePanel='materials';
 const previewURLs=new Map();
 let audioMetadata=null;
-function ownUser(value){return !!value&&!!config.adminUid&&value.uid===config.adminUid&&value.emailVerified===true;}
+function ownUser(value){return !!value&&isAdministrator({uid:value.uid,email:value.email,verified:value.emailVerified,google:value.providerData?.some(p=>p.providerId==='google.com')},config.adminUid);}
 function mediaPath(record){return '/media/'+record.driveId+'/'+encodeURIComponent(record.name);}
 function fixedURL(value){return mediaURL(value,config.workerOrigin,location.origin);}
 function escapeHTML(text){return String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function busyUI(value){busy=value;$('#editor-fields').disabled=value;$('#save').disabled=value;$('#cancel-upload').hidden=!value;for(const id of ['kind','seed','prepare-all','new-item','connect','logout','open-social','open-editor','open-library','open-analytics'])$('#'+id).disabled=value;for(const button of document.querySelectorAll('[data-kind]'))button.disabled=value;renderItems();}
 function token(){return drive.token();}
-function driveUI(state,message){$('#drive-card').dataset.state=state;$('#connection').textContent=message;$('#connect').hidden=state==='ready';$('#connect').disabled=state==='connecting'||busy;$('#save').disabled=state==='connecting'||busy;$('#drive-heading').textContent=state==='ready'?'Диск подключён':'Google Диск';}
+function driveUI(state,message){$('#drive-card').dataset.state=state;$('#connection').textContent=message;$('#connect').hidden=state==='ready';$('#connect').disabled=state==='connecting'||busy;$('#save').disabled=state==='connecting'||busy;$('#connection').hidden=state==='ready';}
 function phase(step,title){$('#upload-panel').hidden=false;$('#upload-phase').textContent=title;$('#upload-percent').textContent='';for(const node of document.querySelectorAll('[data-step]'))node.classList.toggle('active',node.dataset.step===step);}
 function previewURL(slot,file){const old=previewURLs.get(slot);if(old?.file===file)return old?.url||'';if(old)URL.revokeObjectURL(old.url);if(!file){previewURLs.delete(slot);return '';}const url=URL.createObjectURL(file);previewURLs.set(slot,{file,url});return url;}
 function resetPreview(){for(const value of previewURLs.values())URL.revokeObjectURL(value.url);previewURLs.clear();autoTitle='';audioMetadata=null;}
@@ -44,7 +45,7 @@ function renderPreview(){
   $('#preview-summary').hidden=kind!=='news'||!$('#excerpt').value;$('#preview-summary').textContent=$('#excerpt').value;
   const source=kind==='tracks'||kind==='videos'?(previewURL('file',file)||fixedURL(kind==='tracks'?(editing?.audio_mp3||editing?.audio_wav):(editing?.videoUrl||editing?.url))):'';
   for(const type of ['audio','video']){const player=$('#preview-'+type),active=type==='audio'?kind==='tracks':kind==='videos';player.hidden=!active||!source;if(active&&source){if(player.getAttribute('src')!==source){player.src=source;player.load();}}else if(player.hasAttribute('src')){player.pause();player.removeAttribute('src');player.load();}}
-  $('#preview-file').textContent=file?file.name+' · '+formatSize(file.size):(editing?'Текущий файл сохранён на Диске':kind==='news'?'Текстовая публикация':'Файл ещё не выбран');
+  $('#preview-file').textContent=file?file.name+' · '+formatSize(file.size):(editing?'Файл сохранён':kind==='news'?'Текстовая публикация':'Файл ещё не выбран');
   $('#file-prompt').textContent=file?file.name:({tracks:'Перетащите песню сюда',videos:'Перетащите видео сюда',photos:'Перетащите фотографию сюда',news:''})[kind];
   $('#file-details').textContent=file?formatSize(file.size)+' · можно выбрать другой файл':({tracks:'или нажмите, чтобы выбрать MP3 / WAV',videos:'или выберите MP4 / WEBM',photos:'или выберите JPG / PNG / WEBP / AVIF',news:''})[kind];
   $('#remove-file').hidden=!file;$('#remove-cover').hidden=!cover;$('#cover-filename').textContent=cover?cover.name+' · '+formatSize(cover.size):'JPG, PNG, WEBP или AVIF. Без файла — фирменная обложка.';
@@ -84,7 +85,7 @@ async function activateDrive(accessToken,expiresAt){
   try{
     let response=await metadata();
     if(response.status===404){if(generation!==drive.generation)return;driveUI('connecting','Один раз выберите папку «Публикации сайта»');await selectUploadFolder(accessToken);if(generation!==drive.generation)return;response=await metadata();}
-    if(!response.ok)throw Error(response.status===401?'Срок доступа истёк. Подключите Диск ещё раз.':'Не удалось проверить папку Диска ('+response.status+').');
+    if(!response.ok)throw Error(response.status===401?'Срок доступа истёк. Подключите хранилище ещё раз.':'Не удалось проверить папку Диска ('+response.status+').');
     const folder=await response.json();if(folder.trashed||folder.mimeType!=='application/vnd.google-apps.folder')throw Error('Папка публикаций недоступна.');if(folder.capabilities?.canAddChildren===false)throw Error('У выбранного аккаунта нет права загружать файлы в папку публикаций.');
     if(!drive.finish(generation))return;driveUI('ready','Папка сохранена. Доступ действует до '+new Date(drive.expiresAt).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})+'.');
     clearTimeout(driveExpiryTimer);driveExpiryTimer=setTimeout(checkDriveExpiry,Math.max(0,drive.expiresAt-Date.now()));
@@ -136,7 +137,7 @@ function renderItems(){
 }
 function watchItems(){
   unsubscribe?.();unsubscribe=null;items=[];renderItems();if(!ownUser(user))return;
-  unsubscribe=onSnapshot(collection(db,$('#kind').value),snapshot=>{items=snapshot.docs.map(x=>({...x.data(),id:x.id})).sort((a,b)=>(Number(a.order)||0)-(Number(b.order)||0));renderItems();},()=>status('Каталог недоступен. Проверьте подключение и права владельца.'));
+  unsubscribe=onSnapshot(collection(db,$('#kind').value),{includeMetadataChanges:true},snapshot=>{ $('#drive-card').dataset.database=snapshot.metadata?.fromCache===false?'ready':'waiting';$('#drive-heading').textContent=snapshot.metadata?.fromCache===false?'База данных подключена':'Подключаем базу данных…';items=snapshot.docs.map(x=>({...x.data(),id:x.id})).sort((a,b)=>(Number(a.order)||0)-(Number(b.order)||0));renderItems();},()=>{$('#drive-card').dataset.database='error';$('#drive-heading').textContent='База данных недоступна';status('Не удалось загрузить каталог.');});
 }
 function typedFile(file,kind){
   const extensions={mp3:'audio/mpeg',wav:'audio/wav',mp4:'video/mp4',webm:'video/webm',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',webp:'image/webp',avif:'image/avif'},expected=extensions[file.name.split('.').pop().toLowerCase()];
@@ -191,7 +192,7 @@ async function save(event){
       }catch(error){qualityWarning=' Оригинал сохранён и доступен. Дополнительные MP3 пока не готовы; их можно создать из списка материалов.';existingJobs.set(item.id,job);if(error.code==='DRIVE_AUTH_REQUIRED'){drive.clear();driveUI('error','Срок доступа Google истёк.');}}
     }
     status((item.published?'Материал опубликован. Открытый сайт получит обновление автоматически.':'Материал сохранён и скрыт с сайта.')+qualityWarning);journal?.clear();job=null;editing=item;$('#file').value='';$('#cover').value='';resetPreview();$('#existing-file').hidden=false;$('#existing-file').textContent='Файл сохранён. Для следующего релиза нажмите «Новый материал».';phase('publish',item.published?'Опубликовано':'Сохранено скрытым');$('#upload-percent').textContent='Готово';uploadStatus(qualityWarning||'Оригинал и обложка сохранены.');renderPreview();
-  }catch(error){const failedPhase=$('#upload-phase').textContent;if(error.code==='DRIVE_AUTH_REQUIRED'){drive.clear();driveUI('error','Срок доступа истёк. Подключите Диск и продолжите загрузку.');}phase('file',error.name==='AbortError'?'Загрузка остановлена':'Нужно продолжить загрузку');uploadStatus(error.name==='AbortError'?'Загрузка остановлена. Нажмите «Продолжить загрузку», чтобы продолжить в этой вкладке.':failedPhase+': '+error.message+(error.code?' ['+error.code+']':''));status('Изменения не опубликованы. Уже загруженные файлы сохранены на Диске.');$('#save').textContent='Продолжить загрузку';}
+  }catch(error){const failedPhase=$('#upload-phase').textContent;if(error.code==='DRIVE_AUTH_REQUIRED'){drive.clear();driveUI('error','Срок доступа истёк. Подключите хранилище и продолжите загрузку.');}phase('file',error.name==='AbortError'?'Загрузка остановлена':'Нужно продолжить загрузку');uploadStatus(error.name==='AbortError'?'Загрузка остановлена. Нажмите «Продолжить загрузку», чтобы продолжить в этой вкладке.':failedPhase+': '+error.message+(error.code?' ['+error.code+']':''));status('Изменения не опубликованы. Уже загруженные файлы сохранены на Диске.');$('#save').textContent='Продолжить загрузку';}
   finally{busyUI(false);$('#progress').hidden=true;renderItems();if(!job){$('#editor-mode').textContent='Сохранено';renderPreview();}}
 }
 async function seed(){
@@ -220,28 +221,27 @@ async function prepareExisting(selected){
       }
       const qualities={...(t.qualities||{})};for(const variant of plan.variants){if(qualities[variant.quality])continue;const record=await uploadOne(variant.file,'quality'+variant.quality,plan);qualities[String(variant.quality)]=mediaPath(record);}
       const batch=writeBatch(db);for(const record of plan.records.values())batch.set(doc(db,'media',record.driveId),bindPublication(record,'tracks',t.id));batch.update(doc(db,'tracks',t.id),{qualities});await batch.commit();existingJobs.delete(t.id);complete++;
-    }catch(error){if(error.name==='AbortError')break;if(error.code==='DRIVE_AUTH_REQUIRED'){drive.clear();driveUI('error','Срок доступа истёк. Подключите Диск ещё раз.');break;}failed++;uploadStatus(t.title+': '+error.message);}
+    }catch(error){if(error.name==='AbortError')break;if(error.code==='DRIVE_AUTH_REQUIRED'){drive.clear();driveUI('error','Срок доступа истёк. Подключите хранилище ещё раз.');break;}failed++;uploadStatus(t.title+': '+error.message);}
   }
   busyUI(false);$('#progress').hidden=true;status('Качество подготовлено: '+complete+'. Не завершено: '+(targets.length-complete)+'. Оригиналы сохранены.');renderItems();
 }
 async function main(){
   const social=initSocialComposer((path,body,method)=>api(path,body,method,null));
   const analytics=initAdminAnalytics((path,body,method,signal)=>api(path,body,method,signal),async()=>{const {getDocs}=await import('https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js');const snapshot=await getDocs(collection(db,'tracks'));return snapshot.docs.map(item=>({...item.data(),id:item.id}));});
-  $('#folder-link').href='https://drive.google.com/drive/folders/'+config.uploadFolderId;
   const brand=document.querySelector('.brand img');if(brand){const url=fixedURL(window.SITE_IMAGE_MAP?.['/assets/img/branding/RUS.webp']);if(url)brand.src=url;brand.onerror=()=>{brand.hidden=true;};}
   if(!config.firebase?.apiKey||!config.firebase?.projectId){$('#login').disabled=true;status('Админка подготовлена, но Firebase-проект ещё не подключён. Сначала нужно завершить настройку проекта.');return;}
   $('#release').textContent=RELEASE;
   const app=initializeApp(config.firebase);auth=getAuth(app);db=getFirestore(app);await setPersistence(auth,browserLocalPersistence);
   onAuthStateChanged(auth,value=>{
-    const previousUid=user?.uid;user=value;drive.setOwner(ownUser(value)?value.uid:'');if(!ownUser(value))drive.clear();
+    const previousUid=user?.uid;user=value;$('#drive-card').dataset.database='waiting';$('#drive-heading').textContent='Подключаем базу данных…';drive.setOwner(ownUser(value)?value.uid:'');if(!ownUser(value))drive.clear();
     $('#studio').hidden=!ownUser(value);$('#login-screen').hidden=ownUser(value);
     if(value&&!ownUser(value)){unsubscribe?.();social.disconnect();analytics.disconnect();status('У этого аккаунта нет доступа к студии. Войдите через аккаунт владельца.');return;}
     if(ownUser(value)){ $('#account').textContent=value.email;if(previousUid!==value.uid){journal=new UploadJournal(sessionStore,'edStudioUpload:'+config.firebase.projectId+':'+value.uid);driveUI('waiting','Проверяем сохранённый доступ…');newItem();status(journal.read()?'Есть незавершённая загрузка. Выберите те же файлы — повтор использует сохранённые номера.':'');social.connect();analytics.connect();if(!authenticating){const saved=drive.saved(value.uid);if(saved)activateDrive(saved.accessToken,saved.expiresAt).catch(error=>status(error.message));else driveUI('waiting','Вход сохранён. Для загрузки разрешите доступ к файлам Диска.');}}}else{unsubscribe?.();social.disconnect();analytics.disconnect();}
   });
   $('#login').onclick=async()=>{
     $('#login').disabled=true;authenticating=true;
-    try{const result=await signInWithPopup(auth,driveProvider(true));if(!ownUser(auth.currentUser))return;const credential=GoogleAuthProvider.credentialFromResult(result);if(credential?.accessToken)await activateDrive(credential.accessToken);else driveUI('waiting','Нажмите «Подключить Диск», чтобы разрешить загрузку.');}
-    catch(error){status(error.code==='auth/popup-closed-by-user'?'Вход отменён.':error.code==='auth/popup-blocked'?'Разрешите всплывающее окно Google и повторите вход.':error.message||'Вход не завершён.');if(ownUser(auth.currentUser))driveUI('error','Подключите Диск, чтобы загружать файлы.');}
+    try{const result=await signInWithPopup(auth,driveProvider(true));if(!ownUser(auth.currentUser))return;const credential=GoogleAuthProvider.credentialFromResult(result);if(credential?.accessToken)await activateDrive(credential.accessToken);else driveUI('waiting','Нажмите «Подключить хранилище», чтобы разрешить загрузку.');}
+    catch(error){status(error.code==='auth/popup-closed-by-user'?'Вход отменён.':error.code==='auth/popup-blocked'?'Разрешите всплывающее окно Google и повторите вход.':error.message||'Вход не завершён.');if(ownUser(auth.currentUser))driveUI('error','Подключите хранилище, чтобы загружать файлы.');}
     finally{$('#login').disabled=false;authenticating=false;}
   };
   $('#connect').onclick=()=>connectDrive().catch(error=>{driveUI('error','Подключение не завершено. Можно попробовать ещё раз.');status(error.message);});
