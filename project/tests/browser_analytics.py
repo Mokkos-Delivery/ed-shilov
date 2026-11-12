@@ -55,7 +55,7 @@ def route_handler(route):
             if state['mode'] == 'missing': reply({'ok': False, 'code': 'ANALYTICS_NOT_CONFIGURED', 'error': 'Storage not configured'}, 503); return
             if state['mode'] == 'failed': reply({'ok': False, 'error': 'Temporary outage'}, 503); return
             reply(report(days)); return
-        if path == '/api/admin/readiness': reply({'ok': True, 'readerReady': True, 'release': '2026-11-12-rock-2'}); return
+        if path == '/api/admin/readiness': reply({'ok': True, 'readerReady': True, 'release': '2026-11-12-rock-3'}); return
         if path == '/api/admin/social/history': reply({'ok': True, 'posts': []}); return
         if path == '/api/admin/social': reply({'ok': True, 'channels': {}}); return
     if 'www.gstatic.com/firebasejs/' in url or '/js/firebase-sdk.mjs' in url:

@@ -3,7 +3,7 @@
   if(!document.body.classList.contains('rock-site'))return;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const moving=()=>!reduced.matches&&!document.body.classList.contains('motion-off')&&!document.hidden;
-  const targets=[...document.querySelectorAll('.rock-hero, .rock-booking, .home-listening, .editorial-feature, .rock-about')];
+  const targets=[...document.querySelectorAll('.rock-booking, .home-listening, .editorial-feature, .rock-about')];
   const seen=new WeakSet(),animations=new Set();
   function cancelMotion(){if(moving())return;for(const animation of animations)animation.cancel();animations.clear();}
   document.addEventListener('visibilitychange',cancelMotion);reduced.addEventListener('change',cancelMotion);

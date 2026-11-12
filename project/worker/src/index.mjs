@@ -1,3 +1,4 @@
+import {createCatalogueReader} from './catalogue.mjs';
 import {fileIdPattern,allowedMime,origins,docFields,validMedia,rangeValid,contentDisposition,validateApplication,base64url,jsonBytes,unbase64url} from './core.mjs';
 import {driveToken,clearToken,verifyFirebaseIdToken} from './google.mjs';
 import {publicationReference,referencedMediaIds} from '../../web/publication-media.mjs';
@@ -137,6 +138,7 @@ async function adminReadiness(request,env,net){
   return reply({ok:true,release:RELEASE,folderId:env.UPLOAD_FOLDER_ID,readerReady:true});
 }
 export function createWorker(net=fetch) {
+  const readCatalogue=createCatalogueReader(net);
   return {async fetch(request,env) {
     const origin=request.headers.get('Origin'), allowed=origins(env);
     if(origin&&!allowed.includes(origin))return reply({error:'Origin not allowed'},403);
@@ -149,6 +151,10 @@ export function createWorker(net=fetch) {
       const match=/^\/media\/([A-Za-z0-9_-]+)(?:\/[^/]+)?$/.exec(url.pathname);
       if(match)result=await media(request,match[1],env,net);
       else if(url.pathname==='/health'&&request.method==='GET')result=reply({ok:true,release:RELEASE,configured:!!(env.PROJECT_ID&&env.DRIVE_SERVICE_ACCOUNT_JSON),analyticsConfigured:!!env.ANALYTICS_DB,billingRequired:false});
+      else if(url.pathname==='/api/catalogue'){
+        const kind=url.searchParams.get('kind');
+        result=request.method!=='GET'?reply({error:'Method not allowed'},405):!['tracks','videos','news','photos'].includes(kind)?reply({error:'Invalid catalogue'},400):reply(await readCatalogue(kind,env));
+      }
       else if(url.pathname==='/api/applications')result=await application(request,env,net,origin);
       else if(url.pathname==='/api/analytics')result=await recordAnalytics(request,env,request.method==='POST'?await boundedJSON(request,2048):undefined,id=>publicDoc('tracks',id,env,net));
       else if(url.pathname==='/api/admin/analytics'){

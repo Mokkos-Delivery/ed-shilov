@@ -16,11 +16,12 @@ function localRef(value,file){
   else if(url.pathname!=='/'&&!fs.existsSync(publicDir+decodeURIComponent(url.pathname)))failures.push(file+': missing '+url.pathname);
   refs++;
 }
-const stripHead=s=>(s.match(/<head[^>]*>([\s\S]*?)<\/head>/)?.[1]||'').replace(/<script[^>]*>[\s\S]*?<\/script>/g,'').replace(/<link rel="stylesheet" href="\/assets\/css\/rock-site\.css\?v=[^"]+">/g,'');
+const stripHead=s=>[...(s.match(/<head[^>]*>([\s\S]*?)<\/head>/)?.[1]||'').matchAll(/<title\b[^>]*>[\s\S]*?<\/title>|<meta\b[^>]*>|<link\b[^>]*rel="canonical"[^>]*>/gi)].map(m=>m[0]).filter(t=>! /name=["']description["']/i.test(t)).join('');
 for(const name of fs.readdirSync(publicDir).filter(n=>n.endsWith('.html'))){
   pages++;const html=fs.readFileSync(publicDir+'/'+name,'utf8');
   for(const match of html.matchAll(/\b(?:src|poster|href|data-photo)="([^"]+)"/g))localRef(match[1],name);
   for(const match of html.matchAll(/srcset="([^"]+)"/g))for(const part of match[1].split(', '))localRef(part.replace(/\s+\d+(?:w|x)$/,''),name);
+  if(name!=='admin.html')assert.match(html,/<meta[^>]+name="description"[^>]+content="[^"]+"|<meta[^>]+content="[^"]+"[^>]+name="description"/i,'Missing description: '+name);
   const original=source+'/'+name;if(fs.existsSync(original))assert.equal(stripHead(html),stripHead(fs.readFileSync(original,'utf8')),'Metadata changed: '+name);
 }
 for(const record of data.media)assert.equal(validMedia(record,record.driveId),true,'Invalid public media '+record.driveId);

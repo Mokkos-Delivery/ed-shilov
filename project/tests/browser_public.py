@@ -20,11 +20,11 @@ with wave.open(sound,'wb') as w:
  w.setnchannels(1);w.setsampwidth(2);w.setframerate(8000)
  w.writeframes(b''.join(struct.pack('<h',int(1200*math.sin(2*math.pi*220*i/8000))) for i in range(8000*3)))
 audio=sound.getvalue();api_calls=[]
+bootstrap=json.loads((ROOT/'public/catalogue-bootstrap.json').read_text())
 config={'firebase':{},'workerOrigin':'https://media.fixture.test','turnstileSiteKey':''}
 def route_handler(route):
  req=route.request;u=req.url
  if '/js/cloud-config.js' in u:route.fulfill(content_type='text/javascript',body='window.ED_CLOUD_CONFIG='+json.dumps(config));return
- if '/js/live-catalog.mjs' in u:route.fulfill(content_type='text/javascript',body='// Static catalogue fixture.');return
  if '/media/' in u or any(p in u for p in ['/assets/img/','/assets/images/','/assets/responsive/']):
   photo=any(p in u.lower() for p in ['.webp','.png','.jpg','.jpeg'])
   route.fulfill(content_type='image/svg+xml' if photo else 'audio/wav',body=cover if photo else audio,headers={'Access-Control-Allow-Origin':'*','Accept-Ranges':'bytes'});return
@@ -32,6 +32,8 @@ def route_handler(route):
   if req.method=='OPTIONS':
    route.fulfill(status=204,headers={'Access-Control-Allow-Origin':base,'Access-Control-Allow-Headers':'Content-Type','Access-Control-Allow-Methods':'GET,POST,OPTIONS'});return
   api_calls.append({'path':u,'method':req.method,'body':req.post_data})
+  if '/api/catalogue?' in u:
+   kind=u.split('kind=')[1];route.fulfill(content_type='application/json',body=json.dumps({'ok':True,'seeded':True,'items':bootstrap[kind]}),headers={'Access-Control-Allow-Origin':base});return
   if '/api/applications' in u:
    response={'token':'fixture-token','policyVersion':'fixture-policy'} if req.method=='GET' else {'ok':True,'reference':'TEST-ONLY','delivery':'mail-service-accepted'}
    route.fulfill(content_type='application/json',body=json.dumps(response),headers={'Access-Control-Allow-Origin':base});return
@@ -47,7 +49,7 @@ report={'liveServices':False,'media':'controlled geometric image and generated W
 with sync_playwright() as p:
  browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
  ctx=browser.new_context(viewport={'width':1440,'height':1000},locale='ru-RU',reduced_motion='reduce')
- ctx.route('**/*',route_handler);page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
+ ctx.route('**/*',route_handler);page=ctx.new_page();requests=[];page.on('request',lambda r:requests.append(r.url));errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
  pages=['index','music','video','bio','news','contacts','press-kit','privacy','cookies','data-consent']
  for name in pages:
   page.goto(base+'/'+name+'.html');page.wait_for_load_state('networkidle');no_overflow(page,name+' desktop')
@@ -57,13 +59,15 @@ with sync_playwright() as p:
    page.set_viewport_size({'width':width,'height':844});no_overflow(page,name+' '+str(width))
   if name=='index':capture(page,'home-tablet.png')
   page.set_viewport_size({'width':1440,'height':1000})
+ assert not any('firebase-sdk' in u or 'firestore.googleapis.com' in u or 'media-variants.json' in u for u in requests),requests
+ report['checks'].append('No public Firebase SDK, Firestore Listen or missing media-variants request')
  report['checks'].append('10 public pages at 1440,768,390,320px without horizontal overflow')
  page.goto(base+'/');expect(page.locator('#intro-dialog')).not_to_be_visible()
  page.locator('#cookie-reject').click();assert not [c for c in api_calls if '/api/analytics' in c['path']]
  page.set_viewport_size({'width':390,'height':844});capture(page,'home-mobile.png')
  page.locator('#menu-toggle').click();expect(page.locator('#mobile-nav')).to_be_visible();page.keyboard.press('Escape');expect(page.locator('#mobile-nav')).not_to_be_visible()
  page.set_viewport_size({'width':1440,'height':1000})
- page.goto(base+'/music.html');page.locator('#music-search').fill('Одесса');assert page.locator('#music-grid .music-card:visible').count()==1
+ page.goto(base+'/music.html');page.wait_for_load_state('networkidle');expect(page.locator('#music-grid .music-card img').first).to_have_attribute('srcset', __import__('re').compile('320w'));page.locator('#music-search').fill('Одесса');assert page.locator('#music-grid .music-card:visible').count()==1
  page.locator('#music-grid .music-card:visible [data-fav]').click();expect(page.locator('#music-grid .music-card:visible [data-fav]')).to_have_attribute('aria-pressed','true')
  page.locator('#music-grid .music-card:visible [data-play]').click();expect(page.locator('#player')).to_be_visible();page.wait_for_function('window.ED_ANALYTICS_PLAYER.audio.currentTime > 0')
  page.set_viewport_size({'width':320,'height':844});no_overflow(page,'active player 320');page.set_viewport_size({'width':1440,'height':1000});page.locator('#player-close').click();expect(page.locator('#player')).not_to_be_visible()

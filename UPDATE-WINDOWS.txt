@@ -1,116 +1,102 @@
-# ROCK 2 — установка обновления в Windows
+# ROCK 3 — скорость сайта и подключение хранилища
 
-Выпуск: 2026-11-12-rock-2. Архив EDUARD_ROCK2_UPDATE_2026-11-12.zip.
-Включает рок-дизайн ROCK 1, статистику, ускорение старта, очищенную студию
-и дополнительного администратора huyencehdofen8632@gmail.com.
-Исходники сами не меняют работающий сайт: нужны правила Firestore, Worker и Hosting.
+Выпуск 2026-11-12-rock-3. ZIP: EDUARD_ROCK3_UPDATE_2026-11-12.zip.
+Все исправления ROCK 1/2 и второй администратор сохранены.
 
-В PowerShell выполняйте команды ПО ОДНОЙ. При ошибке остановитесь и сохраните вывод.
-
-1. Скачайте ZIP в C:\eduard-site. Сохраните резервную копию и распакуйте:
+1. Сохраните ZIP в C:\eduard-site, сделайте копию текущей папки.
+В PowerShell выполняйте команды по одной, при ошибке остановитесь:
 
 Copy-Item -LiteralPath 'C:\eduard-site' -Destination ('C:\eduard-site-backup-' + (Get-Date -Format 'yyyyMMdd-HHmmss')) -Recurse
-Expand-Archive -LiteralPath 'C:\eduard-site\EDUARD_ROCK2_UPDATE_2026-11-12.zip' -DestinationPath 'C:\eduard-site' -Force
+Expand-Archive -LiteralPath 'C:\eduard-site\EDUARD_ROCK3_UPDATE_2026-11-12.zip' -DestinationPath 'C:\eduard-site' -Force
 Set-Location 'C:\eduard-site\project'
-
-Не удаляйте существующую папку. Архив сохраняет ваши settings.json,
-worker/wrangler.jsonc, credentials, секреты и подтверждение правил Firestore.
-project/, source/, audit.json и media-inventory.json должны остаться рядом,
-как в архиве. Не распаковывайте весь ZIP внутрь project/.
-
-2. Проверка и сборка. Нужны Node >=24.12.0 и ранее установленный ffprobe.
-
-Test-Path .\settings.json
-Test-Path .\worker\wrangler.jsonc
-node --version
-npm.cmd ci --no-audit --no-fund
-npm.cmd run doctor -- --strict
+npm.cmd ci
 npm.cmd test
 npm.cmd run build
+npm.cmd run prepare:images -- --apply
+npm.cmd run build
 npm.cmd run check
-
-Оба Test-Path должны вернуть True. Новая команда npm test запускает тесты,
-включённые в выпуск. Старый локальный tests/track-metrics.test.mjs из вашего
-лога не входит в него и не удаляется. Текущий трекер проверяется отдельными
-тестами аналитики. Не подменяйте рабочие настройки примерами.
-
-3. ОБЯЗАТЕЛЬНО опубликуйте правила доступа, включая второго администратора:
-
-node .\tools\deploy-firestore-rules.cjs --firebase-cli --apply
-
-Нужна сессия Firebase CLI владельца проекта wefewfwewfewef853@gmail.com.
-Если получена FIREBASE_CLI_ACCOUNT_MISMATCH:
-
-npx.cmd firebase login:add
-npx.cmd firebase login:use wefewfwewfewef853@gmail.com
-node .\tools\deploy-firestore-rules.cjs --firebase-cli --apply
-
-Утилита сохраняет предыдущие правила и подтверждает опубликованную версию.
-Она узнаёт точные правила прежнего выпуска даже при отсутствии локального
-подтверждения. Неизвестные изменённые правила не перезаписываются: при ошибке
-сохраните вывод для разбора. Не удаляйте проверки из deploy:hosting.
-Именно отсутствие подтверждения правил остановило Hosting в вашем логе.
-
-4. Обновите вход Cloudflare и подключите статистику:
-
-npx.cmd wrangler login
-npm.cmd run setup:analytics -- --apply
-
-Выберите аккаунт, где работает текущий Worker. Повторная настройка использует
-имеющуюся D1. Конфигурация сохраняется в credentials/wrangler-before-analytics.jsonc.
-Ваш прошлый запуск остановился на d1 list; точная причина в логе не указана.
-Если повторится ошибка, выполните диагностическую команду и пришлите вывод
-без токенов и секретов:
-
-npx.cmd wrangler d1 list --json --config .\worker\wrangler.jsonc
-
-До успешной настройки D1 не переходите к публикации.
-
-5. Опубликуйте сервер и сайт:
-
 npm.cmd run deploy:worker -- --apply
 npm.cmd run deploy:hosting -- --apply
 npm.cmd run verify:live
 
-Ожидаются workerVerified: true, hostingVerified: true,
-analyticsConfigured: true и выпуск 2026-11-12-rock-2.
-Откройте https://eduardshilov.com/ и нажмите Ctrl+F5.
-В студии https://eduardshilov.com/admin.html внизу указан выпуск.
-Проверка сравнивает файлы на стандартном адресе Firebase; дополнительная
-проверка собственного домена:
+Не удаляйте рабочую папку, settings.json, worker/wrangler.jsonc, credentials,
+firestore-deployment.json. Секреты и настройки в ZIP не входят.
+Требования остаются: Node >=24.12.0, установленный ffprobe.
+
+prepare:images — новый обязательный шаг для ускорения картинок.
+Он скачивает только уже публичные изображения, указанные на страницах и
+в каталоге, через действующий Worker. Создаёт WebP-версии шириной до
+320/640/1280 пикселей и сохраняет их в .image-cache. Первая обработка
+может занять несколько минут (около 60–70 МБ исходных картинок); при повторе
+готовые файлы используются из кеша. Размер первой загрузки сборщиком не
+является размером страницы для посетителя. Если несколько картинок не
+скачались — повторите эту команду: завершённые повторно не скачиваются.
+Оригиналы в Drive не изменяются. Публичные миниатюры публикуются на Hosting
+с именами по содержимому и кешем на год. Новые картинки из админки работают
+через Worker сразу. Эта команда оптимизирует изображения исходной
+сборки; новые материалы админки продолжают загружаться через Worker. Не удаляйте .image-cache между сборками.
+
+Для уже установленного ROCK 2 правила Firestore не изменились.
+Если Hosting всё же сообщает Publish and verify the current Firestore rules first:
+
+node .\tools\deploy-firestore-rules.cjs --firebase-cli --apply
+npm.cmd run deploy:hosting -- --apply
+
+Нужна сессия Firebase CLI владельца проекта wefewfwewfewef853@gmail.com.
+При FIREBASE_CLI_ACCOUNT_MISMATCH:
+
+npx.cmd firebase login:add
+npx.cmd firebase login:use wefewfwewfewef853@gmail.com
+
+Если статистика ещё не подключена или verify:live сообщает storage is missing:
+
+npx.cmd wrangler login
+npm.cmd run setup:analytics -- --apply
+npm.cmd run deploy:worker -- --apply
+npm.cmd run verify:live
+
+Выберите существующий аккаунт Cloudflare с вашим Worker.
+
+2. ВТОРОЙ АККАУНТ И ПАПКА.
+
+Просьба выбрать «Публикации сайта» — первое разрешение Google для этого
+аккаунта. Приложение использует ограниченный доступ drive.file; разрешение
+первого аккаунта не передаётся второму. Владелец папки должен предоставить
+huyencehdofen8632@gmail.com роль «Редактор», затем второй аккаунт один раз
+выбирает существующую папку в окне Google. Новую папку создавать не нужно.
+
+Прямая ссылка на существующую папку (открывайте владельцем для выдачи роли):
+https://drive.google.com/drive/folders/12XvWmddZKZveffm-mc39DpXJLDeVZ2zH
+
+После успешного подключения действующий доступ восстанавливается при
+перезагрузке и в новой вкладке без повторного окна. Если Google-токен истёк,
+нажатие «Опубликовать» само запускает подтверждение Google, сохраняя выбранные
+файлы; отдельное предварительное нажатие «Подключить хранилище» не требуется.
+При восстановлении сессии окно выбора папки само не открывается. Ошибка
+доступа выводится текстом; запрос к Google ограничен 12 секундами.
+Отмену/истечение разрешений Google нельзя обойти автоматически. Выйдя из
+аккаунта, вы очищаете сохранённый доступ — это ожидаемое поведение.
+
+3. ПРОВЕРКА ПОСЛЕ ПУБЛИКАЦИИ.
 
 (Invoke-RestMethod 'https://eduardshilov.com/build-manifest.json').release
 
-Ожидается 2026-11-12-rock-2. Другой выпуск/404 означает, что собственный домен
-ещё не отдаёт эту публикацию; это не подтверждение успешного обновления.
+Ожидается 2026-11-12-rock-3. Откройте сайт с Ctrl+F5, затем выполните Lighthouse
+заново. Старый отчёт показывает старую версию. В Network публичной страницы
+не должно быть firebase-sdk.mjs, firestore.googleapis.com/Listen или запроса
+media-variants.json. Подготовленные картинки имеют адрес /assets/optimized/.
+Firebase остаётся в админке для входа и редактирования.
 
-6. Дополнительный администратор.
+Каталог обновляется коротким запросом через Worker при загрузке страницы
+и возвращении в её вкладку/окно (не чаще раза в 30 секунд). Серверный кеш —
+15 секунд. При сбое запроса статическая страница остаётся доступна; успешная
+пустая выдача отличается от ошибки. Постоянных Listen-соединений у посетителя
+больше нет. Закрытые треки по-прежнему не выдаются медиа-сервисом.
 
-Выйдите из студии и войдите через Google как huyencehdofen8632@gmail.com.
-Прежний владелец сохраняет доступ. Изменения действуют только после шага 5;
-они не создают Google-аккаунт и не отправляют приглашение.
-Для загрузки файлов предоставьте этой почте роль «Редактор» в существующей
-папке публикаций Google Drive. Для OAuth-приложения в режиме Testing также
-добавьте почту в список тестовых пользователей Google Auth Platform → Audience.
-Разрешение в студии не заменяет права Google Drive. Выбирайте существующую
-папку в системном окне Google, если оно запросит доступ.
-«База данных подключена» означает ответ Firestore. Доступ к загрузкам
-при необходимости запрашивается отдельно кнопкой «Подключить хранилище».
+Google-вход на домене: если auth/unauthorized-domain остаётся, добавьте
+eduardshilov.com в Firebase Authentication → Settings → Authorized domains.
+Не меняйте authDomain в settings.json и DNS ради этой ошибки.
 
-Если auth/unauthorized-domain остаётся: Firebase Console → Authentication →
-Settings → Authorized domains → Add domain → eduardshilov.com.
-www.eduardshilov.com добавьте, если используете и этот адрес.
-Это разрешённые домены входа, а не DNS. authDomain в settings.json оставьте
-eduard-shilov-site.firebaseapp.com.
-
-Статистика: админка → Статистика. Считаются новые события посетителей,
-разрешивших аналитику. Прошлую историю восстановить нельзя; см. ANALYTICS.md.
-
-Для проверки правил локально нужен Java 21+:
-npm.cmd run test:rules
-В облачной среде этот тест заблокирован загрузкой эмулятора сетевой политикой;
-успешный запуск здесь не заявляется. API Firebase проверяет правила при публикации.
-
-Откат: восстановите исходники и настройки из копии, npm ci, сборку, прежние
-правила Firestore, Worker и Hosting. Публикация прежних правил отзовёт доступ
-нового администратора. Не удаляйте D1: иначе потеряется статистика.
+Скорость реального домена и OAuth после установки проверяются у вас:
+в облачной среде нет ваших учётных данных, а доступ к рабочим сервисам
+ограничен. Локальные проверки используют тестовые медиа и сервисы.

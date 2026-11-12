@@ -13,3 +13,5 @@ service-account*.json
 credentials/
 
 build/
+
+.image-cache/

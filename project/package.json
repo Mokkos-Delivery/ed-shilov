@@ -20,7 +20,8 @@
     "preinstall": "node tools/check-node.cjs",
     "verify:live": "node tools/verify-live.mjs",
     "setup:analytics": "node tools/setup-analytics.mjs",
-    "test:analytics:runtime": "node --test tests/analytics.runtime-test.mjs"
+    "test:analytics:runtime": "node --test tests/analytics.runtime-test.mjs",
+    "prepare:images": "node tools/prepare-images.mjs"
   },
   "devDependencies": {
     "@firebase/rules-unit-testing": "6.0.0",
@@ -30,7 +31,8 @@
     "https-proxy-agent": "7.0.6",
     "jsonc-parser": "3.3.1",
     "wrangler": "4.154.0",
-    "esbuild": "0.28.2"
+    "esbuild": "0.28.2",
+    "sharp": "0.35.5"
   },
   "engines": {
     "node": ">=24.12.0"

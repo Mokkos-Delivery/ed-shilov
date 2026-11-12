@@ -1,6 +1,11 @@
   // Firestore sends published items; DOM text is created without interpolating user HTML.
   function cloudImage(source,alt='') {
-    const image=new Image();image.src=window.ED_CLOUD.mediaURL(source)||resolveImage('/assets/img/branding/RUS.webp');image.alt=alt;image.loading='lazy';image.decoding='async';image.width=800;image.height=800;return image;
+    const image=new Image(),url=window.ED_CLOUD.mediaURL(source)||resolveImage('/assets/img/branding/RUS.webp');
+    const key=new URL(url,location.href).pathname,asset=window.ED_IMAGE_ASSETS?.[key];
+    image.dataset.mediaSource=key;image.alt=alt;image.loading='lazy';image.decoding='async';
+    image.width=asset?.width||800;image.height=asset?.height||800;
+    if(asset){image.srcset=asset.srcset;image.sizes=document.querySelector('#music-grid')?'78px':'(max-width: 600px) 90vw, 400px';}
+    image.src=asset?.src||url;return image;
   }
   function cloudButton(text,attribute,id,className='text-button') {
     const button=document.createElement('button');button.type='button';button.className=className;button.textContent=text;button.setAttribute(attribute,id);return button;
@@ -40,12 +45,12 @@
       for(const grid of $$('.music-grid')) {
         const shown=grid.id==='music-grid'?tracks:tracks.filter(t=>t.featured).slice(0,6);
         const existing=new Map([...grid.children].filter(x=>x.dataset.trackId).map(x=>[x.dataset.trackId,x]));
-        const nodes=shown.map(t=>{const card=existing.get(t.id);if(!card)return cloudMusicCard(t);card.querySelector('h3').textContent=t.title;const image=card.querySelector('img'),url=window.ED_CLOUD.mediaURL(t.cover);if(url&&image.src!==url){image.removeAttribute('srcset');image.src=url;}const link=card.querySelector('[data-download-track]');if(link)link.href=window.ED_CLOUD.mediaURL(t.audio_mp3||t.audio_wav)||'#';return card;});grid.replaceChildren(...nodes);
+        const nodes=shown.map(t=>{const card=existing.get(t.id);if(!card)return cloudMusicCard(t);card.querySelector('h3').textContent=t.title;const image=card.querySelector('img'),url=window.ED_CLOUD.mediaURL(t.cover);if(url&&(image.dataset.mediaSource||new URL(image.src,location.href).pathname)!==new URL(url,location.href).pathname){const replacement=cloudImage(t.cover,image.alt);image.replaceWith(replacement);}const link=card.querySelector('[data-download-track]');if(link)link.href=window.ED_CLOUD.mediaURL(t.audio_mp3||t.audio_wav)||'#';return card;});grid.replaceChildren(...nodes);
       }
       if(current){const item=tracks.find(x=>x.id===current.id);if(item){current=item;$('#player-title').textContent=item.title;}else{audio.pause();current=null;$('#player').hidden=true;document.body.classList.remove('has-player');}}
       updateFavouriteButtons();filterMusic();
     }else if(kind==='videos') {
-      videos=items;const grid=$('#video-grid');if(grid)grid.replaceChildren(...videos.map(cloudVideoCard));filterVideo();
+      videos=items;const grid=$('#video-grid');if(grid){const existing=new Map([...grid.children].map(c=>[c.dataset.videoId,c]));grid.replaceChildren(...videos.map(v=>{const card=existing.get(v.id);if(card&&card.querySelector('h3')?.textContent===v.title&&card.querySelector('img')?.dataset.mediaSource===v.coverUrl)return card;return cloudVideoCard(v);}));}filterVideo();
       if(videoItem&&!videos.some(v=>v.id===videoItem.id))$('#media-dialog').close();
     }else if(kind==='news')cloudNews(items);
     else if(kind==='photos'&&document.querySelector('.biography, .bio-body, .bio-content, .photo-grid')) {

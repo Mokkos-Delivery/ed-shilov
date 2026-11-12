@@ -59,7 +59,7 @@ def route_handler(route):
   if state['failPut']:state['failPut']=False;reply({},401);return
   value={**metadata,'size':str(len(request.post_data_buffer))};state['files'][id]=value;reply(value);return
  if u.startswith('https://media.fixture.test'):
-  if '/api/admin/readiness' in u:reply({'ok':True,'readerReady':True,'release':'2026-11-12-rock-2'});return
+  if '/api/admin/readiness' in u:reply({'ok':True,'readerReady':True,'release':'2026-11-12-rock-3'});return
   if '/api/admin/verify' in u:
    id=json.loads(request.post_data)['id'];f=state['files'][id]
    reply({'ok':True,'media':{'driveId':id,'name':f['name'],'mime':f['mimeType'],'size':int(f['size']),'published':True}});return

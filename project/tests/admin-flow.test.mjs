@@ -11,7 +11,7 @@ import {bindPublication} from '../web/publication-media.mjs';
 
 // Exercise the actual admin controller with provider/DOM boundaries replaced.
 // This is not a browser rendering or live Google authorization test.
-function fixture({storage=null,restore=false,encoderFails=false}={}){
+function fixture({storage=null,restore=false,encoderFails=false,folderStatus=200}={}){
   if(!storage){const data=new Map();storage={getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v),removeItem:k=>data.delete(k)};}
   const nodes=new Map(),html=fs.readFileSync('web/admin.html','utf8');
   class Element{
@@ -37,6 +37,7 @@ function fixture({storage=null,restore=false,encoderFails=false}={}){
     requests.push({url,method:options.method});
     if(url.includes('/generateIds?'))return Response.json({ids:['uploaded_file_id']});
     if(url==='https://media.example/api/admin/readiness')return Response.json({ok:true,readerReady:true,release:RELEASE});
+    if(url.startsWith('https://www.googleapis.com/drive/v3/files/')&&folderStatus!==200)return new Response(null,{status:folderStatus});
     if(url.startsWith('https://www.googleapis.com/drive/v3/files/'))return Response.json({id:'publication_folder_1',mimeType:'application/vnd.google-apps.folder'});
     if(url.includes('/upload/drive/v3/files')){
       if(options.method==='POST'){starts++;return new Response(null,{headers:{Location:'https://www.googleapis.com/upload/drive/v3/files?upload_id=flow'}});}
@@ -47,9 +48,9 @@ function fixture({storage=null,restore=false,encoderFails=false}={}){
     if(url==='https://media.example/api/admin/verify')return Response.json({ok:true,media:{driveId:'uploaded_file_id',name:'Новая_песня.mp3',mime:'audio/mpeg',size:3,published:true}});
     throw Error('Unexpected URL: '+url);
   };
-  const sandbox={document,URL,File,Blob,FormData,Date,console,crypto,AbortController,DOMException,Response,Map,Set,Image:Element,location:{href:'https://site.example/admin',origin:'https://site.example'},fetch:net,
+  const sandbox={document,URL,File,Blob,FormData,Date,console,crypto,AbortController,AbortSignal,DOMException,Response,Map,Set,Image:Element,location:{href:'https://site.example/admin',origin:'https://site.example'},fetch:net,
     window:{sessionStorage:storage,ED_CLOUD_CONFIG:{adminUid:'owner',workerOrigin:'https://media.example',firebase:{apiKey:'public-key',projectId:'fixture-project'},uploadFolderId:'publication_folder_1'},SITE_IMAGE_MAP:{'/assets/img/branding/RUS.webp':'/media/branding_file_12345/RUS.webp'},addEventListener(){}},
-    initializeApp:()=>({}),getAuth:()=>auth,getFirestore:()=>({}),setPersistence:async()=>{},browserLocalPersistence:{},
+    initializeApp:()=>({}),getAuth:()=>auth,initializeFirestore:()=>({}),setPersistence:async()=>{},browserLocalPersistence:{},
     onAuthStateChanged:(a,callback)=>{observer=callback;callback(auth.currentUser);},
     GoogleAuthProvider:class {addScope(scope){providerScopes.push(scope);}setCustomParameters(){}static credentialFromResult(){return {accessToken:'fixture-drive-token'};}},
     signInWithPopup:async()=>{auth.currentUser=user;observer(user);return {};},reauthenticateWithPopup:async()=>{observer(user);return {};},signOut:async()=>{auth.currentUser=null;observer(null);},
@@ -128,4 +129,18 @@ test('An uncertain Firestore commit reuses the publication ID and already upload
  await f.nodes.get('editor').onsubmit({preventDefault(){}});
  assert.equal(f.stats().starts,1);assert.equal(f.stats().puts,1);assert.equal(f.stats().commits,1);
  assert.equal(f.operations.filter(x=>x.ref.kind==='tracks').every(x=>x.ref.id===id),true);
+});
+
+
+test('A restored Drive grant never opens the folder picker automatically when Google denies folder access',async()=>{
+ const map=new Map(),storage={getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v),removeItem:k=>map.delete(k)};
+ const initial=fixture({storage});await initial.context.ready;await initial.nodes.get('login').onclick();
+ const f=fixture({storage,restore:true,folderStatus:404});await f.context.ready;await new Promise(setImmediate);
+ assert.equal(f.nodes.get('drive-card').dataset.state,'error');assert.match(f.nodes.get('connection').textContent,/один раз выберите папку/);assert.equal(f.providerScopes.length,0);assert.equal(f.nodes.get('studio').hidden,false);
+});
+test('Publish reconnects an expired Drive grant from the user gesture without losing the selected file',async()=>{
+ const f=fixture();await f.context.ready;await f.nodes.get('login').onclick();
+ const file=new File(['abc'],'Автоподключение.mp3',{type:'audio/mpeg'});f.nodes.get('file').files=[file];f.nodes.get('file').events.change();
+ vm.runInContext('drive.expiresAt=1',f.context);await f.nodes.get('editor').onsubmit({preventDefault(){}});
+ assert.equal(f.providerScopes.length,2);assert.equal(f.stats().starts,1);assert.equal(f.nodes.get('file').files[0],file);
 });

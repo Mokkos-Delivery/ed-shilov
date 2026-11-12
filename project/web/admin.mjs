@@ -1,7 +1,7 @@
 import {isAdministrator} from './admin-access.mjs?v=studio-4';
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js';
 import {getAuth,setPersistence,browserLocalPersistence,GoogleAuthProvider,signInWithPopup,reauthenticateWithPopup,signOut,onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js';
-import {getFirestore,collection,doc,getDoc,onSnapshot,writeBatch,updateDoc,setDoc} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js';
+import {initializeFirestore,collection,doc,getDoc,onSnapshot,writeBatch,updateDoc,setDoc} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js';
 import {DriveUpload} from './drive-upload.mjs?v=studio-4';
 import {qualityFiles} from './quality.mjs?v=studio-4';
 import {bindPublication} from './publication-media.mjs?v=studio-4';
@@ -78,18 +78,19 @@ async function api(path,body,method='POST',signal=controller?.signal){
   let result;try{result=await response.json();}catch{throw Error('Сервер вернул ошибку HTTP '+response.status+'.');}if(!response.ok||!result.ok)throw Object.assign(Error((result.error||'Сервис не подтвердил действие.')+' [HTTP '+response.status+(result.upstreamStatus?'; Drive HTTP '+result.upstreamStatus:'')+(result.code?'; '+result.code:'')+']'),{code:result.code,status:response.status});return result;
 }
 function driveProvider(selectAccount=false){const provider=new GoogleAuthProvider();provider.addScope('https://www.googleapis.com/auth/drive.file');provider.setCustomParameters(selectAccount?{prompt:'select_account'}:{login_hint:auth.currentUser.email});return provider;}
-async function activateDrive(accessToken,expiresAt){
+async function activateDrive(accessToken,expiresAt,interactive=true){
   if(!ownUser(auth.currentUser))throw Error('Войдите как владелец.');
   drive.setOwner(auth.currentUser.uid);const generation=drive.begin(auth.currentUser.uid,accessToken,expiresAt);driveUI('connecting','Проверяем папку публикаций…');
-  const metadata=async()=>fetch('https://www.googleapis.com/drive/v3/files/'+config.uploadFolderId+'?fields=id,mimeType,trashed,capabilities(canAddChildren)',{headers:{Authorization:'Bearer '+accessToken}});
+  const metadata=async()=>fetch('https://www.googleapis.com/drive/v3/files/'+config.uploadFolderId+'?fields=id,mimeType,trashed,capabilities(canAddChildren)',{headers:{Authorization:'Bearer '+accessToken},signal:AbortSignal.timeout(12000)});
   try{
     let response=await metadata();
-    if(response.status===404){if(generation!==drive.generation)return;driveUI('connecting','Один раз выберите папку «Публикации сайта»');await selectUploadFolder(accessToken);if(generation!==drive.generation)return;response=await metadata();}
+    if(response.status===404){if(generation!==drive.generation)return;if(!interactive)throw Error('Для этого аккаунта один раз выберите папку «Публикации сайта». Нажмите «Подключить хранилище».');driveUI('connecting','Один раз выберите папку «Публикации сайта»');await selectUploadFolder(accessToken);if(generation!==drive.generation)return;response=await metadata();}
+    if(response.status===404)throw Error('Google не дал доступ к папке. Предоставьте этому аккаунту роль «Редактор» в папке «Публикации сайта» и выберите её повторно.');
     if(!response.ok)throw Error(response.status===401?'Срок доступа истёк. Подключите хранилище ещё раз.':'Не удалось проверить папку Диска ('+response.status+').');
     const folder=await response.json();if(folder.trashed||folder.mimeType!=='application/vnd.google-apps.folder')throw Error('Папка публикаций недоступна.');if(folder.capabilities?.canAddChildren===false)throw Error('У выбранного аккаунта нет права загружать файлы в папку публикаций.');
     if(!drive.finish(generation))return;driveUI('ready','Папка сохранена. Доступ действует до '+new Date(drive.expiresAt).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})+'.');
     clearTimeout(driveExpiryTimer);driveExpiryTimer=setTimeout(checkDriveExpiry,Math.max(0,drive.expiresAt-Date.now()));
-  }catch(error){if(generation===drive.generation){drive.clear();driveUI('error',error.message);}throw error;}
+  }catch(error){if(error.name==='TimeoutError'||error.name==='AbortError')error=Error('Google Диск не ответил за 12 секунд. Повторите подключение; выбранные файлы сохранены.');if(generation===drive.generation){drive.clear();driveUI('error',error.message);}throw error;}
 }
 function checkDriveExpiry(){if(drive.ready&&drive.expiresAt<=Date.now()){drive.clear();driveUI('waiting','Google-доступ истёк. Обновите разрешение одной кнопкой; вход на сайт сохранён.');}}
 async function connectDrive(){
@@ -164,7 +165,7 @@ async function save(event){
   if(!ownUser(auth.currentUser)){status('Войдите как владелец.');return;}
   const kind=$('#kind').value,file=$('#file').files[0],cover=$('#cover').files[0];
   checkDriveExpiry();
-  if((file||cover)&&!drive.ready){status('Обновите доступ к Диску. Уже выбранные файлы сохранятся.');$('#connect').focus();return;}
+  if((file||cover)&&!drive.ready){busyUI(true);try{await connectDrive();}catch(error){status(error.message||'Google не подтвердил доступ. Выбранные файлы сохранены.');return;}finally{busyUI(false);}if(!drive.ready)return;}
   const unfinished=journal?.read();
   if(!job)job=makePlan(editing?.id||(unfinished?.kind===kind?unfinished.id:(kind[0]+'_'+crypto.randomUUID())));
   controller=new AbortController();busyUI(true);status('');phase('file','Подготовка материала');let pendingQuality=null,qualityWarning='';
@@ -231,17 +232,17 @@ async function main(){
   const brand=document.querySelector('.brand img');if(brand){const url=fixedURL(window.SITE_IMAGE_MAP?.['/assets/img/branding/RUS.webp']);if(url)brand.src=url;brand.onerror=()=>{brand.hidden=true;};}
   if(!config.firebase?.apiKey||!config.firebase?.projectId){$('#login').disabled=true;status('Админка подготовлена, но Firebase-проект ещё не подключён. Сначала нужно завершить настройку проекта.');return;}
   $('#release').textContent=RELEASE;
-  const app=initializeApp(config.firebase);auth=getAuth(app);db=getFirestore(app);await setPersistence(auth,browserLocalPersistence);
+  const app=initializeApp(config.firebase);auth=getAuth(app);db=initializeFirestore(app,{experimentalForceLongPolling:true,experimentalLongPollingOptions:{timeoutSeconds:10}});await setPersistence(auth,browserLocalPersistence);
   onAuthStateChanged(auth,value=>{
     const previousUid=user?.uid;user=value;$('#drive-card').dataset.database='waiting';$('#drive-heading').textContent='Подключаем базу данных…';drive.setOwner(ownUser(value)?value.uid:'');if(!ownUser(value))drive.clear();
     $('#studio').hidden=!ownUser(value);$('#login-screen').hidden=ownUser(value);
     if(value&&!ownUser(value)){unsubscribe?.();social.disconnect();analytics.disconnect();status('У этого аккаунта нет доступа к студии. Войдите через аккаунт владельца.');return;}
-    if(ownUser(value)){ $('#account').textContent=value.email;if(previousUid!==value.uid){journal=new UploadJournal(sessionStore,'edStudioUpload:'+config.firebase.projectId+':'+value.uid);driveUI('waiting','Проверяем сохранённый доступ…');newItem();status(journal.read()?'Есть незавершённая загрузка. Выберите те же файлы — повтор использует сохранённые номера.':'');social.connect();analytics.connect();if(!authenticating){const saved=drive.saved(value.uid);if(saved)activateDrive(saved.accessToken,saved.expiresAt).catch(error=>status(error.message));else driveUI('waiting','Вход сохранён. Для загрузки разрешите доступ к файлам Диска.');}}}else{unsubscribe?.();social.disconnect();analytics.disconnect();}
+    if(ownUser(value)){ $('#account').textContent=value.email;if(previousUid!==value.uid){journal=new UploadJournal(sessionStore,'edStudioUpload:'+config.firebase.projectId+':'+value.uid);driveUI('waiting','Проверяем сохранённый доступ…');newItem();status(journal.read()?'Есть незавершённая загрузка. Выберите те же файлы — повтор использует сохранённые номера.':'');social.connect();analytics.connect();if(!authenticating){const saved=drive.saved(value.uid);if(saved)activateDrive(saved.accessToken,saved.expiresAt,false).catch(error=>status(error.message));else driveUI('waiting','Вход сохранён. Для загрузки разрешите доступ к файлам Диска.');}}}else{unsubscribe?.();social.disconnect();analytics.disconnect();}
   });
   $('#login').onclick=async()=>{
     $('#login').disabled=true;authenticating=true;
     try{const result=await signInWithPopup(auth,driveProvider(true));if(!ownUser(auth.currentUser))return;const credential=GoogleAuthProvider.credentialFromResult(result);if(credential?.accessToken)await activateDrive(credential.accessToken);else driveUI('waiting','Нажмите «Подключить хранилище», чтобы разрешить загрузку.');}
-    catch(error){status(error.code==='auth/popup-closed-by-user'?'Вход отменён.':error.code==='auth/popup-blocked'?'Разрешите всплывающее окно Google и повторите вход.':error.message||'Вход не завершён.');if(ownUser(auth.currentUser))driveUI('error','Подключите хранилище, чтобы загружать файлы.');}
+    catch(error){status(error.code==='auth/popup-closed-by-user'?'Вход отменён.':error.code==='auth/popup-blocked'?'Разрешите всплывающее окно Google и повторите вход.':error.message||'Вход не завершён.');if(ownUser(auth.currentUser))driveUI('error',error.message||'Подключите хранилище, чтобы загружать файлы.');}
     finally{$('#login').disabled=false;authenticating=false;}
   };
   $('#connect').onclick=()=>connectDrive().catch(error=>{driveUI('error','Подключение не завершено. Можно попробовать ещё раз.');status(error.message);});

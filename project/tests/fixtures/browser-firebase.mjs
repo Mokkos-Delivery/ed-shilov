@@ -4,7 +4,7 @@ const data=()=>JSON.parse(localStorage.getItem('fixtureCatalog')||'{"tracks":{},
 const user={uid:'fixture_owner',email:'owner@example.test',emailVerified:true,...window.__testAdminIdentity,getIdToken:async()=> 'fixture-id-token'};
 const auth=fixture.auth ||= {currentUser:localStorage.getItem('fixtureSignedIn')?user:null};
 function notify(){for(const s of fixture.subscriptions)s.fn({metadata:{fromCache:false},docs:Object.values(data()[s.kind]||{}).map(v=>({id:v.id,data:()=>v}))});}
-export const initializeApp=()=>({});export const getAuth=()=>auth;export const getFirestore=()=>({});
+export const initializeApp=()=>({});export const getAuth=()=>auth;export const getFirestore=()=>({});export const initializeFirestore=()=>({});
 export const browserLocalPersistence={type:'LOCAL'};
 export async function setPersistence(a,p){fixture.persistence=p.type;}
 export function onAuthStateChanged(a,fn){fixture.observers.push(fn);queueMicrotask(()=>fn(auth.currentUser));}

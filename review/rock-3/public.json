@@ -1,0 +1,18 @@
+{
+  "liveServices": false,
+  "media": "controlled geometric image and generated WAV fixtures",
+  "checks": [
+    "No public Firebase SDK, Firestore Listen or missing media-variants request",
+    "10 public pages at 1440,768,390,320px without horizontal overflow",
+    "search/favourites/player/audio playback/stop",
+    "language and persistent light/dark theme",
+    "no automatic intro; mobile navigation with Escape",
+    "privacy refusal causes zero telemetry requests",
+    "concert link prefills format",
+    "changing format preserves typed request",
+    "booking sends selected format in existing message field via fixture Worker"
+  ],
+  "passed": true,
+  "pageErrors": [],
+  "fixtureBookingRequests": 1
+}
