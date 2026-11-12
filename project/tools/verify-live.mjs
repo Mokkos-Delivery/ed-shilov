@@ -17,17 +17,18 @@ export async function verifyLive({settings,manifest,net=fetch,workerOnly=false})
  }
  const health=JSON.parse(await get(worker.origin+'/health'));
  if(health.release!==RELEASE||health.configured!==true)throw Error('Worker release/configuration does not match '+RELEASE+'.');
- if(workerOnly)return {release:RELEASE,workerVerified:true,hostingVerified:false,readOnly:true};
+ if(health.analyticsConfigured!==true)throw Error('Worker analytics storage is missing. Run setup:analytics -- --apply and deploy the Worker.');
+ if(workerOnly)return {release:RELEASE,workerVerified:true,analyticsConfigured:true,hostingVerified:false,readOnly:true};
  if(!manifest||manifest.draft||!manifest.deployable||manifest.release!==RELEASE)throw Error('Build with your real settings before comparing Hosting. A draft cannot be published.');
  const site='https://eduard-shilov-site.web.app';
  const remote=JSON.parse(await get(site+'/build-manifest.json?verify='+manifest.assetVersion));
  if(remote.assetVersion!==manifest.assetVersion||remote.release!==RELEASE||remote.draft)throw Error('Hosting build differs from the local release.');
  for(const [name,hash] of Object.entries(manifest.files)){
-  if(!/^(admin\.html|assets\/css\/admin\.css|js\/[a-z-]+\.(?:mjs|js))$/.test(name))throw Error('Unexpected manifest path.');
+  if(!/^(?:[a-z0-9-]+\.html|assets\/css\/[a-z0-9-]+\.css|assets\/fonts\/[a-z0-9-]+\.woff2|js\/[a-z0-9-]+\.(?:mjs|js))$/.test(name))throw Error('Unexpected manifest path.');
   const actual=createHash('sha256').update(await get(site+'/'+name+'?v='+manifest.assetVersion)).digest('hex');
   if(actual!==hash)throw Error('Published asset differs: '+name);
  }
- return {release:RELEASE,assetVersion:manifest.assetVersion,workerVerified:true,hostingVerified:true,hashedAssets:Object.keys(manifest.files).length,readOnly:true,liveOwnerUploadVerified:false,telegramDeliveryVerified:false};
+ return {release:RELEASE,assetVersion:manifest.assetVersion,workerVerified:true,analyticsConfigured:true,hostingVerified:true,hashedAssets:Object.keys(manifest.files).length,readOnly:true,liveOwnerUploadVerified:false,telegramDeliveryVerified:false};
 }
 const main=process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url);
 if(main){

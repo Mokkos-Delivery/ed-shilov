@@ -57,7 +57,7 @@ function fixture({storage=null,restore=false,encoderFails=false}={}){
     DriveSession,titleFromFile,formatSize,mediaURL,localDate,bindPublication,UploadJournal,fileIdentity,RELEASE,
     setTimeout:(fn,ms)=>{const t=setTimeout(fn,ms);t.unref();return t;},clearTimeout,
     DriveUpload:class extends DriveUpload{constructor(file,folder,token,options){super(file,folder,token,{...options,net});}},
-    qualityFiles:async()=>{if(encoderFails)throw Error('Fixture encoder failed');return [];},initSocialComposer:()=>({connect(){},disconnect(){}})
+    qualityFiles:async()=>{if(encoderFails)throw Error('Fixture encoder failed');return [];},initSocialComposer:()=>({connect(){},disconnect(){}}),initAdminAnalytics:()=>({connect(){},disconnect(){},open(){}})
   };
   const context=vm.createContext(sandbox);
   let script=fs.readFileSync('web/admin.mjs','utf8').replace(/^import .*;\n/gm,'');

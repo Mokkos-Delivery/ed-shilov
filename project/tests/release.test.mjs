@@ -4,7 +4,18 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
-import {publicConfiguration,readSecrets,readiness,projectId,ownerUid} from '../tools/project-config.mjs';
+import {publicConfiguration,readSecrets,readiness,readJSON,projectId,ownerUid} from '../tools/project-config.mjs';
+
+test('Deployment reads JSONC Worker bindings with comments and trailing commas without relaxing JSON secrets',()=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'eduard-jsonc-'));
+  try{
+    const worker=path.join(dir,'wrangler.jsonc'),secret=path.join(dir,'secret.json');
+    const input='{ // retained owner note\n"d1_databases": [{"binding":"ANALYTICS_DB",}],}';
+    fs.writeFileSync(worker,input);fs.writeFileSync(secret,input);
+    assert.equal(readJSON(worker).d1_databases[0].binding,'ANALYTICS_DB');
+    assert.throws(()=>readJSON(secret),/Invalid JSON file: secret.json/);
+  }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
 
 function complete(){
   const settings={firebase:{projectId,apiKey:'public-key',authDomain:projectId+'.firebaseapp.com',appId:'1:563388255415:web:test'},adminUid:ownerUid,workerOrigin:'https://media.example',uploadFolderId:'publication_folder_1',pickerApiKey:'picker-public-key',googleProjectNumber:'563388255415',turnstileSiteKey:'turnstile-public-key',policyVersion:'current'};

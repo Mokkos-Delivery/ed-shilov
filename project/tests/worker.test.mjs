@@ -137,7 +137,7 @@ test('Upload readiness is owner-only, reports release, and checks the configured
  const path='https://media.example/api/admin/readiness';
  assert.equal((await worker.fetch(new Request(path),env)).status,401);assert.equal(folderReads,0);
  const r=await worker.fetch(new Request(path,{headers:{Authorization:'Bearer '+await jwt()}}),{...env,DRIVE_SERVICE_ACCOUNT_JSON:serviceAccount});
- const value=await r.json();assert.equal(r.status,200);assert.equal(value.readerReady,true);assert.equal(value.release,'2026-10-29-studio-4');assert.equal(folderReads,1);
+ const value=await r.json();assert.equal(r.status,200);assert.equal(value.readerReady,true);assert.equal(value.release,'2026-11-10-rock-1');assert.equal(folderReads,1);
 });
 test('Reader denial, missing files and upstream outages have distinct diagnostics rather than false pending',async()=>{
  for(const [status,code,expected] of [[403,'DRIVE_READER_FORBIDDEN',403],[404,'DRIVE_FILE_PENDING',409],[500,'DRIVE_READER_UNAVAILABLE',503]]){

@@ -5,6 +5,7 @@ import {handleSocial} from './social.mjs';
 import {socialMultipart} from './social-media.mjs';
 import {fetchHeaders,readJSON} from './http.mjs';
 import {RELEASE} from '../../web/release.mjs';
+import {recordAnalytics,analyticsReport,cleanupAnalytics} from './analytics.mjs';
 
 const catalogueCache=new Map();
 function reply(data,status=200,extra={}) {return new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...extra}});}
@@ -147,8 +148,14 @@ export function createWorker(net=fetch) {
     try {
       const match=/^\/media\/([A-Za-z0-9_-]+)(?:\/[^/]+)?$/.exec(url.pathname);
       if(match)result=await media(request,match[1],env,net);
-      else if(url.pathname==='/health'&&request.method==='GET')result=reply({ok:true,release:RELEASE,configured:!!(env.PROJECT_ID&&env.DRIVE_SERVICE_ACCOUNT_JSON),billingRequired:false});
+      else if(url.pathname==='/health'&&request.method==='GET')result=reply({ok:true,release:RELEASE,configured:!!(env.PROJECT_ID&&env.DRIVE_SERVICE_ACCOUNT_JSON),analyticsConfigured:!!env.ANALYTICS_DB,billingRequired:false});
       else if(url.pathname==='/api/applications')result=await application(request,env,net,origin);
+      else if(url.pathname==='/api/analytics')result=await recordAnalytics(request,env,request.method==='POST'?await boundedJSON(request,2048):undefined,id=>publicDoc('tracks',id,env,net));
+      else if(url.pathname==='/api/admin/analytics'){
+        const bearer=request.headers.get('Authorization')||'';
+        try{await verifyFirebaseIdToken(bearer.startsWith('Bearer ')?bearer.slice(7):'',env,net);}catch{return reply({error:'Unauthorized'},401,origin?{'Access-Control-Allow-Origin':origin,Vary:'Origin'}:{});}
+        result=await analyticsReport(request,env);
+      }
       else if(url.pathname==='/api/admin/verify')result=await adminVerify(request,env,net);
       else if(url.pathname==='/api/admin/readiness'||/^\/api\/admin\/media\/[A-Za-z0-9_-]+(?:\/[^/]+)?$/.test(url.pathname)){
         const bearer=request.headers.get('Authorization')||'';
@@ -174,6 +181,6 @@ export function createWorker(net=fetch) {
     }catch(error){return reply({error:error.status===400?(error.publicMessage||'Некорректный запрос.'):'Сервис временно недоступен. Попробуйте позже.'},error.status===400?400:503,origin?{'Access-Control-Allow-Origin':origin,Vary:'Origin'}:{});}
     if(origin){result.headers.set('Access-Control-Allow-Origin',origin);result.headers.set('Access-Control-Expose-Headers','Content-Length, Content-Range, Accept-Ranges');result.headers.append('Vary','Origin');}
     return result;
-  }};
+  },async scheduled(controller,env){await cleanupAnalytics(env);}};
 }
 export default createWorker();

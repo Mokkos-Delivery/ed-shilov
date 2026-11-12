@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {parse as parseJSONC} from 'jsonc-parser';
 import {resolveSocialTarget,socialTargets,enabledSocialTargets} from '../worker/src/social-targets.mjs';
 
 export const projectId='eduard-shilov-site';
@@ -11,7 +12,16 @@ export function publicConfiguration(settings){
   for(const key of ['adminUid','googleProjectNumber','pickerApiKey','workerOrigin','uploadFolderId','turnstileSiteKey','policyVersion'])output[key]=settings[key]||'';
   return output;
 }
-export function readJSON(file,fallback){if(!fs.existsSync(file))return fallback;try{return JSON.parse(fs.readFileSync(file,'utf8'));}catch{throw Error('Invalid JSON file: '+path.basename(file));}}
+export function readJSON(file,fallback){
+  if(!fs.existsSync(file))return fallback;
+  try{
+    const text=fs.readFileSync(file,'utf8');
+    if(!file.endsWith('.jsonc'))return JSON.parse(text);
+    const errors=[],value=parseJSONC(text,errors,{allowTrailingComma:true});
+    if(errors.length||!value||typeof value!=='object'||Array.isArray(value))throw Error('Invalid configuration');
+    return value;
+  }catch{throw Error('Invalid JSON file: '+path.basename(file));}
+}
 export function readSecrets(root){
   const secrets={},file=path.join(root,'worker/.dev.vars');
   if(fs.existsSync(file))for(const line of fs.readFileSync(file,'utf8').split(/\r?\n/)){

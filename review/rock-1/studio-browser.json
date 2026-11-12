@@ -1,0 +1,25 @@
+{
+  "browser": "Chromium",
+  "liveServices": false,
+  "checks": [
+    "native browser fetch + real WAV and cover preview",
+    "401 + reconnect + resumable retry",
+    "lost Firestore acknowledgement + F5 + same files and document ID",
+    "one audio and one cover, no duplicate files",
+    "F5 restores Firebase and unexpired Drive grant without popup",
+    "library audio playback in Chromium",
+    "edit + visibility controls",
+    "Telegram local photo preview, explicit send, two recipients + same-attempt retry",
+    "MP4 local preview, 1024-character validation, one recipient and no send before confirmation",
+    "new tab restores valid authorization",
+    "expired Drive preserves site login and independent Telegram editor",
+    "desktop 1440px + mobile/tablet 320, 390, 768px without horizontal overflow"
+  ],
+  "pageErrors": [],
+  "fileCreates": [
+    "fixture_file_0001",
+    "fixture_file_0002"
+  ],
+  "fixtureTelegramDeliveries": 3,
+  "passed": true
+}

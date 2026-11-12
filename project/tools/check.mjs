@@ -16,7 +16,7 @@ function localRef(value,file){
   else if(url.pathname!=='/'&&!fs.existsSync(publicDir+decodeURIComponent(url.pathname)))failures.push(file+': missing '+url.pathname);
   refs++;
 }
-const stripHead=s=>(s.match(/<head[^>]*>([\s\S]*?)<\/head>/)?.[1]||'').replace(/<script[^>]*>[\s\S]*?<\/script>/g,'');
+const stripHead=s=>(s.match(/<head[^>]*>([\s\S]*?)<\/head>/)?.[1]||'').replace(/<script[^>]*>[\s\S]*?<\/script>/g,'').replace(/<link rel="stylesheet" href="\/assets\/css\/rock-site\.css\?v=[^"]+">/g,'');
 for(const name of fs.readdirSync(publicDir).filter(n=>n.endsWith('.html'))){
   pages++;const html=fs.readFileSync(publicDir+'/'+name,'utf8');
   for(const match of html.matchAll(/\b(?:src|poster|href|data-photo)="([^"]+)"/g))localRef(match[1],name);

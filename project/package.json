@@ -18,7 +18,9 @@
     "smoke": "node tools/rollout.mjs smoke",
     "test:runtime": "node --test tests/worker.runtime-test.mjs",
     "preinstall": "node tools/check-node.cjs",
-    "verify:live": "node tools/verify-live.mjs"
+    "verify:live": "node tools/verify-live.mjs",
+    "setup:analytics": "node tools/setup-analytics.mjs",
+    "test:analytics:runtime": "node --test tests/analytics.runtime-test.mjs"
   },
   "devDependencies": {
     "@firebase/rules-unit-testing": "6.0.0",
@@ -26,6 +28,7 @@
     "firebase-tools": "15.33.0",
     "google-auth-library": "9.15.1",
     "https-proxy-agent": "7.0.6",
+    "jsonc-parser": "3.3.1",
     "wrangler": "4.154.0"
   },
   "engines": {

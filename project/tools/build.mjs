@@ -6,6 +6,7 @@ import {buildAdminPreview} from './build-admin-preview.mjs';
 import {publicConfiguration} from './project-config.mjs';
 import {createHash} from 'node:crypto';
 import {RELEASE} from '../web/release.mjs';
+import {applyRockPage} from './rock-pages.mjs';
 
 const root=path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const source=path.resolve(root,'../source'),draft=process.argv.includes('--draft');
@@ -58,7 +59,8 @@ fs.cpSync(source,publicDir,{recursive:true});
 // Source contains only audited code/catalogue files; media bytes are deliberately absent.
 function patch(text,from,to,count=1){const matches=text.split(from).length-1;if(matches!==count)throw Error('Source changed: expected '+count+' matches for '+from.slice(0,90));return text.split(from).join(to);}
 for(const name of fs.readdirSync(publicDir).filter(n=>n.endsWith('.html'))) {
-  let html=fs.readFileSync(publicDir+'/'+name,'utf8');
+  let html=applyRockPage(fs.readFileSync(publicDir+'/'+name,'utf8'),name);
+  html=html.replace('</head>','<link rel="stylesheet" href="/assets/css/rock-site.css?v=studio-4"><script defer src="/js/rock-site.js?v=studio-4"></script><script type="module" src="/js/site-analytics.mjs?v=studio-4"></script></head>');
   html=html.replace(/\b(src|poster|href|data-photo)="([^"]+)"/g,(all,attribute,value)=>{
     if(!value.startsWith('/')||value.startsWith('//'))return all;const target=resolve(value);return `${attribute}="${target}${attribute==='href'&&/\.(?:mp3|wav)$/i.test(decodeURIComponent(value))?'?download=1':''}"`;
   });
@@ -105,16 +107,24 @@ const insertion=script.lastIndexOf('})();');if(insertion<0)throw Error('Main scr
 script=script.slice(0,insertion)+fs.readFileSync(root+'/web/catalogue-ui.js','utf8')+'\n'+script.slice(insertion);
 fs.writeFileSync(publicDir+'/js/site-v10.js',script);
 fs.writeFileSync(publicDir+'/js/site-options-v7.js',fs.readFileSync(source+'/js/site-options-v7.js','utf8').replace("'2026-09-v7'",JSON.stringify(settings.policyVersion)));
-const adminFiles=['admin.mjs','admin-media.mjs','social-composer.mjs','drive-upload.mjs','quality-worker.js','quality.mjs','publication-media.mjs','upload-journal.mjs','release.mjs'];
-const assetVersion=createHash('sha256').update(adminFiles.map(name=>fs.readFileSync(root+'/web/'+name,'utf8')).join('\n')+fs.readFileSync(root+'/web/admin.css','utf8')+fs.readFileSync(root+'/web/admin.html','utf8')+JSON.stringify(publicConfiguration(settings))+JSON.stringify(mediaMap)).digest('hex').slice(0,16);
-for(const name of ['cloud-bridge.js','live-catalog.mjs',...adminFiles])fs.writeFileSync(publicDir+'/js/'+name,fs.readFileSync(root+'/web/'+name,'utf8').replaceAll('v=studio-4','v='+assetVersion));
+const adminFiles=['admin.mjs','admin-media.mjs','admin-analytics.mjs','social-composer.mjs','drive-upload.mjs','quality-worker.js','quality.mjs','publication-media.mjs','upload-journal.mjs','release.mjs'];
+const sharedFiles=['cloud-bridge.js','live-catalog.mjs','analytics-core.mjs','site-analytics.mjs','rock-site.js'];
+function sourceBytes(dir){return fs.readdirSync(dir).sort().flatMap(name=>{const file=path.join(dir,name);return fs.statSync(file).isDirectory()?sourceBytes(file):[Buffer.from(path.relative(source,file)),fs.readFileSync(file)];});}
+const versionHash=createHash('sha256');
+for(const bytes of [...sourceBytes(source),...fs.readdirSync(root+'/web').sort().map(name=>fs.readFileSync(root+'/web/'+name)),fs.readFileSync(root+'/tools/rock-pages.mjs'),fs.readFileSync(root+'/tools/build.mjs'),Buffer.from(JSON.stringify(publicConfiguration(settings))),Buffer.from(JSON.stringify(mediaMap))])versionHash.update(bytes);
+const assetVersion=versionHash.digest('hex').slice(0,16);
+for(const name of [...sharedFiles,...adminFiles])fs.writeFileSync(publicDir+'/js/'+name,fs.readFileSync(root+'/web/'+name,'utf8').replaceAll('v=studio-4','v='+assetVersion));
 const publicSettings=publicConfiguration(settings);
 fs.writeFileSync(publicDir+'/js/cloud-config.js','window.ED_CLOUD_CONFIG = Object.freeze('+JSON.stringify(publicSettings)+');\n');
 fs.writeFileSync(publicDir+'/js/cloud-image-map.js','window.SITE_IMAGE_MAP = '+JSON.stringify(mediaMap)+';\n');
 fs.writeFileSync(publicDir+'/assets/tracks.json',JSON.stringify(tracks));fs.writeFileSync(publicDir+'/videos.json',JSON.stringify(videos));fs.writeFileSync(publicDir+'/news.json',JSON.stringify(news));
 fs.writeFileSync(publicDir+'/catalogue-bootstrap.json',JSON.stringify({tracks,videos,news,photos:[],media:[...published.values()]}));
 fs.writeFileSync(publicDir+'/admin.html',fs.readFileSync(root+'/web/admin.html','utf8').replaceAll('v=studio-4','v='+assetVersion));fs.copyFileSync(root+'/web/admin.css',publicDir+'/assets/css/admin.css');fs.copyFileSync(root+'/web/sw.js',publicDir+'/sw.js');
-fs.writeFileSync(publicDir+'/build-manifest.json',JSON.stringify({release:RELEASE,assetVersion,draft,deployable:!draft,files:Object.fromEntries(['admin.html','assets/css/admin.css','js/cloud-config.js','js/cloud-image-map.js',...adminFiles.map(n=>'js/'+n)].map(n=>[n,createHash('sha256').update(fs.readFileSync(publicDir+'/'+n)).digest('hex')]))},null,2)+'\n');
+fs.copyFileSync(root+'/web/rock-site.css',publicDir+'/assets/css/rock-site.css');
+const htmlFiles=fs.readdirSync(publicDir).filter(name=>name.endsWith('.html'));
+for(const name of htmlFiles)fs.writeFileSync(publicDir+'/'+name,fs.readFileSync(publicDir+'/'+name,'utf8').replaceAll('v=studio-4','v='+assetVersion).replaceAll('v=migration1','v='+assetVersion));
+const verifiedFiles=[...htmlFiles,'assets/css/admin.css','assets/css/site-v10.css','assets/css/rock-site.css','js/site-v10.js','js/cloud-config.js','js/cloud-image-map.js',...sharedFiles.map(n=>'js/'+n),...adminFiles.map(n=>'js/'+n),'assets/fonts/oswald-cyrillic-700.woff2','assets/fonts/oswald-latin-700.woff2'];
+fs.writeFileSync(publicDir+'/build-manifest.json',JSON.stringify({release:RELEASE,assetVersion,draft,deployable:!draft,files:Object.fromEntries(verifiedFiles.map(n=>[n,createHash('sha256').update(fs.readFileSync(publicDir+'/'+n)).digest('hex')]))},null,2)+'\n');
 fs.copyFileSync(publicDir+'/assets/vendor/lamejs-1.2.0-source.tgz.gz',publicDir+'/assets/vendor/lamejs-1.2.0-source.tgz');fs.unlinkSync(publicDir+'/assets/vendor/lamejs-1.2.0-source.tgz.gz');
 const rules=fs.readFileSync(root+'/firestore.rules','utf8').replace('__ADMIN_UID__',settings.adminUid||'__UNCONFIGURED_DENY_ALL__');fs.writeFileSync(root+'/firestore.generated.rules',rules);
 const hosting={public:'public',ignore:['firebase.json','**/.*','**/node_modules/**'],cleanUrls:false,trailingSlash:false,
@@ -123,7 +133,7 @@ const hosting={public:'public',ignore:['firebase.json','**/.*','**/node_modules/
 if(settings.workerOrigin)hosting.redirects.unshift({source:'/media/:id/:name',destination:settings.workerOrigin+'/media/:id/:name',type:302});
 fs.writeFileSync(root+'/firebase.json',JSON.stringify({hosting,firestore:{rules:'firestore.generated.rules',indexes:'firestore.indexes.json'}},null,2));
 if(settings.firebase.projectId)fs.writeFileSync(root+'/.firebaserc',JSON.stringify({projects:{default:settings.firebase.projectId}},null,2));
-fs.writeFileSync(root+'/build-report.json',JSON.stringify({draft,deployable:!draft,tracks:tracks.length,videos:videos.length,news:news.length,allowlistedMedia:published.size,mediaBytesIncluded:0,sourceDesign:'v10',disabledVideos:audit.videos.filter(v=>!v.sources.some(s=>s.driveId)).map(v=>v.id),deployed:false},null,2));
+fs.writeFileSync(root+'/build-report.json',JSON.stringify({draft,deployable:!draft,tracks:tracks.length,videos:videos.length,news:news.length,allowlistedMedia:published.size,mediaBytesIncluded:0,sourceDesign:'rock-1',disabledVideos:audit.videos.filter(v=>!v.sources.some(s=>s.driveId)).map(v=>v.id),deployed:false},null,2));
 fs.writeFileSync(root+'/reader-access-plan.json',JSON.stringify({permissionsApplied:false,role:'reader',folders:[{id:'1ULDCIutvN87ZI0xSkuA94-ZFuy0x2ySw',name:'assets/audio'},{id:'1KjwGsYLA05Z0iqpmUPLlD21qy5mu7RRF',name:'assets/video'},{id:'116o66OzUC_2joYs4vjgt2fdb9oGHuVue',name:'assets/img'},{id:'1_WQt0gN0yWN1JODvJS4zZa-ioHjPlN8M',name:'assets/responsive'},{id:'1xTYbJL_GpmW5DLX120yej9fb_hYZrzmz',name:'assets/images'},{id:settings.uploadFolderId,name:'Публикации сайта'}],individualFiles:[...published.values()].filter(x=>!byId.get(x.driveId).path.includes('/')).map(x=>({id:x.driveId,name:x.name})),doNotShare:['site root with PHP/source files','assets/analytics','account-wide Drive access']},null,2));
 buildAdminPreview(root);
 console.log(JSON.stringify({draft,tracks:tracks.length,videos:videos.length,media:published.size,deployable:!draft}));

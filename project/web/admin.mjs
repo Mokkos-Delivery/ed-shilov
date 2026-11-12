@@ -8,6 +8,7 @@ import {initSocialComposer} from './social-composer.mjs?v=studio-4';
 import {DriveSession,titleFromFile,formatSize,mediaURL,localDate} from './admin-media.mjs?v=studio-4';
 import {UploadJournal,fileIdentity} from './upload-journal.mjs?v=studio-4';
 import {RELEASE} from './release.mjs?v=studio-4';
+import {initAdminAnalytics} from './admin-analytics.mjs?v=studio-4';
 
 const $=selector=>document.querySelector(selector),config=window.ED_CLOUD_CONFIG||{};
 let sessionStore=null;try{sessionStore=window.localStorage||window.sessionStorage;}catch{try{sessionStore=window.sessionStorage;}catch{}}
@@ -23,7 +24,7 @@ function ownUser(value){return !!value&&!!config.adminUid&&value.uid===config.ad
 function mediaPath(record){return '/media/'+record.driveId+'/'+encodeURIComponent(record.name);}
 function fixedURL(value){return mediaURL(value,config.workerOrigin,location.origin);}
 function escapeHTML(text){return String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function busyUI(value){busy=value;$('#editor-fields').disabled=value;$('#save').disabled=value;$('#cancel-upload').hidden=!value;for(const id of ['kind','seed','prepare-all','new-item','connect','logout','open-social','open-editor','open-library'])$('#'+id).disabled=value;for(const button of document.querySelectorAll('[data-kind]'))button.disabled=value;renderItems();}
+function busyUI(value){busy=value;$('#editor-fields').disabled=value;$('#save').disabled=value;$('#cancel-upload').hidden=!value;for(const id of ['kind','seed','prepare-all','new-item','connect','logout','open-social','open-editor','open-library','open-analytics'])$('#'+id).disabled=value;for(const button of document.querySelectorAll('[data-kind]'))button.disabled=value;renderItems();}
 function token(){return drive.token();}
 function driveUI(state,message){$('#drive-card').dataset.state=state;$('#connection').textContent=message;$('#connect').hidden=state==='ready';$('#connect').disabled=state==='connecting'||busy;$('#save').disabled=state==='connecting'||busy;$('#drive-heading').textContent=state==='ready'?'Диск подключён':'Google Диск';}
 function phase(step,title){$('#upload-panel').hidden=false;$('#upload-phase').textContent=title;$('#upload-percent').textContent='';for(const node of document.querySelectorAll('[data-step]'))node.classList.toggle('active',node.dataset.step===step);}
@@ -53,7 +54,7 @@ function renderPreview(){
   if(!job)$('#save').textContent=editing?'Сохранить изменения':$('#published').checked?'Опубликовать на сайте':'Сохранить скрытым';
   $('#save-hint').textContent=$('#published').checked?'Материал появится на сайте после загрузки и проверки.':'Материал будет сохранён. Слушатели пока его не увидят.';
 }
-function showPanel(panel){activePanel=panel;$('#materials-panel').hidden=panel==='social';$('#social-panel').hidden=panel!=='social';$('#editor-layout').hidden=panel==='catalogue';$('#catalogue-panel').hidden=panel!=='catalogue';$('#page-title').textContent=panel==='catalogue'?'Мои материалы':editing?'Редактировать материал':({tracks:'Добавить песню',videos:'Добавить видео',photos:'Добавить фотографию',news:'Добавить новость'})[$('#kind').value];for(const [id,value] of [['open-editor','materials'],['open-library','catalogue'],['open-social','social']]){const active=panel===value;$('#'+id).classList.toggle('active',active);$('#'+id).setAttribute('aria-pressed',String(active));}for(const node of document.querySelectorAll('[data-kind]')){const active=node.dataset.kind===$('#kind').value;node.classList.toggle('active',active);node.setAttribute('aria-pressed',String(active));}}
+function showPanel(panel){activePanel=panel;$('#materials-panel').hidden=!['materials','catalogue'].includes(panel);$('#social-panel').hidden=panel!=='social';$('#analytics-panel').hidden=panel!=='analytics';$('#editor-layout').hidden=panel==='catalogue';$('#catalogue-panel').hidden=panel!=='catalogue';$('#page-title').textContent=panel==='catalogue'?'Мои материалы':editing?'Редактировать материал':({tracks:'Добавить песню',videos:'Добавить видео',photos:'Добавить фотографию',news:'Добавить новость'})[$('#kind').value];for(const [id,value] of [['open-editor','materials'],['open-library','catalogue'],['open-social','social'],['open-analytics','analytics']]){const active=panel===value;$('#'+id).classList.toggle('active',active);$('#'+id).setAttribute('aria-pressed',String(active));}for(const node of document.querySelectorAll('[data-kind]')){const active=node.dataset.kind===$('#kind').value;node.classList.toggle('active',active);node.setAttribute('aria-pressed',String(active));}}
 let pickerReady;
 async function selectUploadFolder(accessToken){
   if(!pickerReady)pickerReady=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='https://apis.google.com/js/api.js';script.onload=()=>window.gapi.load('picker',{callback:resolve,onerror:reject});script.onerror=reject;document.head.append(script);});
@@ -225,6 +226,7 @@ async function prepareExisting(selected){
 }
 async function main(){
   const social=initSocialComposer((path,body,method)=>api(path,body,method,null));
+  const analytics=initAdminAnalytics((path,body,method,signal)=>api(path,body,method,signal),async()=>{const {getDocs}=await import('https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js');const snapshot=await getDocs(collection(db,'tracks'));return snapshot.docs.map(item=>({...item.data(),id:item.id}));});
   $('#folder-link').href='https://drive.google.com/drive/folders/'+config.uploadFolderId;
   const brand=document.querySelector('.brand img');if(brand){const url=fixedURL(window.SITE_IMAGE_MAP?.['/assets/img/branding/RUS.webp']);if(url)brand.src=url;brand.onerror=()=>{brand.hidden=true;};}
   if(!config.firebase?.apiKey||!config.firebase?.projectId){$('#login').disabled=true;status('Админка подготовлена, но Firebase-проект ещё не подключён. Сначала нужно завершить настройку проекта.');return;}
@@ -233,8 +235,8 @@ async function main(){
   onAuthStateChanged(auth,value=>{
     const previousUid=user?.uid;user=value;drive.setOwner(ownUser(value)?value.uid:'');if(!ownUser(value))drive.clear();
     $('#studio').hidden=!ownUser(value);$('#login-screen').hidden=ownUser(value);
-    if(value&&!ownUser(value)){unsubscribe?.();social.disconnect();status('У этого аккаунта нет доступа к студии. Войдите через аккаунт владельца.');return;}
-    if(ownUser(value)){ $('#account').textContent=value.email;if(previousUid!==value.uid){journal=new UploadJournal(sessionStore,'edStudioUpload:'+config.firebase.projectId+':'+value.uid);driveUI('waiting','Проверяем сохранённый доступ…');newItem();status(journal.read()?'Есть незавершённая загрузка. Выберите те же файлы — повтор использует сохранённые номера.':'');social.connect();if(!authenticating){const saved=drive.saved(value.uid);if(saved)activateDrive(saved.accessToken,saved.expiresAt).catch(error=>status(error.message));else driveUI('waiting','Вход сохранён. Для загрузки разрешите доступ к файлам Диска.');}}}else{unsubscribe?.();social.disconnect();}
+    if(value&&!ownUser(value)){unsubscribe?.();social.disconnect();analytics.disconnect();status('У этого аккаунта нет доступа к студии. Войдите через аккаунт владельца.');return;}
+    if(ownUser(value)){ $('#account').textContent=value.email;if(previousUid!==value.uid){journal=new UploadJournal(sessionStore,'edStudioUpload:'+config.firebase.projectId+':'+value.uid);driveUI('waiting','Проверяем сохранённый доступ…');newItem();status(journal.read()?'Есть незавершённая загрузка. Выберите те же файлы — повтор использует сохранённые номера.':'');social.connect();analytics.connect();if(!authenticating){const saved=drive.saved(value.uid);if(saved)activateDrive(saved.accessToken,saved.expiresAt).catch(error=>status(error.message));else driveUI('waiting','Вход сохранён. Для загрузки разрешите доступ к файлам Диска.');}}}else{unsubscribe?.();social.disconnect();analytics.disconnect();}
   });
   $('#login').onclick=async()=>{
     $('#login').disabled=true;authenticating=true;
@@ -249,6 +251,7 @@ async function main(){
   const updateFilters=()=>{for(const node of document.querySelectorAll('[data-filter]')){const active=node.dataset.filter===libraryFilter;node.classList.toggle('active',active);node.setAttribute('aria-pressed',String(active));}};
   for(const node of document.querySelectorAll('[data-filter]'))node.onclick=()=>{libraryFilter=node.dataset.filter;updateFilters();renderItems();};
   for(const node of document.querySelectorAll('[data-kind]'))node.onclick=()=>{if(busy)return;const panel=activePanel==='catalogue'?'catalogue':'materials';if($('#kind').value!==node.dataset.kind){$('#kind').value=node.dataset.kind;$('#kind').onchange();}showPanel(panel);};
+  $('#open-analytics').onclick=()=>{showPanel('analytics');analytics.open();};
   $('#open-social').onclick=()=>showPanel('social');$('#open-editor').onclick=()=>showPanel('materials');$('#open-library').onclick=()=>showPanel('catalogue');
   const chosen=()=>{if(busy)return;const file=$('#file').files[0];if(file){try{typedFile(file,$('#kind').value);}catch(error){$('#file').value='';status(error.message);renderPreview();return;}if(!$('#title').value.trim()||$('#title').value===autoTitle){autoTitle=titleFromFile(file.name);$('#title').value=autoTitle;}}renderPreview();};
   $('#preview-audio').addEventListener('loadedmetadata',()=>{const file=$('#file').files[0];if(file&&previewURLs.get('file')?.file===file){audioMetadata={file,duration:$('#preview-audio').duration};renderPreview();}});

@@ -17,7 +17,8 @@ export function buildAdminPreview(root){
       vk_eduard:{enabled:false,configured:false,platform:'vk',id:'56789',label:'VK · Эдуард Шилов (демо)'}}};
   };
   initSocialComposer(api).connect();
-  for(const id of ['login','connect','logout','seed','prepare-all','new-item','save'])document.getElementById(id).disabled=true;
+  for(const id of ['login','connect','logout','seed','prepare-all','new-item','save','open-analytics'])document.getElementById(id).disabled=true;
+  document.getElementById('open-analytics').title='Статистика доступна после входа в рабочую студию.';
   document.getElementById('editor').onsubmit=e=>e.preventDefault();\n`;
   html=html.replace('</body>','<script type="module">'+js+'</script></body>');
   fs.mkdirSync(root+'/preview',{recursive:true});fs.writeFileSync(root+'/preview/admin.html',html);
