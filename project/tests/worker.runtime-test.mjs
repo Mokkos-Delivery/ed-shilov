@@ -33,6 +33,9 @@ test('Real runtime reads linked media, signs Drive auth, streams Range and handl
   const runtime=new Miniflare(convertV4MiniflareOptions({name:'media-regression',modules:true,script:bundle.outputFiles[0].text,compatibilityDate:'2026-10-13'}));
   try{
     const get=await runtime.dispatchFetch('https://test.example/media');assert.equal(get.status,206);assert.equal(get.headers.get('Content-Range'),'bytes 0-0/4');assert.equal(await get.text(),'s');
+    const warm=await runtime.dispatchFetch('https://test.example/cached');assert.equal(warm.status,206);await warm.text();
+    await new Promise(r=>setTimeout(r,100));
+    const hit=await runtime.dispatchFetch('https://test.example/cached');assert.equal(hit.headers.get('X-Media-Cache'),'HIT');assert.equal(await hit.text(),'s');
     const head=await runtime.dispatchFetch('https://test.example/media',{method:'HEAD'});assert.equal(head.status,200);assert.equal(head.headers.get('Content-Length'),'4');assert.equal(await head.text(),'');
     const redirect=await runtime.dispatchFetch('https://test.example/redirect');assert.equal(redirect.status,503);await redirect.body?.cancel();
     const form=new FormData();form.set('post',JSON.stringify({text:'Фото'}));form.set('media',new File(['image'],'cover.png',{type:'image/png'}));

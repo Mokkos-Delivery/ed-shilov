@@ -1,14 +1,10 @@
   async function scheduleQuality(t,forceEconomy=false) {
     if(!t)return;
-    const desired=desiredQuality(forceEconomy),job=++qualityJob;
+    const selected=playbackSource(t,qualityMode,navigator.connection,forceEconomy),job=++qualityJob;
     qualityController?.abort();
-    if(desired==='original'){if(qualityApplied!=='original')await swapQuality(getAudio(t),t,job,'original');qualityStatus.textContent=tr('Оригинал','Original');return;}
-    const source=window.ED_CLOUD.mediaURL(t.qualities?.[desired]);
-    if(!source){
-      if(qualityApplied!=='original')await swapQuality(getAudio(t),t,job,'original');
-      qualityStatus.textContent=tr('Доступен оригинал','Original available');
-      if(qualityMode!=='auto')toast(tr('Копия этого качества ещё не подготовлена. Доступен оригинал.','This quality is not prepared yet. The original is available.'));
-      return;
-    }
-    await swapQuality(source,t,job,desired);
+    const source=streamURL(selected.url,window.ED_CLOUD_CONFIG?.workerOrigin,location.origin);
+    if(!source)return;
+    if(qualityApplied!==selected.quality)await swapQuality(source,t,job,selected.quality);
+    qualityStatus.textContent=selected.quality==='original'?tr('Оригинал','Original'):selected.quality+' kbps';
+    if(selected.quality==='original'&&['128','192'].includes(qualityMode))toast(tr('Копия этого качества ещё не подготовлена. Доступен оригинал.','This quality is not prepared yet. The original is available.'));
   }

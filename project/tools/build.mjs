@@ -97,6 +97,10 @@ for(const name of fs.readdirSync(publicDir).filter(n=>n.endsWith('.html'))) {
   fs.writeFileSync(publicDir+'/'+name,html);
 }
 let script=fs.readFileSync(source+'/js/site-v10.js','utf8');
+script=patch(script,"  'use strict';","  'use strict';\n"+fs.readFileSync(root+'/web/playback-core.mjs','utf8').replaceAll('export ',''));
+script=patch(script,"const url=safeURL(getAudio(t));","const chosen=playbackSource(t,qualityMode,navigator.connection);qualityApplied=chosen.quality;qualityStatus.textContent=chosen.quality==='original'?tr('Оригинал','Original'):chosen.quality+' kbps';const url=streamURL(chosen.url,window.ED_CLOUD_CONFIG?.workerOrigin,location.origin);");
+script=patch(script,'video.src=source;video.load();','video.src=streamURL(source,window.ED_CLOUD_CONFIG?.workerOrigin,location.origin);video.load();');
+script=patch(script,"const first=preferSmall?(v.video720pUrl||v.video1080pUrl):(v.video1080pUrl||v.video720pUrl);","const first=v.video720pUrl||v.video1080pUrl;");
 const start=script.indexOf('  async function scheduleQuality('),end=script.indexOf('  async function swapQuality(',start);
 if(start<0||end<0)throw Error('Quality code changed');
 script=script.slice(0,start)+fs.readFileSync(root+'/web/cloud-quality.js','utf8')+'\n'+script.slice(end);

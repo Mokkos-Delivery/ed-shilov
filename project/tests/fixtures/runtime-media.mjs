@@ -3,7 +3,7 @@ import {socialMultipart,attachmentMetadata} from '../../worker/src/social-media.
 
 const id='runtime_audio_file_1';
 const fields=value=>({fields:Object.fromEntries(Object.entries(value).map(([k,v])=>[k,typeof v==='string'?{stringValue:v}:typeof v==='boolean'?{booleanValue:v}:{integerValue:String(v)}]))});
-export default {async fetch(request){
+export default {async fetch(request,_bindings,ctx){
   if(new URL(request.url).pathname==='/multipart'){
     const {body,file}=await socialMultipart(request),attachment=await attachmentMetadata(file);
     const form=new FormData();form.set('chat_id','-1000000000');form.set('caption',body.text);form.set(attachment.kind,file,file.name);
@@ -15,7 +15,7 @@ export default {async fetch(request){
   const raw=new Uint8Array(await crypto.subtle.exportKey('pkcs8',pair.privateKey));
   const private_key='-----BEGIN PRIVATE KEY-----\n'+btoa(String.fromCharCode(...raw))+'\n-----END PRIVATE KEY-----';
   const env={PROJECT_ID:'runtime-test',ALLOWED_ORIGINS:'https://eduardshilov.com',DRIVE_SERVICE_ACCOUNT_JSON:JSON.stringify({client_email:'fixture@example.invalid',private_key})};
-  const redirected=new URL(request.url).pathname==='/redirect';
+  const redirected=new URL(request.url).pathname==='/redirect',cached=new URL(request.url).pathname==='/cached';
   const net=async(url,options)=>{
     // Exercise workerd's native RequestInit validation; no external provider calls.
     const upstream=new Request(url,options);
@@ -34,5 +34,5 @@ export default {async fetch(request){
     }
     throw Error('Unexpected provider');
   };
-  return createWorker(net).fetch(new Request('https://media.example/media/'+(redirected?'runtime_redirect_file_1':id)+'/song.mp3',{method:request.method,headers:{Origin:'https://eduardshilov.com',Range:'bytes=0-0'}}),env);
+  return createWorker(net).fetch(new Request('https://media.example/media/'+(redirected?'runtime_redirect_file_1':id)+'/song.mp3'+(cached?'?stream=1':''),{method:request.method,headers:{Origin:'https://eduardshilov.com',Range:'bytes=0-0'}}),env,ctx);
 }};

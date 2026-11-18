@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "liveServices": false,
+  "browser": "Chromium",
+  "checks": [
+    "No collection or session storage before explicit consent, even during real playback",
+    "Actual short WAV playback counted once; completion captures original track before autoplay switches",
+    "Downloads deduplicated per song/session; synchronous revocation immediately clears ID and stops requests",
+    "Owner bearer request, 7/30/90-day filters, zero/hidden tracks, search and real CSV download",
+    "Analytics fits 320, 390, 768 and 1440px; wide data tables scroll within their own region",
+    "Missing storage and transient outage differ; superseded responses discarded; logout clears report DOM and disables CSV"
+  ],
+  "pageErrors": [],
+  "eventTypes": [
+    "page_view",
+    "track_play",
+    "track_complete",
+    "track_download"
+  ],
+  "reportPeriods": [
+    30,
+    7,
+    90,
+    30,
+    30,
+    30,
+    30,
+    30,
+    7
+  ]
+}

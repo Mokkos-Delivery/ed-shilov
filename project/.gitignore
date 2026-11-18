@@ -15,3 +15,5 @@ credentials/
 build/
 
 .image-cache/
+
+playback-diagnostics.json

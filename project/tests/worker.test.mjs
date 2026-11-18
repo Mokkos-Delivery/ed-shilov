@@ -137,7 +137,7 @@ test('Upload readiness is owner-only, reports release, and checks the configured
  const path='https://media.example/api/admin/readiness';
  assert.equal((await worker.fetch(new Request(path),env)).status,401);assert.equal(folderReads,0);
  const r=await worker.fetch(new Request(path,{headers:{Authorization:'Bearer '+await jwt()}}),{...env,DRIVE_SERVICE_ACCOUNT_JSON:serviceAccount});
- const value=await r.json();assert.equal(r.status,200);assert.equal(value.readerReady,true);assert.equal(value.release,'2026-11-12-rock-3');assert.equal(folderReads,1);
+ const value=await r.json();assert.equal(r.status,200);assert.equal(value.readerReady,true);assert.equal(value.release,'2026-11-18-rock-4');assert.equal(folderReads,1);
 });
 test('Reader denial, missing files and upstream outages have distinct diagnostics rather than false pending',async()=>{
  for(const [status,code,expected] of [[403,'DRIVE_READER_FORBIDDEN',403],[404,'DRIVE_FILE_PENDING',409],[500,'DRIVE_READER_UNAVAILABLE',503]]){
@@ -170,4 +170,37 @@ test('Invited administrator requires a signed verified Google identity; email al
   assert.equal((await verifyFirebaseIdToken(await jwt(invited),env,net)).sub,invited.sub);
   for(const changes of [{email_verified:false},{email:'other@gmail.com'},{firebase:{sign_in_provider:'password'}},{firebase:undefined}])await assert.rejects(verifyFirebaseIdToken(await jwt({...invited,...changes}),env,net));
   const pieces=(await jwt(invited)).split('.');pieces[2]=base64url(new Uint8Array(256));await assert.rejects(verifyFirebaseIdToken(pieces.join('.'),env,net));
+});
+
+test('Player chunk cache avoids repeat Drive fetches but still checks publication permission before every hit',async()=>{
+ clearToken();let now=Date.now(),hidden=false,driveReads=0;const actualNow=Date.now;
+ const id='cached_player_file_123',record={driveId:id,name:'song.mp3',mime:'audio/mpeg',size:4,published:true,ownerKind:'tracks',ownerId:'cached_song_123'};
+ const map=new Map(),jobs=[],cache={match:async key=>map.get(key.url)?.clone(),put:async(key,r)=>{map.set(key.url,r);}},ctx={waitUntil:p=>jobs.push(p)};
+ const worker=createWorker(async(url,options)=>{
+  if(url.includes('/documents/media/'))return Response.json(fields(record));
+  if(url.includes('/documents/tracks/'))return hidden?new Response(null,{status:403}):Response.json(fields({published:true,audio_mp3:'/media/'+id+'/song.mp3'}));
+  if(url.includes('oauth2.googleapis.com'))return Response.json({access_token:'fixture-token'});
+  driveReads++;assert.equal(options.headers.Range,'bytes=0-3');return new Response('song',{status:206,headers:{'Content-Type':'audio/mpeg','Content-Length':'4','Content-Range':'bytes 0-3/4'}});
+ },{cache});
+ const req=()=>new Request('https://media.example/media/'+id+'/song.mp3?stream=1',{headers:{Range:'bytes=0-'}}),settings={...env,DRIVE_SERVICE_ACCOUNT_JSON:serviceAccount};
+ try{
+  Date.now=()=>now;
+  const first=await worker.fetch(req(),settings,ctx);assert.equal(await first.text(),'song');await Promise.all(jobs);assert.equal(driveReads,1);
+  const second=await worker.fetch(req(),settings,ctx);assert.equal(second.headers.get('X-Media-Cache'),'HIT');assert.equal(await second.text(),'song');assert.equal(driveReads,1);
+  hidden=true;now+=15001;const denied=await worker.fetch(req(),settings,ctx);assert.equal(denied.status,404);assert.equal(driveReads,1);
+  assert.equal((await worker.fetch(new Request([...map.keys()][0]),settings,ctx)).status,404);
+ }finally{Date.now=actualNow;}
+});
+
+test('A cold playback request sends the first byte before its cache copy has finished',async()=>{
+ clearToken();const id='stream_first_byte_123',jobs=[];let finish;
+ const gate=new Promise(resolve=>finish=resolve),map=new Map(),cache={match:async()=>undefined,put:async(k,r)=>map.set(k.url,r)};
+ const worker=createWorker(async url=>{
+  if(url.includes('/documents/media/'))return Response.json(fields({driveId:id,name:'a.mp3',mime:'audio/mpeg',size:4,published:true}));
+  if(url.includes('oauth2.googleapis.com'))return Response.json({access_token:'fixture-token'});
+  return new Response(new ReadableStream({async start(c){c.enqueue(new TextEncoder().encode('s'));await gate;c.enqueue(new TextEncoder().encode('ong'));c.close();}}),{status:206,headers:{'Content-Type':'audio/mpeg','Content-Length':'4','Content-Range':'bytes 0-3/4'}});
+ },{cache});
+ const r=await worker.fetch(new Request('https://media.example/media/'+id+'/a.mp3?stream=1',{headers:{Range:'bytes=0-'}}),{...env,DRIVE_SERVICE_ACCOUNT_JSON:serviceAccount},{waitUntil:p=>jobs.push(p)});
+ const reader=r.body.getReader();assert.equal(new TextDecoder().decode((await reader.read()).value),'s');assert.equal(map.size,0);
+ finish();while(!(await reader.read()).done){}await Promise.all(jobs);assert.equal(map.size,1);
 });

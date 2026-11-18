@@ -11,6 +11,7 @@
   "image-assets.test.mjs",
   "live-version.test.mjs",
   "mail-relay.test.mjs",
+  "playback.test.mjs",
   "publication-media.test.mjs",
   "quality.test.mjs",
   "release.test.mjs",

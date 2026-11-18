@@ -26,6 +26,6 @@ export function createCatalogueReader(net=fetch,now=()=>Date.now()){
    return {ok:true,seeded:true,items};
   })();
   pending.set(key,task);
-  try{const value=await task;if(cache.size>=16)cache.clear();cache.set(key,{value,until:now()+15000});return value;}finally{pending.delete(key);}
+  try{const value={...await task,checkedAt:now()};if(cache.size>=16)cache.clear();cache.set(key,{value,until:now()+15000});return value;}finally{pending.delete(key);}
  };
 }

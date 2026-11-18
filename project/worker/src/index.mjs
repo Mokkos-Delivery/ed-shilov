@@ -1,3 +1,4 @@
+import {playbackRange,chunkKey,cachedChunk,storeChunk} from './media-cache.mjs';
 import {createCatalogueReader} from './catalogue.mjs';
 import {fileIdPattern,allowedMime,origins,docFields,validMedia,rangeValid,contentDisposition,validateApplication,base64url,jsonBytes,unbase64url} from './core.mjs';
 import {driveToken,clearToken,verifyFirebaseIdToken} from './google.mjs';
@@ -42,7 +43,7 @@ async function driveRequest(id,env,net,options={}) {
   if(response.status===401){clearToken();token=await driveToken(env,net);response=await send();}
   return response;
 }
-async function media(request,id,env,net,ownerPreview=false) {
+async function media(request,id,env,net,ownerPreview=false,ctx,cache) {
   if(!['GET','HEAD'].includes(request.method)) return reply({error:'Method not allowed'},405,{Allow:'GET, HEAD'});
   if(!fileIdPattern.test(id))return reply({error:'Not found'},404);
   let record;
@@ -59,7 +60,9 @@ async function media(request,id,env,net,ownerPreview=false) {
     if(item?.published!==true||!referencedMediaIds(item).has(id))return reply({error:'Not found'},404);
   }
   const range=request.headers.get('Range'); if(!rangeValid(range)) return reply({error:'Invalid range'},416);
-  const response=await driveRequest(id,env,net,{range:request.method==='HEAD'?'bytes=0-0':range});
+  const plan=ownerPreview?null:playbackRange(request,record),key=plan?chunkKey(request,record,env.PROJECT_ID,plan):null;
+  if(key){const hit=await cachedChunk(cache,key,plan);if(hit)return hit;}
+  const response=await driveRequest(id,env,net,{range:request.method==='HEAD'?'bytes=0-0':plan?.range||range});
   if(response.status===416){await response.body?.cancel();return reply({error:'Invalid range'},416,{'Content-Range':'bytes */'+record.size});}
   if(![200,206].includes(response.status)) {
     await response.body?.cancel();
@@ -71,8 +74,11 @@ async function media(request,id,env,net,ownerPreview=false) {
   if(ownerPreview)headers.set('Cache-Control','private, no-store');
   for(const key of ['Content-Length','Content-Range','ETag','Last-Modified']) if(response.headers.has(key))headers.set(key,response.headers.get(key));
   if(request.method==='HEAD'){await response.body?.cancel();headers.set('Content-Length',String(record.size));headers.delete('Content-Range');return new Response(null,{status:200,headers});}
-  // A stream goes directly from Drive to the visitor; never buffer a whole video.
-  return new Response(response.body,{status:response.status,headers});
+  // First bytes stream immediately; only the bounded cache copy is collected.
+  headers.set('X-Media-Cache',plan?'MISS':'BYPASS');
+  const result=new Response(response.body,{status:response.status,headers});
+  if(key&&cache&&ctx?.waitUntil&&response.status===206&&headers.get('Content-Range')===plan.contentRange)ctx.waitUntil(storeChunk(cache,key,result.clone(),plan));
+  return result;
 }
 async function hmac(secret,input) {
   const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(secret),{name:'HMAC',hash:'SHA-256'},false,['sign']);
@@ -137,9 +143,9 @@ async function adminReadiness(request,env,net){
   if(folder.trashed||folder.mimeType!=='application/vnd.google-apps.folder')return reply({error:'Папка публикаций на сервере недоступна.',code:'DRIVE_FOLDER_INVALID',stage:'folder'},400);
   return reply({ok:true,release:RELEASE,folderId:env.UPLOAD_FOLDER_ID,readerReady:true});
 }
-export function createWorker(net=fetch) {
+export function createWorker(net=fetch,options={}) {
   const readCatalogue=createCatalogueReader(net);
-  return {async fetch(request,env) {
+  return {async fetch(request,env,ctx) {
     const origin=request.headers.get('Origin'), allowed=origins(env);
     if(origin&&!allowed.includes(origin))return reply({error:'Origin not allowed'},403);
     if(request.method==='OPTIONS') {
@@ -149,11 +155,19 @@ export function createWorker(net=fetch) {
     let result; const url=new URL(request.url);
     try {
       const match=/^\/media\/([A-Za-z0-9_-]+)(?:\/[^/]+)?$/.exec(url.pathname);
-      if(match)result=await media(request,match[1],env,net);
+      if(match)result=await media(request,match[1],env,net,false,ctx,options.cache??globalThis.caches?.default);
       else if(url.pathname==='/health'&&request.method==='GET')result=reply({ok:true,release:RELEASE,configured:!!(env.PROJECT_ID&&env.DRIVE_SERVICE_ACCOUNT_JSON),analyticsConfigured:!!env.ANALYTICS_DB,billingRequired:false});
       else if(url.pathname==='/api/catalogue'){
         const kind=url.searchParams.get('kind');
-        result=request.method!=='GET'?reply({error:'Method not allowed'},405):!['tracks','videos','news','photos'].includes(kind)?reply({error:'Invalid catalogue'},400):reply(await readCatalogue(kind,env));
+        if(request.method!=='GET')result=reply({error:'Method not allowed'},405);
+        else if(!['tracks','videos','news','photos'].includes(kind))result=reply({error:'Invalid catalogue'},400);
+        else{
+          const data=await readCatalogue(kind,env);
+          // Reuse the same published records just read through visitor rules.
+          if(data.seeded){if(catalogueCache.size+data.items.length>3000)catalogueCache.clear();for(const item of data.items)catalogueCache.set(env.PROJECT_ID+'/'+kind+'/'+item.id,{value:item,expires:data.checkedAt+15000});}
+          if(data.seeded&&data.items.length&&['tracks','videos'].includes(kind)&&env.DRIVE_SERVICE_ACCOUNT_JSON&&ctx?.waitUntil)ctx.waitUntil(driveToken(env,net).catch(()=>{}));
+          result=reply(data);
+        }
       }
       else if(url.pathname==='/api/applications')result=await application(request,env,net,origin);
       else if(url.pathname==='/api/analytics')result=await recordAnalytics(request,env,request.method==='POST'?await boundedJSON(request,2048):undefined,id=>publicDoc('tracks',id,env,net));
@@ -185,7 +199,7 @@ export function createWorker(net=fetch) {
         }
       } else result=reply({error:'Not found'},404);
     }catch(error){return reply({error:error.status===400?(error.publicMessage||'Некорректный запрос.'):'Сервис временно недоступен. Попробуйте позже.'},error.status===400?400:503,origin?{'Access-Control-Allow-Origin':origin,Vary:'Origin'}:{});}
-    if(origin){result.headers.set('Access-Control-Allow-Origin',origin);result.headers.set('Access-Control-Expose-Headers','Content-Length, Content-Range, Accept-Ranges');result.headers.append('Vary','Origin');}
+    if(origin){result.headers.set('Access-Control-Allow-Origin',origin);result.headers.set('Access-Control-Expose-Headers','Content-Length, Content-Range, Accept-Ranges, X-Media-Cache');result.headers.append('Vary','Origin');}
     return result;
   },async scheduled(controller,env){await cleanupAnalytics(env);}};
 }

@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "liveServices": false,
+  "checks": [
+    "Prepared MP3 chosen on first request, without loading original",
+    "Explicit quality switch resumes playback",
+    "720p selected before 1080p",
+    "Real MP4 larger than two chunks plays and seeks to 18 seconds",
+    "Repeated starting chunk served from cache"
+  ],
+  "videoBytes": 12736084,
+  "requests": [
+    {
+      "path": "/media/quality_audio_192/audio.mp3?stream=1",
+      "range": "bytes=0-",
+      "status": 206,
+      "cache": "MISS"
+    },
+    {
+      "path": "/media/quality_audio_128/audio.mp3?stream=1",
+      "range": "bytes=0-",
+      "status": 206,
+      "cache": "MISS"
+    },
+    {
+      "path": "/media/video_720_file_123/video.mp4?stream=1",
+      "range": "bytes=0-",
+      "status": 206,
+      "cache": "MISS"
+    },
+    {
+      "path": "/media/video_720_file_123/video.mp4?stream=1",
+      "range": "bytes=4194304-",
+      "status": 206,
+      "cache": "MISS"
+    },
+    {
+      "path": "/media/video_720_file_123/video.mp4?stream=1",
+      "range": "bytes=8388608-",
+      "status": 206,
+      "cache": "MISS"
+    },
+    {
+      "path": "/media/video_720_file_123/video.mp4?stream=1",
+      "range": "bytes=10616832-",
+      "status": 206,
+      "cache": "MISS"
+    }
+  ],
+  "pageErrors": []
+}

@@ -21,7 +21,8 @@
     "verify:live": "node tools/verify-live.mjs",
     "setup:analytics": "node tools/setup-analytics.mjs",
     "test:analytics:runtime": "node --test tests/analytics.runtime-test.mjs",
-    "prepare:images": "node tools/prepare-images.mjs"
+    "prepare:images": "node tools/prepare-images.mjs",
+    "diagnose:playback": "node tools/diagnose-playback.mjs"
   },
   "devDependencies": {
     "@firebase/rules-unit-testing": "6.0.0",
